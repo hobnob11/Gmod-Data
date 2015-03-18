@@ -91,16 +91,6 @@ if(first())
                 updateStrightSec(I*100+J*10 ,0)
             }
         }
-        for(I=1,4)
-        {
-            #createAng
-            updateAngleSec(I*100+1000,1)
-            for(J=1,I)
-            {
-                #createStright
-                updateStrightSec(I*100+J*10 +1000,1)
-            }
-        }
         timer("math",50)
     }
 
@@ -117,18 +107,7 @@ if(first())
             #createStright
             if(J==1){ strightSection(I*100+J*10 , I*100+5 ) } else { strightSection(I*100+J*10 , I*100+(J-1)*10 +5) }
         }
-    }
-    #create right wing 
-    for(I=1,4)
-    {
-        #createAng
-        if(I==1){ angleSection(I*100+1000,1) } else { angleSection(I*100+1000,(I-1)*100+2+1000) }
-        for(J=1,I)
-        {
-            #createStright
-            if(J==1){ strightSection(I*100+J*10 +1000, I*100+5 +1000) } else { strightSection(I*100+J*10 +1000, I*100+(J-1)*10 +5+1000) }
-        }
-    }    
+    }  
     
     timer("move",100)
     timer("gotoHob",1000)
@@ -146,16 +125,7 @@ if(clk("move"))
             if(J==1){ moveStrightSec(I*100+J*10 , I*100+5 ,0) } else { moveStrightSec(I*100+J*10 , I*100+(J-1)*10 + 5,0) }
         }
     }
-    for(I=1,4)
-    {
-        #createAng
-        if(I==1){ moveAngleSec(I*100+1000,1,1) } else { moveAngleSec(I*100+1000,(I-1)*100+2+1000,1) }
-        for(J=1,I)
-        {
-            #createStright
-            if(J==1){ moveStrightSec(I*100+J*10 +1000, I*100+5 +1000,1) } else { moveStrightSec(I*100+J*10 +1000, I*100+(J-1)*10 + 5+1000,1) }
-        }
-    }
+
 }
 
 if(clk("gotoHob"))
