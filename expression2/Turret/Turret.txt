@@ -1,0 +1,71 @@
+@name 
+@inputs Base:entity Button Target:vector
+@outputs R Ri Rii One Two Three Four
+@persist E Y Players:array
+@trigger 
+
+interval(15)
+if(first())
+{
+
+    Base:setAng(ang(vec(0,0,0)))
+    Base:freeze()
+    Base:soundPlay(1,0,"SB/Charging.wav")
+    
+}
+Base:setPos(entity():pos()+vec(0,0,1550))
+
+Players = players()
+
+#[for(I=0,Players:count())
+{
+    if(Players[I,entity]:steamID()=="STEAM_0:0:28646630")
+    {
+        Target=Players[I,entity]
+    }
+}]#
+
+Base:setAng(((Target-Base:pos()):toAngle())+ang(vec(0,0,R)))
+
+
+if(Button==1){
+    if(Ri<=14.995){Ri=Ri+0.05}
+}else{
+    if(Ri>=0.05){Ri=Ri-0.05}
+}
+
+
+R=R+Ri
+
+if(R>361)
+{
+    R=0    
+}
+
+soundPitch(1,((Ri/15)*200)+5)
+if(R==90)
+{
+    One=1
+    Four=0
+}
+if(R==180)
+{
+    One=0
+    Two=1
+}
+if(R==270)
+{
+    Two=0
+    Three=1
+}
+if(R==360)
+{
+    Three=0
+    Four=1
+}
+if(Ri<=14.5){
+    One=0
+    Two=0
+    Three=0
+    Four=0
+}

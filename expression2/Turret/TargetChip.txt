@@ -1,0 +1,14 @@
+@name TargetChip
+@inputs 
+@outputs Vector:vector Attack A
+@persist 
+@trigger 
+
+runOnTick(1)
+
+
+Vector = owner():aimPos()
+
+Attack = (owner():keyAttack2() ? 1 : 0)
+
+A=1

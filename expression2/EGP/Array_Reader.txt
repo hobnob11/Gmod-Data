@@ -1,0 +1,13 @@
+@name Array Reader
+@inputs Array:array
+@outputs 
+@persist 
+@trigger 
+
+E=entity():isWeldedTo():wirelink()
+
+E:egpClear()
+
+for(I=1,Array:count()){
+    E:egpText(I,""+Array[I,number],vec2(0,I*5))
+}

@@ -1,0 +1,20 @@
+@name ScannerOutput
+@inputs Data:array
+@outputs X Y Length R Update
+@persist Base:entity Z Ranger:ranger Range Beep MaxRange
+@trigger 
+
+runOnTick(1)
+if(first()){
+    Length=500
+    Update=0.01
+    R=0
+}
+X=cos(R)*(Data[clamp(R,1,359),number]/200)
+Y=sin(R)*(Data[clamp(R,1,359),number]/200)
+if(R<355){
+    R=R+5
+}else{
+    R=0
+}
+

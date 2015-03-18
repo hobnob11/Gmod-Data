@@ -1,0 +1,43 @@
+@name Hob-co Teleporter
+@persist Me:entity Planets:array
+
+if(first())
+{
+    Me=owner()
+    runOnChat(1)
+    findByClass("infinity_planet")
+    Planets = findToArray()
+}
+if(chatClk(Me))
+{
+    local Message = Me:lastSaid()
+    #if i typed . at the start of the message
+    if(Message:sub(1,1)==".")
+    {
+        hideChat(1)
+        #if i typed .tp
+        if(Message:sub(2,4)=="tp ")
+        {
+            local Target = findPlayerByName(Message:sub(5))
+            if(Target:isPlayer())
+            {
+                print(Target:name())
+                Me:setPosition(Target:toWorld(vec(-100,0,0)))
+                setEye(Target:angles())
+            }
+            else
+            {
+                print("cannot find player: '" + Message:sub(5) + "'")
+            }
+        }
+        #if i typed tpp (teleport to planet
+        elseif(Message:sub(2,5)=="tpp ")
+        {
+            local Target = Planets[Message:sub(6,6):toNumber(),entity]
+            if(Message:sub(6,6):toNumber()<=Planets:count())
+            {
+                Me:setPosition(Target:pos()+vec(0,0,1000))
+            }
+        }
+    }
+}

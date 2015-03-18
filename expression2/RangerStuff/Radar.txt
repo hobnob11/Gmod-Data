@@ -1,0 +1,39 @@
+@name Radar
+@inputs
+@outputs X Y Length R Update
+@persist Base:entity Z Ranger:ranger Range Beep MaxRange
+@trigger 
+
+runOnTick(0)
+interval(500)
+if(first()){
+    Base=entity():isWeldedTo()
+    Length=500
+    Beep=0
+    Update=0.005
+    MaxRange=300
+}
+Ranger = ranger(MaxRange)
+Range = Ranger:distance()
+Base:setAng(ang(0,Z,0))
+Z=Z+5
+R=Range/MaxRange
+if(R==0){
+    X=cos(Z)
+    Y=sin(Z)
+}else{
+    X=cos(Z)*R
+    Y=sin(Z)*R
+}
+if((MaxRange-5)>Ranger:distance()){
+    if(Beep==0){
+        Beep=1
+        entity():soundPlay("beep",soundDuration("buttons/blip1.wav"),"buttons/blip1.wav")
+        soundPitch("beep",120-((Ranger:distance()/MaxRange)*100))
+        print(Ranger:distance())
+
+    }
+}else{
+    Beep=0
+}
+

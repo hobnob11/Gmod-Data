@@ -1,0 +1,43 @@
+@name TurretV0.3
+@inputs Target:vector
+@outputs Bearing:angle TurretBearing:angle BearingDiff Dis
+@persist Base:entity Middle:entity Turret:entity X Pitch Speed
+@trigger 
+@model models/stat_turrets/st_turretbase.mdl
+
+interval(100)
+
+if(first())
+{
+    Base=entity()
+    Middle=holoCreate(1,Base:boxCenterW()+vec(0,0,(Base:boxSize():z()/2)+0),vec(1,1,1))
+    holoModel(1,"models/stat_turrets/st_turretswivel.mdl")
+    holoParent(1,Base)
+    Speed = 7 #I think this is in angles per execution
+    Turret=holoCreate(2,Base:boxCenterW()+vec(0,0,(Base:boxSize():z()/2)+10),vec(1,1,1))
+    holoColor(2,vec(255,0,0))
+    findByModel("models/stat_turrets/st_turretmissile.mdl")
+    findIncludePlayerProps(owner())
+    holoPos(2,findResult(1):pos())
+    holoAng(2,findResult(1):angles())
+    findResult(1):parentTo(Turret)
+    holoPos(2,Base:boxCenterW()+vec(0,0,(Base:boxSize():z()/2)+20))
+    holoAng(2,Middle:angles())
+    holoParent(2,Middle)
+}
+
+function angle smoothness(CurrentAngle:angle,WantedAngle:angle) {
+    local WantedQuat = quat(WantedAngle)
+    local CurrentQuat = quat(CurrentAngle)
+        
+    local LengthQ = abs(rotationAngle(WantedQuat/CurrentQuat))
+    local Tick = clamp(Speed/LengthQ,0,1)
+    local Quat = slerp(CurrentQuat,WantedQuat,Tick)
+        
+    return Quat:toAngle()
+}
+Bearing = (Target-Middle:pos()):toAngle()
+TurretBearing = Middle:angles()
+holoAng(1,ang(0,smoothness(TurretBearing,Bearing):yaw(),0))
+#holoAng(2,ang(smoothness(TurretBearing,Bearing):pitch(),smoothness(TurretBearing,Bearing):yaw(),0))
+holoAng(2,smoothness(TurretBearing,Bearing))
