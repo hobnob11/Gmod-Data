@@ -25,5 +25,6 @@ if(first())
     local Width = holoEntity(2):boxSize():y()/2
     holoPos(2,holoEntity(1):toWorld(trig(45,Width)))
     holoAng(2,ang(0,0,45)) 
+    holoPos(3,holoEntity(1):toWorld(trig(-45,Width)))
 
 }

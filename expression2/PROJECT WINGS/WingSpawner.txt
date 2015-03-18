@@ -21,6 +21,8 @@ if(first())
         holoParent(I+3,I+4)
         holoParent(I+5,I+3)
         Count=Count+6
+         if (!holoCanCreate()) {print("OH NOES")}
+
     }
     function moveAngleSec(I,Base,Inv)
     {
@@ -29,6 +31,8 @@ if(first())
         holoParent(I+1,Base)
         holoPos(I+4,holoEntity(I+2):pos())
         holoParent(I+4,I+2)
+         if (!holoCanCreate()) {print("OH NOES")}
+
     }
     function strightSection(I,Base)
     {
@@ -44,6 +48,8 @@ if(first())
         holoParent(I+3,I+4)
         holoParent(I+5,I+3)
         Count=Count+6
+         if (!holoCanCreate()) {print("OH NOES")}
+
     }
     function moveStrightSec(I,Base,Inv)
     {
@@ -53,16 +59,22 @@ if(first())
         holoPos(I+4,holoEntity(I+2):pos())
         holoAng(I+4,holoEntity(I+2):toWorld(ang(0,180*Inv,0)))
         holoParent(I+4,I+2)
+         if (!holoCanCreate()) {print("OH NOES")}
+
     }
     function updateAngleSec(I,Inv)
     {
         holoAng(I+1,holoEntity(1):toWorld(ang(0,180*Inv,X2)))
         holoAng(I+4,holoEntity(1):toWorld(ang(0,180*Inv,-X)))
+         if (!holoCanCreate()) {print("OH NOES")}
+
     }
     function updateStrightSec(I,Inv)
     {
         holoAng(I+1,holoEntity(1):toWorld(ang(0,180*Inv,X)))
         holoAng(I+4,holoEntity(1):toWorld(ang(0,180*Inv,-X)))
+         if (!holoCanCreate()) {print("OH NOES")}
+
     }
     function clampMath()
     {
