@@ -33,10 +33,18 @@ if(chatClk(Me))
         #if i typed tpp (teleport to planet
         elseif(Message:sub(2,5)=="tpp ")
         {
-            local Target = Planets[Message:sub(6,6):toNumber(),entity]
-            if(Message:sub(6,6):toNumber()<=Planets:count())
+            local Target = Planets[Message:sub(6,7):toNumber(),entity]
+            if(Message:sub(6,7):toNumber()<=Planets:count())
             {
                 Me:setPosition(Target:pos()+vec(0,0,1000))
+            }
+        }
+        elseif(Message:sub(2,5)=="tpn ")
+        {
+            print("test")
+            for(I=1,Planets:count())
+            {
+                print(I+": "+Planets[I,entity]:lsName())
             }
         }
     }
