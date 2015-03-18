@@ -39,7 +39,7 @@ if(chatClk(Me))
                 Me:setPosition(Target:pos()+vec(0,0,1000))
             }
         }
-        elseif(Message:sub(2,5)=="tpn ")
+        elseif(Message:sub(2)=="tpn")
         {
             print("test")
             for(I=1,Planets:count())

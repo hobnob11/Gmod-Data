@@ -1,23 +1,21 @@
 @name WingSpawner
 @inputs Y
 @outputs 
-@persist X X2 Count
+@persist X X2 Count String:string
 @trigger 
-
+String="models/hunter/blocks/cube05x8x025.mdl"
 if(first())
 {
     
     function angleSection(I,Base)
     {
-        holoCreate(I,holoEntity(Base):pos(),vec(1,1,1),holoEntity(Base):angles(),vec(255,255,255),"models/hunter/blocks/cube05x3x025.mdl")
-        holoAlpha(I,100)
+        holoCreate(I,holoEntity(Base):pos(),vec(1,1,1),holoEntity(Base):angles(),vec(255,255,255),String)
         holoCreate(I+1,holoEntity(I):toWorld(vec(0,holoEntity(I):boxSize():y()/2,holoEntity(I):boxSize():z()/2)),vec(2,0.2,0.2))
         holoCreate(I+2,holoEntity(I):toWorld(vec(0,-holoEntity(I):boxSize():y()/2,holoEntity(I):boxSize():z()/2)),vec(2,0.2,0.2))
         holoParent(I,I+1)
         holoParent(I+2,I)
         
-        holoCreate(I+3,holoEntity(Base):pos(),vec(1,1,1),holoEntity(Base):angles(),vec(255,255,255),"models/hunter/blocks/cube05x4x025.mdl")
-        holoAlpha(I+3,100)
+        holoCreate(I+3,holoEntity(Base):pos(),vec(1,1,1),holoEntity(Base):angles(),vec(255,255,255),String)
         holoCreate(I+4,holoEntity(I+3):toWorld(vec(0,holoEntity(I+3):boxSize():y()/2,holoEntity(I+3):boxSize():z()/2)),vec(2,0.2,0.2))
         holoCreate(I+5,holoEntity(I+3):toWorld(vec(0,-holoEntity(I+3):boxSize():y()/2,holoEntity(I+3):boxSize():z()/2)),vec(2,0.2,0.2))
         holoParent(I+3,I+4)
@@ -34,13 +32,13 @@ if(first())
     }
     function strightSection(I,Base)
     {
-        holoCreate(I,holoEntity(Base):pos(),vec(1,1,1),holoEntity(Base):angles(),vec(255,255,255),"models/hunter/blocks/cube05x4x025.mdl")
+        holoCreate(I,holoEntity(Base):pos(),vec(1,1,1),holoEntity(Base):angles(),vec(255,255,255),String)
         holoCreate(I+1,holoEntity(I):toWorld(vec(0,holoEntity(I):boxSize():y()/2,holoEntity(I):boxSize():z()/2)),vec(2,0.2,0.2))
         holoCreate(I+2,holoEntity(I):toWorld(vec(0,-holoEntity(I):boxSize():y()/2,holoEntity(I):boxSize():z()/2)),vec(2,0.2,0.2))
         holoParent(I,I+1)
         holoParent(I+2,I)
     
-        holoCreate(I+3,holoEntity(Base):pos(),vec(1,1,1),holoEntity(Base):angles(),vec(255,255,255),"models/hunter/blocks/cube05x4x025.mdl")
+        holoCreate(I+3,holoEntity(Base):pos(),vec(1,1,1),holoEntity(Base):angles(),vec(255,255,255),String)
         holoCreate(I+4,holoEntity(I+3):toWorld(vec(0,holoEntity(I+3):boxSize():y()/2,holoEntity(I+3):boxSize():z()/2)),vec(2,0.2,0.2))
         holoCreate(I+5,holoEntity(I+3):toWorld(vec(0,-holoEntity(I+3):boxSize():y()/2,holoEntity(I+3):boxSize():z()/2)),vec(2,0.2,0.2))
         holoParent(I+3,I+4)
@@ -87,10 +85,20 @@ if(first())
         {
             #createAng
             updateAngleSec(I*100,0)
-            for(J=1,I*2)
+            for(J=1,I)
             {
                 #createStright
                 updateStrightSec(I*100+J*10 ,0)
+            }
+        }
+        for(I=1,4)
+        {
+            #createAng
+            updateAngleSec(I*100+1000,1)
+            for(J=1,I)
+            {
+                #createStright
+                updateStrightSec(I*100+J*10 +1000,1)
             }
         }
         timer("math",50)
@@ -104,14 +112,23 @@ if(first())
     {
         #createAng
         if(I==1){ angleSection(I*100,1) } else { angleSection(I*100,(I-1)*100+2) }
-        for(J=1,I*2)
+        for(J=1,I)
         {
             #createStright
             if(J==1){ strightSection(I*100+J*10 , I*100+5 ) } else { strightSection(I*100+J*10 , I*100+(J-1)*10 +5) }
         }
     }
     #create right wing 
-    
+    for(I=1,4)
+    {
+        #createAng
+        if(I==1){ angleSection(I*100+1000,1) } else { angleSection(I*100+1000,(I-1)*100+2+1000) }
+        for(J=1,I)
+        {
+            #createStright
+            if(J==1){ strightSection(I*100+J*10 +1000, I*100+5 +1000) } else { strightSection(I*100+J*10 +1000, I*100+(J-1)*10 +5+1000) }
+        }
+    }    
     
     timer("move",100)
     timer("gotoHob",1000)
@@ -123,10 +140,20 @@ if(clk("move"))
     {
         #createAng
         if(I==1){ moveAngleSec(I*100,1,0) } else { moveAngleSec(I*100,(I-1)*100+2,0) }
-        for(J=1,I*2)
+        for(J=1,I)
         {
             #createStright
             if(J==1){ moveStrightSec(I*100+J*10 , I*100+5 ,0) } else { moveStrightSec(I*100+J*10 , I*100+(J-1)*10 + 5,0) }
+        }
+    }
+    for(I=1,4)
+    {
+        #createAng
+        if(I==1){ moveAngleSec(I*100+1000,1,1) } else { moveAngleSec(I*100+1000,(I-1)*100+2+1000,1) }
+        for(J=1,I)
+        {
+            #createStright
+            if(J==1){ moveStrightSec(I*100+J*10 +1000, I*100+5 +1000,1) } else { moveStrightSec(I*100+J*10 +1000, I*100+(J-1)*10 + 5+1000,1) }
         }
     }
 }
@@ -147,7 +174,7 @@ if(clk("math"))
 }
 if(clk("main"))
 {
-#    main()
+    main()
 }
 if(last())
 {
