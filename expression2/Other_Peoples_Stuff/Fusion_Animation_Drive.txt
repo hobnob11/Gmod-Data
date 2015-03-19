@@ -9,8 +9,7 @@ if(dupefinished() | duped()) {reset()}
 if(first()) {
     Fusion = FusionL:entity()
     Fusion:setAlpha(0)
-    Fusion:makeWirelink()
-    FusionLink = Fusion:getWirelink()
+    FusionLink = Fusion:wirelink()
     
     ##HOLO CREATION##
     for(I=1,3) {
