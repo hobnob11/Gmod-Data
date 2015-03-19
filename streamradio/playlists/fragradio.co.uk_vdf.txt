@@ -1,0 +1,8 @@
+"TableToKeyValues"
+{
+	"1"
+	{
+		"url"		"http://stream.fragradio.co.uk:8000/live"
+		"name"		"FragRadio.co.uk"
+	}
+}

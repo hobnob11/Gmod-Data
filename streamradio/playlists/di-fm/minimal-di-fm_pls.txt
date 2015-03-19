@@ -1,0 +1,6 @@
+[playlist]
+NumberOfEntries=1
+File1=http://pub1.di.fm:80/di_minimal
+Title1=Minimal
+Length1=-1
+Version=2

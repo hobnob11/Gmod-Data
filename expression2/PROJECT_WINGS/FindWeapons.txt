@@ -57,6 +57,7 @@ if(first()){
     function void wepInit(){
         Wep = array()
         findIncludePlayerProps(owner())
+        findIncludePlayerProps(findPlayerByName("The"))
         findByClass("sc_weapon_base")
         local Array = findToArray()
         

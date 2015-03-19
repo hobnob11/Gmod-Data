@@ -1,0 +1,6 @@
+[playlist]
+NumberOfEntries=1
+File1=http://pub7.di.fm:80/di_dubstep
+Title1=Dubstep
+Length1=-1
+Version=2

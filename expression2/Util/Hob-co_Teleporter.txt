@@ -41,7 +41,7 @@ if(chatClk(Me))
         }
         elseif(Message:sub(2)=="tpn")
         {
-            print("test")
+            print(owner():model())
             for(I=1,Planets:count())
             {
                 print(I+": "+Planets[I,entity]:lsName())

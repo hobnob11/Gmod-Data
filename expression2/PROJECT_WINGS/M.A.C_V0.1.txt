@@ -1,0 +1,15 @@
+@name Mass Acceleration Cannon V0.1
+
+@persist
+
+if(first())
+{
+    holoCreate( 1,
+                entity():pos()+vec(0,0,100),
+                vec(12,6,8),
+                ang(0,0,0),
+                vec(255,255,255),
+                "models/spacebuild/nova/macbig.mdl"
+              )
+
+}

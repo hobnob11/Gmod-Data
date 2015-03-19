@@ -1,5 +1,5 @@
 @name WingHolo2
-@persist
+@persist X
 
 if(first())
 {
@@ -10,8 +10,13 @@ if(first())
     holoPos(3,holoEntity(2):toWorld(vec(0,holoEntity(3):boxSize():y(),0)))
     holoParent(2,1)
     holoParent(3,2)
-    
-    local FinalVec = holoEntity(1):toWorld(vec(0,holoEntity(2):boxSize():y()/2,0))
-    holoPos(2,FinalVec)
 
+    
 }
+
+    local Width = holoEntity(2):boxSize():y()
+    local FinalVec = holoEntity(1):toWorld(vec(0,cos(X)*(Width/2),sin(X)*(Width/2)))
+    holoPos(2,FinalVec)
+    holoAng(2,ang(0,0,X))
+
+X++
