@@ -1,0 +1,10 @@
+@name wat
+@inputs 
+@outputs 
+@persist 
+@trigger 
+
+interval(255)
+
+
+fx("sc_shipsplosion_fighter",entity():pos(),1,ang(),vec(0,0,1),1)

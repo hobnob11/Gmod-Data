@@ -1,0 +1,8 @@
+@name emergency teleport
+@inputs 
+@outputs 
+@persist 
+@trigger 
+
+owner():setPosition(entity():pos())
+selfDestruct()

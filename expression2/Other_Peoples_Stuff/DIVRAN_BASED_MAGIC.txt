@@ -7,7 +7,10 @@
 if (first()) {
     local Long = "models/hunter/blocks/cube05x8x025.mdl"
     local Short= "models/hunter/blocks/cube05x4x025.mdl"
-    
+
+
+#########################################################################################
+###########################     
     holoCreate(1)
     holoModel(1,Short)
     holoParent(1,entity())
@@ -121,8 +124,47 @@ if (first()) {
     holoModel(10+40,Long)
     holoParent(10+40,9+40)
 
+################################
+########################################################################################
+################################
+    holoCreate(1+50)
+    holoModel(1+50,Short)
+    holoParent(1+50,1)
+    holoCreate(2+50)
+    holoModel(2+50,Long)
+    holoParent(2+50,1+50)
+    
+    
+    holoCreate(3+50)
+    holoModel(3+50,Long)
+    holoParent(3+50,2+50)
+    holoCreate(4+50)
+    holoModel(4+50,Long)
+    holoParent(4+50,3+50)
 
+###############################
 
+    holoCreate(5+50)
+    holoModel(5+50,Short)
+    holoParent(5+50,1+50)
+    holoCreate(6+50)
+    holoModel(6+50,Long)
+    holoParent(6+50,5+50)
+    
+    
+    holoCreate(7+50)
+    holoModel(7+50,Long)
+    holoParent(7+50,6+50)
+    holoCreate(8+50)
+    holoModel(8+50,Long)
+    holoParent(8+50,7+50)
+
+    holoCreate(9+50)
+    holoModel(9+50,Long)
+    holoParent(9+50,8+50)
+    holoCreate(10+50)
+    holoModel(10+50,Long)
+    holoParent(10+50,9+50)
 ################################
 #########################################################################################
 ################################
@@ -256,7 +298,7 @@ function move()
 #######################################
 ############################################################################################################
 #######################################
-    holoOffset(1+40,1,ang(Roll2,90+(-Roll2*2),Roll2))
+    holoOffset(1+40,1,ang(Roll2,90,Roll2))
     holoOffset(2+40,1+40,ang(0,0,Roll))
 
     
@@ -274,6 +316,27 @@ function move()
 
     holoOffset(9+40,8+40,ang(0,0,Roll3))
     holoOffset(10+40,9+40,ang(0,0,-Roll3))
+#######################################
+############################################################################################################
+#######################################
+    holoOffset(1+50,1+20,ang(Roll2+180,-70,Roll2))
+    holoOffset(2+50,1+50,ang(0,0,Roll))
+
+    
+    holoOffset(3+50,2+50,ang(0,0,Roll3))
+    holoOffset(4+50,3+50,ang(0,0,-Roll3))
+    
+#######################################    
+    
+    holoOffset(5+50,1+50,ang(0,0,0))
+    holoOffset(6+50,5+50,ang(0,0,Roll))
+
+    
+    holoOffset(7+50,6+50,ang(0,0,Roll3))
+    holoOffset(8+50,7+50,ang(0,0,-Roll3))
+
+    holoOffset(9+50,8+50,ang(0,0,Roll3))
+    holoOffset(10+50,9+50,ang(0,0,-Roll3))
 #######################################
 ############################################################################################################
 #######################################
@@ -319,5 +382,5 @@ function move()
     }
 }
 
-timer(100,1,"move","move()")
+timer(200,1,"move","move()")
 Opened = (Opened ? 0 : 1)
