@@ -1,0 +1,27 @@
+@name RPM
+@inputs Wheel:entity
+@outputs 
+@persist E:wirelink X
+@trigger 
+
+
+if(first())
+{
+    X=1
+    runOnTick(1)
+    E=entity():isWeldedTo():wirelink()
+    E:egpClear()
+    E:egpBox(37,vec2(256,256),vec2(1,1))
+    for(I=1,36)
+    {
+        E:egpLine(I,vec2(cos(I*10)*80,sin(I*10)*80),vec2(cos(I*10)*110,sin(I*10)*110))
+        E:egpColor(I,vec(255,255,255)*(1-(I/36)))
+        E:egpParent(I,37)
+    }
+    
+}
+
+local RPM=(Wheel:angVel():yaw()/360)*60
+X=X+RPM
+E:egpAngle(37,X+100)
+E:egpText(38,"RPM: "+sqrt(floor(RPM)^2),vec2(230,250))

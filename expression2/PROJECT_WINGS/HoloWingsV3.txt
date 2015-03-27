@@ -1,10 +1,11 @@
 @name HoloWingsV3
-@persist Mod A45 X Props:array
+@persist Mod A45 X Props:array LOL
 
 if(first())
 {
     holoCreate(1)
-    entity():parentTo(holoEntity(1))
+    holoPos(1,entity():pos()+vec(0,0,40))
+    holoParent(1,entity())
     local  Long = "models/hunter/blocks/cube05x8x025.mdl"
     local Short = "models/hunter/blocks/cube05x3x025.mdl"
 ##########################  LEFT  WING  ###########################################
@@ -15,7 +16,7 @@ if(first())
         holoModel(I*2,Short)
         if(I==1)
         {
-            holoParent(I*2,entity())
+            holoParent(I*2,holoEntity(1))
         }else{
             holoParent(I*2,I*2-2)
         }
@@ -48,7 +49,7 @@ if(first())
         holoModel(I*2+50,Short)
         if(I==1)
         {
-            holoParent(I*2+50,entity())
+            holoParent(I*2+50,holoEntity(1))
         }else{
             holoParent(I*2+50,I*2-2+50)
         }
@@ -156,7 +157,7 @@ if(first())
         {
             if(I==1)
             {
-                holoOffset(I*2,entity(),ang(0,0,45+A45))
+                holoOffset(I*2,holoEntity(1),ang(0,0,45+A45))
             }else{
                 holoOffset(I*2,I*2-2,ang(0,0,0))
             }
@@ -180,7 +181,7 @@ if(first())
         {
             if(I==1)
             {
-                holoOffset(I*2+50,entity(),ang(0,180,45+A45))
+                holoOffset(I*2+50,holoEntity(1),ang(0,180,45+A45))
             }else{
                 holoOffset(I*2+50,I*2-2+50,ang(0,0,0))
             }
@@ -248,7 +249,19 @@ if(first())
             timer(100,1,"move","move()")
         }
     }
-    
+    function move2()
+    {
+        local A = A45
+        A45 = clamp(A+Mod,0,45)
+        
+        holoOffset(102,2,ang(45-A45,90-A45*2,45-A45) )
+
+        holoOffset(152,52,ang(-45+A45,-90+A45*2,45-A45) )
+        if(A45==0|A45==45){}else
+        {
+            timer(100,1,"move2","move2()")
+        }
+    }
     function mat()
     {
         X++
@@ -262,10 +275,17 @@ if(first())
     }
     function toMe()
     {
-        holoPos(1,owner():attachmentPos("chest"))
-        holoAng(1,owner():attachmentAng("chest"))
-        holoParentAttachment(1,owner(),"chest")
+        Target=owner()
+        holoPos(1,Target:attachmentPos("chest"))
+        holoAng(1,Target:attachmentAng("chest"))
+        holoParentAttachment(1,Target,"chest")
         holoPos(1,holoEntity(1):toWorld(vec(-20,0,0)))
+    }
+    function lol()
+    {
+        holoAng(1,entity():toWorld(ang(0,LOL*5,0)))
+        LOL++
+        timer(100,1,"lol","lol()")
     }
     
     
@@ -291,15 +311,23 @@ if(chatClk(owner()))
             move()
         }elseif(Msg:sub(2)=="mat")
         {
-            timer(400,200,"mat","mat()")
+            timer(300,200,"mat","mat()")
             
         }elseif(Msg:sub(2)=="selfDestruct")
         {
-            fx("sc_shipsplosion_titan",entity():pos(),1,ang(),vec(0,0,1),1)
+            fx("sc_shipsplosion_titan",holoEntity(1):pos(),1,ang(),vec(0,0,1),1)
             selfDestruct()
         }elseif(Msg:sub(2)=="toMe")
         {
             toMe()
+        }elseif(Msg:sub(2)=="move2")
+        {
+            Mod=(Mod==1 ? -1 : 1)
+            move2()
+
+        }elseif(Msg:sub(2)=="lol")
+        {
+            lol()
         }
     }
 }

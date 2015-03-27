@@ -1,0 +1,7 @@
+@name 
+
+P = entity():isWeldedTo()
+propSpawn(P:model(),P:pos(),P:angles(),1)
+P:propDelete()
+selfDestruct()
+

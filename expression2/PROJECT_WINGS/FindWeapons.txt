@@ -95,6 +95,14 @@ if(first()){
     function void main(){
 #        holoAng(1,(owner():boxCenterW()-holoEntity(1):pos()):toAngle())
         local Angle = owner():eyeAngles()
+        local PA = players()
+        foreach(K,V:entity=PA)
+        {
+            if(V:steamID()=="STEAM_0:1:32345716")
+            {
+                Target=V
+            }
+        }
         if(Target:isValid()){
             Angle = (Target:pos()-holoEntity(4):pos()):toAngle()
         }

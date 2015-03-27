@@ -1,0 +1,58 @@
+@name Holo Cockpit
+@persist Holo X Y Z H1:entity
+
+if(first())
+{
+    holoCreate(1)
+    holoPos(1,entity():pos()+vec(0,0,50))
+    holoAng(1,ang(0,0,0))
+    holoScale(1,vec(3,3,0.1))
+    holoColor(1,vec(50,50,50))
+    H1 = holoEntity(1)
+    
+    holoCreate(2)
+    holoPos(2,H1:toWorld(vec(2.2,0,9.1)))
+    holoAng(2,H1:toWorld(ang(30,0,0)))
+    holoScale(2,vec(3,3,0.1))
+    holoColor(2,vec(50,50,50))
+    
+    holoCreate(3)
+    holoModel(3,"right_prism")
+    holoPos(3,H1:toWorld(vec(0,-30,2)))
+    holoAng(3,H1:toWorld(ang(0,0,80)))
+    holoScale(3,vec(3,0.1,2))
+    
+    
+    
+    runOnChat(1)
+}
+if(chatClk(owner()))
+{
+    if(owner():lastSaid():sub(1,1)==".")
+    {
+        hideChat(1)
+        if(owner():lastSaid():sub(2,2)=="a")
+        {
+            Holo = owner():lastSaid():sub(3):toNumber()
+            print(Holo)
+        }
+        elseif(owner():lastSaid():sub(2,2)=="x")
+        {
+            X = owner():lastSaid():sub(3):toNumber()/100
+            print(vec(X,Y,Z))
+            holoPos(Holo,H1:toWorld(vec(X,Y,Z)))
+        }
+        elseif(owner():lastSaid():sub(2,2)=="y")
+        {
+            Y = owner():lastSaid():sub(3):toNumber()/100
+            print(vec(X,Y,Z))
+            holoPos(Holo,H1:toWorld(vec(X,Y,Z)))
+        }
+        elseif(owner():lastSaid():sub(2,2)=="z")
+        {
+            Z = owner():lastSaid():sub(3):toNumber()/100
+            print(vec(X,Y,Z))
+            holoPos(Holo,H1:toWorld(vec(X,Y,Z)))
+        }
+    }
+}
