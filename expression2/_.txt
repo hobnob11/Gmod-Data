@@ -1,0 +1,24 @@
+@name 
+@inputs 
+@outputs 
+@persist Target:entity
+@trigger 
+
+if(first()){
+runOnTick(1)
+holoCreate(1)
+holoModel(1,"models/smallbridge/ships/sbshuttlec1e1.mdl")
+findIncludePlayerProps(findPlayerByName("Raz"))
+findByModel("models/smallbridge/ships/sbshuttlec1e1.mdl")
+Target=find()
+#holoVisible(1,findPlayerByName("Raz"),0)
+}
+if(Target:getAlpha() < 50)
+{
+    holoAlpha(1,255)
+    holoPos(1,Target:pos())
+    holoAng(1,Target:angles())
+    holoColor(1,vec(random()*255,random()*255,random()*255))
+}else{
+    holoAlpha(1,0)
+}

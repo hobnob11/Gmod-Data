@@ -1,0 +1,45 @@
+@name Chair Mover
+@persist Toggle Ready Chair1O:vector Chair2O:vector Holo1O:vector
+@inputs
+@trigger Button
+
+if(first()|duped())
+{
+    Chair1O = vec(0.9033203125,0.2080078125,7.001953125)
+    Chair2O = vec(-5.056640625,-43.4599609375,-20.06494140625)
+    Holo1O  = vec(0.9033203125,0.2080078125,7.001953125)
+    runOnUse(1)
+    findIncludePlayerProps(owner())
+    findByModel("models/spacebuild/corvette_chair.mdl")
+    Chair1 = find()
+    findIncludePlayerProps(owner())
+    findByModel("models/hunter/plates/plate075x3.mdl")
+    Chair2 = find()
+    findIncludePlayerProps(owner())
+    findByModel("models/nova/airboat_seat.mdl")
+    Base = find()
+    
+    holoCreate(1)
+    holoPos(1,Chair1:pos())
+    holoAng(1,Chair1:angles())
+    Chair1:parentTo(holoEntity(1))
+    Chair2:parentTo(holoEntity(1))
+    holoParent(1,Base)    
+    function move()
+    {
+        holoPos(1,Base:toWorld(Holo1O))
+        Chair1:setPos(Base:toWorld(Chair1O))
+        Chair2:setPos(Base:toWorld(Chair2O))
+        Ready=1
+    }
+    timer(100,1,"move","move()")
+}
+if(Ready)
+{
+    Toggle = ( Toggle ? 0 : 1)
+    
+    if(Toggle)
+    {
+        
+    }
+}

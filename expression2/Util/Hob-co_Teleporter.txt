@@ -23,7 +23,7 @@ if(chatClk(Me))
             {
                 print(Target:name())
                 Me:setPosition(Target:toWorld(vec(-100,0,0)))
-                setEye(Target:angles())
+                #setEye(Target:angles())
             }
             else
             {

@@ -1,7 +1,12 @@
 @name 
+@inputs 
+@outputs 
+@persist 
+@trigger 
 
-P = entity():isWeldedTo()
-propSpawn(P:model(),P:pos(),P:angles(),1)
-P:propDelete()
-selfDestruct()
+interval(500)
 
+if(owner():keyUse())
+{
+    print(owner():aimEntity():model())
+}
