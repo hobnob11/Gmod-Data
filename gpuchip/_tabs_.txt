@@ -1,1 +1,1 @@
-GPUChip/examples/3d_cube.txt;gpuchip\lib\drivers\drv_gl.txt;GPUChip/examples/3d_icosahedron.txt;gpuchip/examples/stargate.txt;gpuchip/examples/table.txt;gpuchip/examples/foxlogo.txt;gpuchip/examples/hud_engine.txt;gpuchip/examples/hud_fighter.txt;gpuchip/examples/texture.txt;gpuchip/examples/trig.txt
+gpuchip/examples/3d_cube.txt;gpuchip/lib/drivers/drv_gl_toolkit.txt;gpuchip/lib/drivers/drv_gl.txt

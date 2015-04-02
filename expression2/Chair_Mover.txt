@@ -1,22 +1,23 @@
 @name Chair Mover
-@persist Toggle Ready Chair1O:vector Chair2O:vector Holo1O:vector
+@persist Toggle Ready Chair1O:vector Chair2O:vector Holo1O:vector Chair1:entity Chair2:entity Base:entity X Mod
 @inputs
 @trigger Button
 
 if(first()|duped())
 {
-    Chair1O = vec(0.9033203125,0.2080078125,7.001953125)
-    Chair2O = vec(-5.056640625,-43.4599609375,-20.06494140625)
-    Holo1O  = vec(0.9033203125,0.2080078125,7.001953125)
+    Chair1O = vec(-5.957031,-43.678223,27.051758)
+    Chair2O = vec(-5.957031,-43.678223,20.052246)
+    Holo1O  = vec(-5.957031,-43.678223,27.051758)
     runOnUse(1)
+    runOnLast(1)
     findIncludePlayerProps(owner())
     findByModel("models/spacebuild/corvette_chair.mdl")
     Chair1 = find()
     findIncludePlayerProps(owner())
-    findByModel("models/hunter/plates/plate075x3.mdl")
+    findByModel("models/nova/airboat_seat.mdl")
     Chair2 = find()
     findIncludePlayerProps(owner())
-    findByModel("models/nova/airboat_seat.mdl")
+    findByModel("models/hunter/plates/plate075x3.mdl")
     Base = find()
     
     holoCreate(1)
@@ -33,6 +34,13 @@ if(first()|duped())
         Ready=1
     }
     timer(100,1,"move","move()")
+
+    function leakspin()
+    {
+        local A = X + Mod
+        X = clamp( A , 0,180 )
+        holoAng(1,Base:toWorld(ang(0,-90-X,0)))
+    }
 }
 if(Ready)
 {
@@ -40,6 +48,19 @@ if(Ready)
     
     if(Toggle)
     {
-        
+        Mod=2
+        timer(50,90,"leakspin","leakspin()")
     }
+    else
+    {
+        Mod=-2
+        timer(50,90,"leakspin","leakspin()")
+    }
+}
+
+if(last())
+{
+    Base:deparent()
+    Chair1:deparent()
+    Chair2:deparent()
 }

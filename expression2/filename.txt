@@ -4,9 +4,7 @@
 @persist 
 @trigger 
 
-interval(500)
+#interval(10)
 
-if(owner():keyUse())
-{
-    print(owner():aimEntity():model())
-}
+findPlayerByName("an"):setVel(vec(0,0,0))
+entity(1):setVel(vec(0,0,0))

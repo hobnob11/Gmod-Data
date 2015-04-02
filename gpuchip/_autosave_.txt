@@ -1,77 +1,66 @@
 // Author: Drunkie
-// Description: Draws a table; useful for calendars or spreadsheets!
+// Description: 3D Cube
 
 Main();
 
 #include <drivers\drv_gl.txt>
 
-float rows = 6;
-float cols = 5;
-float sizex = 476;
-float sizey = 400;
-float linewidth = 3;
-
-float i, j, day;
-
 void Main()
 {
-    dentrypoint 0,DrawThread; 
-    dentrypoint 4,AsyncThread;
+    glClear( 0, 0, 0 ); // Clear screen
     
-    *regHWClear = 0
-    *regAsyncFreq = 200000;
-    *regAsyncClk = 1;
+    glCoordPipe( GL_CPIPE_N1_1 ); // Set coordinate pipe to [-1 to 1] mode 
+    glVertexPipe( GL_VPIPE_XYZTRANSFORM ); // Set vertex pipe to xyz transformation
+    
+    glLightPos( 0, 0, -20 ); // Set the light position
+    glLightColor( 255, 255, 255, 1 ); // Set the light color
+
+    glLookAt(
+        0, 0, -5, // Camera pos
+        0, 0, 0, // Camera target
+        0, 1, 0 // Camera up
+    ); 
+
+    // Create variable to hold curtime
+    float time;
+    timer time;
+
+    // Create perspective and matrix transformations
+    glPerspective( 30, 1, 1, 20 ); // FOV, ASPECT RATIO, ZNEAR, ZFAR
+    glRotate( 0, 1, 0, time ); // AXIS X, Y, Z, ANGLE W
+    glTranslate( 0, 0, 0 ); // TRANSLATION X, Y, Z
+    glScale( 0.5, 0.5, 0.5 ); // SCALE X, Y, Z
+    
+    glEnable( GL_VERTEX_BUFFER ); // Enable vertex buffer 
+    glEnable( GL_VERTEX_ZSORT ); // Enable Z sorting
+
+    // Solid 3D polygon
+    glFillMode( GL_FILL_SOLID ); // Set fillmode as solid
+    glColor4( 100, 149, 237, 180 ); // Set draw color with alpha
+    glPoly3D( vertexBuffer, 12 ); // Draw 3D polygon 
+    glFlush(); // Flush the vertex buffer to the screen
+    
+    // Wireframe 3D polygon
+//    glLineWidth( 1 ); // Set line width
+//    glFillMode( GL_FILL_WIREFRAME ); // Set fillmode as solid
+//    glColor4( 255, 255, 255, 255 ); // Set draw color with alpha
+//    glPoly3D( vertexBuffer, 12 ); // Draw 3D polygon 
+//    glFlush(); // Flush the vertex buffer to the screen
+    
+    glExit(); // Exit
 }
 
-void DrawThread()
-{
-    dexit;
-}
-
-void AsyncThread()
-{
-    glBegin();
-    
-        glClear( 35, 35, 35 ); // Clear screen color
-        
-        glColor( 255, 255, 255 ); // Set draw color
-        glFont( GL_FONT_ARIAL ); // Set font type
-        glFontSize( 36 ); // Set font size
-        glWriteString( 16, 6, 'Simple-Calendar 1.0');
-        
-        glColor( 120, 120, 120 );
-        glOffset( 16, 64 ); // Set screen offset
-        glRectWH( 0, 0, sizex + linewidth, sizey + linewidth); // Draw rectangle
-        
-        glFont( GL_FONT_TREBUCHET );
-        glFontSize( 14 );
-        
-        // Calculate rectangle size
-        float sx = (sizex / rows) - linewidth;
-        float sy = (sizey / cols) - linewidth;
-    
-        // Loop through rows
-        for (i = 0; i < rows; i++)
-        {
-            // Loop through columns
-            for (j = 0; j < cols; j++)
-            {
-                // Calculate x,y coordinate to draw at
-                float x = i * (sizex / rows);
-                float y = j * (sizey / cols);
-    
-                glColor( 200, 200, 200 ); // Set draw color
-                glRectWH( x + linewidth, y + linewidth, sx, sy ); // Draw rectangle
-                
-                glColor( 0, 0, 0 ); // Set draw color
-                
-                // Write integer to screen
-                day = i + (j * rows)
-                glWriteInt( x + linewidth + 2, y + linewidth + 2, day + 1 ); 
-            }
-        }
-    
-    glEnd();
-}
-
-
+// The vertex data for our model
+vertexBuffer:
+db -1,-1,-1; db 1,-1,-1; db 1,1,-1;
+db -1,-1,-1; db 1,1,-1; db -1,1,-1;
+db 1,-1,1; db -1,-1,1; db 1,1,1;
+db -1,-1,1; db -1,1,1; db 1,1,1;
+db 1,-1,-1; db -1,-1,-1; db 1,-1,1;
+db -1,-1,-1; db -1,-1,1; db 1,-1,1;
+db -1,1,-1; db 1,1,-1; db 1,1,1;
+db -1,1,1; db -1,1,-1; db 1,1,1;
+db -1,-1,-1; db -1,1,-1; db -1,1,1;
+db -1,-1,1; db -1,-1,-1; db -1,1,1;
+db 1,1,-1; db 1,-1,-1; db 1,1,1;
+db 1,-1,-1; db 1,-1,1; db 1,1,1;

@@ -7,7 +7,8 @@
 if(first())
 {
     findIncludePlayerProps(owner())
-    findByClass("infinity_antimatter_creator")
+    #findByClass("infinity_antimatter_creator")
+    findByClass("sc_weapon_base")
     Base = find()
     print(Base)
     holoCreate(1,Base:pos())
@@ -23,7 +24,7 @@ if(first())
     {
         
         X=X-15
-        holoAng(1,Base:toWorld(ang(0,X,0)))
+        holoAng(1,ang(0,X,0))
     }
 }
 if(clk("move"))
@@ -40,7 +41,7 @@ if(clk("move"))
 if(clk("move2"))
 {
     for(I=1,Lasers:count()){
-        holoPos(I+1,holoEntity(1):toWorld(vec(cos((360/Lasers:count())*I)*80,sin((360/Lasers:count())*I)*80,80)))
+        holoPos(I+1,holoEntity(1):toWorld(vec(cos((360/Lasers:count())*I)*150,sin((360/Lasers:count())*I)*150,0)))
         holoAng(I+1,holoEntity(1):toWorld(ang(0,(360/Lasers:count())*I+181,0)))
         holoParent(I+1,1)
     }

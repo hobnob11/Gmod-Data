@@ -104,7 +104,7 @@ if(first()){
             }
         }
         if(Target:isValid()){
-            Angle = (Target:pos()-holoEntity(4):pos()):toAngle()
+           # Angle = (Target:pos()-holoEntity(4):pos()):toAngle()
         }
         holoAng(4,Angle)
         local Atk = ( owner():keyAttack2() ? 1 : 0)

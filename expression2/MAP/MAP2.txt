@@ -55,15 +55,9 @@ if(first()){
         }
         AsteroidsCount++
     }
-
+    findExcludePlayerProps(findPlayerByName("s"))
     findByClass("prop_physics")
-    findExcludePlayerProps(players()[1,entity])
-    findExcludePlayerProps(players()[2,entity])
-    findExcludePlayerProps(players()[3,entity])
-    findExcludePlayerProps(players()[4,entity])
-    findExcludePlayerProps(players()[5,entity])
-    findExcludePlayerProps(players()[6,entity])
-    findIncludePlayerProps("STEAM_0:0:14029128")
+    print(findToArray():count())
     for(I=1,findToArray():count()){
         Asteroids=findToArray()
         AsteroidsCount=0
