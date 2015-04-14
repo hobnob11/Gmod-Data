@@ -5,27 +5,29 @@ if SERVER then
     --NET MESSAGES
     hook.add("PlayerSay","PlayerSay",function(Player,Text,teamChat)
         net.start("NetMsg")
-        local Message = Player:getName()..": "..Text
-        if Player:isSuperAdmin() then 
-            Message = Player:getName().."(SuperAdmin): "..Text
-        elseif Player:isAdmin() then
-            Message = Player:getName().."(Admin): "..Text
-        end
+        local Message = Text
+        net.writeInt(Player:entIndex(),16)
         net.writeString(Message)
+        net.writeBool(teamChat)
         net.send()
     end)
 else
     --DISPLAY STOOF
     local Tbl = {}
+    local Teams = {"","","","","","HobTeam"}
     hook.add("net","netmsg",function(Name,Length,A)
-        local String = net.readString()
-
+        local Player = entity(net.readInt(16))
+        local Message = net.readString()
+        local teamChat = net.readBool()
+        local Msg = {}
+        Msg[1]=Player:getName()
+        Msg[2]=Player:getTeam()
         local Count = 0
-        while String:len()/80 > Count do
-            table.insert(Tbl,String:sub(Count*80,(Count+1)*80))
+        while Message:len()/80 > Count do
+            table.insert(Msg,String:sub(Count*80,(Count+1)*80))
             Count = Count + 1
         end
-
+        table.insert(Tbl,Msg)
     end)
     hook.add("render","render",function()
         render.clear()
@@ -33,7 +35,7 @@ else
             local Count = 0
             for _,V in pairs(Tbl) do
                 Count=Count+1
-                render.drawText(10,480-(#Tbl*20)+Count*20,V,0)
+                render.drawText(10,480-(#Tbl*20)+Count*20,V[1],0)
             end
         else
             render.drawText(256,256,"NO STRING",1)
