@@ -6,7 +6,7 @@ if(first())
     holoCreate(1)
     holoPos(1,entity():pos()+vec(0,0,40))
     holoParent(1,entity())
-    local  Long = "models/hunter/blocks/cube05x8x025.mdl"
+    local  Long = owner():model()#"models/hunter/blocks/cube05x8x025.mdl"
     local Short = "models/hunter/blocks/cube05x3x025.mdl"
 ##########################  LEFT  WING  ###########################################
     for(I=1,4)

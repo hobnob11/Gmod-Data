@@ -1,0 +1,33 @@
+@name EGP CAP SCREEN
+@inputs Cap:entity
+@outputs 
+@persist Capacitor MaxCap CapP NiceCapP:string X E:wirelink
+@trigger 
+
+interval(500)
+if(first()){
+    #include "DivNiceNumber"
+    E=entity():isWeldedTo():wirelink()
+    E:egpText(1,"HOB-CO CAP MONITOR",vec2(20,10))
+    E:egpFont(1,"Calibri",48)
+    E:egpCircle(5,vec2(256,300),vec2(150,150))
+    E:egpWedge(6,vec2(256,300),vec2(150,150))
+    E:egpColor(6,vec(255,255,255))
+    E:egpMaterial(6,"vgui/appchooser/background_portal")
+}
+
+if(Cap:isValid()){
+    Capacitor = Cap:getCap()
+    MaxCap    = Cap:getCapMax()
+    CapP      = Capacitor/MaxCap
+    NiceCapP        = "" + floor(CapP*100) + "%"
+}else{
+    NiceCapP  = "No Core Selected"
+}
+E:egpText(2,"Cap Value:     " + nicenumber(Capacitor) , vec2(20,80))
+E:egpText(3,"Cap Max:        " + nicenumber(MaxCap) , vec2(20,100))
+E:egpText(4,"Cap Percent: " + NiceCapP , vec2(20,120))
+
+X=X+1
+E:egpSize(6,X)
+E:egpAngle(6,90-X)

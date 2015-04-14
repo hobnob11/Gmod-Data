@@ -1,10 +1,12 @@
 @name 
 @inputs 
 @outputs 
-@persist 
+@persist Toggle
 @trigger 
+@model models/ce_ls3additional/energy_cells/energy_cell_small.mdl
+runOnUse(1)
 
-#interval(10)
-
-findPlayerByName("an"):setVel(vec(0,0,0))
-entity(1):setVel(vec(0,0,0))
+Toggle = (Toggle ? 0 : 1)
+entity():isWeldedTo():setAlpha((Toggle ? 0 : 255))
+entity():isWeldedTo():propNotSolid(Toggle)
+entity():soundPlay("buttons/bell1.wav",1,"buttons/bell1.wav")
