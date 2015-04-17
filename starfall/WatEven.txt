@@ -6,7 +6,7 @@ if SERVER then
     local damnNetMsg = 0
     local Player 
     hook.add("starfallUsed","starfallUsed",function(Activator)
-        if Player == Nil then
+        if Player == nil then
             Player = Activator
         elseif Player == Activator then
             Player = nil
@@ -61,11 +61,11 @@ else
         
         render.pushMatrix(BoxM)
             BoxM:setAngles(Angle(0,0,0))
-            if Player == nil then
-                BoxM:setTranslation(Vector(BX,BY,0))
-            else
+            if Player ~= nil and Player:isPlayer() then
                 local a , b = render.cursorPos(Player)
                 BoxM:setTranslation(Vector(a,b,0))
+            else
+                BoxM:setTranslation(Vector(BX,BY,0))
             end
             render.drawRect(-10,-10,20,20)
             
