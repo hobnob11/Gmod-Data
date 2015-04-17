@@ -61,23 +61,25 @@ else
         
         render.pushMatrix(BoxM)
             BoxM:setAngles(Angle(0,0,0))
-            if Player ~= nil and Player:isPlayer() then
+            if Player ~= nil and type(Player) == "Player" then
                 local a , b = render.cursorPos(Player)
                 BoxM:setTranslation(Vector(a,b,0))
             else
                 BoxM:setTranslation(Vector(BX,BY,0))
             end
-            render.drawRect(-10,-10,20,20)
-            
+            --render.drawRect(-10,-10,20,20)
+            render.drawText(0,0,"God",1)
             render.pushMatrix(BoxM2)
                 BoxM2:setTranslation(Vector(math.cos(timer.curtime()%360)*40,math.sin(timer.curtime()%360)*40,0))
-                BoxM2:setAngles(Angle(0,timer.curtime()*2%360,0))
-                render.drawRect(-4,-4,8,8)
+                BoxM2:setAngles(Angle(0,timer.curtime()%360,0))
+                --render.drawRect(-4,-4,8,8)
+                render.drawText(0,0,"Dammit",1)
                 
                 render.pushMatrix(BoxM3)
                     BoxM3:setTranslation(Vector(math.cos(timer.curtime()*2%360)*20,math.sin(timer.curtime()*2%360)*20,0))
-                    BoxM3:setAngles(Angle(0,timer.curtime()*2%360,0))
-                    render.drawRect(-2,-2,4,4)
+                    BoxM3:setAngles(Angle(0,timer.curtime()%360,0))
+                    --render.drawRect(-2,-2,4,4)
+                    render.drawText(0,0,"Ninja",1)
                 render.popMatrix()
                 
             render.popMatrix()
