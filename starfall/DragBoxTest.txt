@@ -16,7 +16,11 @@ if SERVER then
         end
         
         net.start("playerUpdate")
-        net.writeInt(Player:entIndex(),16)
+        if Player == nil then
+            net.writeInt(0,16)
+        else
+            net.writeInt(Player:entIndex(),16)
+        end
         net.send()
     end)
     
@@ -41,12 +45,17 @@ else
     
     hook.add("net","net",function()
         local ID = net.readInt(16)
-        Player = entities.entity(ID)
+        if ID == 0 then
+            Player = nil
+        else
+            Player = entities.entity(ID)
+        end
         if type(Player) == "player" then
             local a,b = render.cursorPos(Player)
             DB1 = a
             DB2 = b
             DB3 = Player:name()
+            print("hi")
         end
     end)
 
@@ -56,11 +65,13 @@ else
         render.clear()
         
         if DEBUG then
-        
+            
+            DBM:setTranslation(Vector(5,5,0))
             render.pushMatrix(DBM)
+                render.setColor(Color(255,255,255,255))
                 render.drawText(0,0,"X: "..DB1,0)
-                render.drawText(0,5,"Y: "..DB2,0)
-                render.drawText(0,10,DB3,0)
+                render.drawText(0,15,"Y: "..DB2,0)
+                render.drawText(0,30,DB3,0)
             render.popMatrix()
         
         end
