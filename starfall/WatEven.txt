@@ -19,7 +19,6 @@ if SERVER then
     hook.add("net","net2",function()
         X = net.readInt(16)
         Y = net.readInt(16)
-        print("hi")
     end)
     
     hook.add("think","think",function()
@@ -80,6 +79,7 @@ else
                     local b=  v.y
                     net.writeInt(a,16)
                     net.writeInt(b,16)
+                    net.send()
                 end
                 BoxM:setTranslation(Vector(BX,BY,0))
             end
