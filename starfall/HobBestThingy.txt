@@ -1,0 +1,31 @@
+--@name HobBestThingy
+--@author Hob
+--@sharedscreen
+
+
+if SERVER then
+
+    local Lasers = find.byClass("sc_weapon",function(ent)
+                                                print("hi")
+                                                return ent.getOwner() == owner()
+                                            end
+    )
+    local Outputs = {}
+    local Types  = {}
+    for K,V in pairs(Lasers) do
+        print("hi")
+        local Name = "Laser" .. K
+        Outputs[K] = Name
+        Types[K]  = "normal"
+    end
+    wire.adjustOutputs(Outputs,Types)
+    
+else
+    local Text = "hi"
+
+    hook.add("render", "RenderHook", function()
+        render.clear()
+        render.setColor(Color(255,255,255,255))
+        render.drawText( 256, 256, Text, render.TEXT_ALIGN_CENTER)
+    end)
+end
