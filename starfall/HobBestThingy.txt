@@ -19,8 +19,8 @@ if SERVER then
     wire.adjustOutputs(Outputs,Types)
     for K,V in pairs(Lasers) do 
         wire.create(V,entities.self(),"Fire",Outputs[K])
-        V:setPos(entities.self()+Vector(-100 + K*10,0,200))
-        V:setAngles(Angle(90,0,0))
+        V:setPos(entities.self():getPos()+Vector(-100 + K*10,0,200))
+        V:setAngles(Angle(-90,0,90))
     end
     
 else
