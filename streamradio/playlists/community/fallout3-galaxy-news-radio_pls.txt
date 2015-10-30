@@ -1,0 +1,6 @@
+[playlist]
+NumberOfEntries=1
+File1=http://168.61.34.237:9786/listen.pls?sid=1
+Title1=Fallout 3 - Galaxy News Radio
+Length1=-1
+Version=2

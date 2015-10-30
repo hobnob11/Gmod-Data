@@ -1,0 +1,33 @@
+@name SpaceShuttle
+@inputs E:entity B1:entity B2:entity Button
+@outputs Booster
+@persist Detach
+@trigger 
+@model models/sprops/misc/tubes/size_3/tube_36x78.mdl
+runOnTick(1)
+
+if(first()|dupefinished()){
+    entity():sbSetGravityOverride(1)
+    entity():propGravity(0)
+    entity():setColor(vec(246,132,44))
+}
+
+if(~Button&Button){
+    Booster = 1
+    timer("BoosterSep",55000)
+}
+
+
+if(Detach == 0){
+E:setPos(entity():toWorld(vec(0,0,-27)))
+E:setAng(entity():toWorld(ang(0,-90,180)))
+}
+
+if(clk("BoosterSep")){
+    Booster = 0
+    B1:unWeld(entity())
+    B2:unWeld(entity())
+    Detach = 1
+    entity():applyForce(entity():vel()*entity():mass())
+    E:applyForce(entity():vel()*E:mass())
+}

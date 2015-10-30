@@ -1,0 +1,81 @@
+@name Elevator
+@inputs B1 B2 B3 B4 B4B BU BD Elevator:entity Floor1:entity Floor2:entity Floor3:entity Floor4:entity
+@outputs Floor
+@persist Target:vector BUP BDP
+@trigger 
+
+interval(10)
+
+if(first())
+{
+    Elevator:setPos(Floor1:pos()-vec(0,0,60))
+    Elevator:setAng(ang(0,0,0))
+    Elevator:freeze()
+    Floor = 1
+    Target = Floor1:pos()+vec(0,0,60)
+}
+if(BU&BUP==0)
+{
+    BUP=1
+    if(Floor==1)
+    {
+        Floor=2
+        Target = Floor2:pos()-vec(0,0,60)
+    }elseif(Floor==2)
+    {
+        Floor=3
+        Target = Floor3:pos()-vec(0,0,60)
+    }elseif(Floor==3)
+    {
+        Floor=4
+        Target = Floor4:pos()-vec(0,0,60)
+    }
+}elseif(BU==0){BUP=0}
+
+if(BD&BDP==0)
+{
+    BDP=1
+    if(Floor==4)
+    {
+        Floor=3
+        Target = Floor3:pos()-vec(0,0,60)
+    }elseif(Floor==3)
+    {
+        Floor=2
+        Target = Floor2:pos()-vec(0,0,60)
+    }elseif(Floor==2)
+    {
+        Floor=1
+        Target = Floor1:pos()-vec(0,0,60)
+    }
+}elseif(BD==0){BDP=0}
+
+if(~B1&B1==1)
+{
+    Floor=1
+    Target = Floor1:pos()-vec(0,0,60)
+}
+if(~B2&B2==1)
+{
+    Floor=2
+    Target = Floor2:pos()-vec(0,0,60)
+}
+if(~B3&B3==1)
+{
+    Floor=3
+    Target = Floor3:pos()-vec(0,0,60)
+}
+if(~B4&B4==1 | ~B4B&B4B==1)
+{
+    Floor=4
+    Target = Floor4:pos()-vec(0,0,60)
+}
+
+if(Elevator:pos():z()>Target:z()+2)
+{
+    Elevator:setPos(vec(Floor1:pos():x(),Floor1:pos():y(),Elevator:pos():z()-3))
+}
+elseif(Elevator:pos():z()<Target:z()-2)
+{
+    Elevator:setPos(vec(Floor1:pos():x(),Floor1:pos():y(),Elevator:pos():z()+3))   
+}

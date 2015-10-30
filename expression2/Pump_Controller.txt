@@ -1,0 +1,31 @@
+@name Pump Controller
+@inputs Pump:entity Button Base:entity Ranger
+@outputs Length
+@persist WU WD
+@trigger 
+
+if(Button){
+    if(WD){
+        WD = 0
+        Pump:unWeld(Base)
+    }
+    if(Length<=Ranger){
+        Length = Length + 10
+    }elseif(!WU){
+        WU=1
+        Pump:weld(Base)
+    }
+}else{
+    if(WU){
+        WU = 0
+        Pump:unWeld(Base)
+    }
+    if(Length>=11){
+        Length = Length - 10
+    }elseif(!WD){
+        WD=1
+        Pump:weld(Base)
+    }
+}
+
+

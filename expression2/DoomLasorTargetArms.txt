@@ -1,0 +1,43 @@
+@name DoomLasorTargetArms
+@inputs Button
+@outputs 
+@persist 
+@trigger 
+interval(100)
+if(first()){
+    holoCreate(1,entity():pos()+vec(0,0,30))
+    holoAng(1,entity():isWeldedTo():toWorld(ang(0,90,7)))
+    holoParent(1,entity():isWeldedTo())
+    holoCreate(2,holoEntity(1):toWorld(vec(33,54,0)))
+    holoModel(2,"models/sprops/cuboids/height48/size_1/cube_48x108x48.mdl")
+    holoAng(2,holoEntity(1):toWorld(ang(0,90,0)))
+    holoParent(2,1)
+    
+    holoCreate(3,holoEntity(2):toWorld(vec(6,0,0)))
+    holoModel(3,"models/sprops/cuboids/height36/size_1/cube_36x108x36.mdl")
+    holoAng(3,holoEntity(2):toWorld(ang(0,0,0)))
+    holoParent(3,2)
+    
+    holoCreate(4,holoEntity(1):toWorld(vec(-33,54,0)))
+    holoModel(4,"models/sprops/cuboids/height48/size_1/cube_48x108x48.mdl")
+    holoAng(4,holoEntity(1):toWorld(ang(0,90,0)))
+    holoParent(4,1)
+    
+    holoCreate(5,holoEntity(4):toWorld(vec(6,0,0)))
+    holoModel(5,"models/sprops/cuboids/height36/size_1/cube_36x108x36.mdl")
+    holoAng(5,holoEntity(4):toWorld(ang(0,0,0)))
+    holoParent(5,4)
+}
+
+if(Button)
+{
+    if(entity():isWeldedTo():toLocal(holoEntity(1):angles()):roll()<=44)
+    {
+        holoAng(1,entity():isWeldedTo():toWorld(entity():isWeldedTo():toLocal(holoEntity(1):angles()+ang(0,0,1))))
+    }
+}else{
+    if(entity():isWeldedTo():toLocal(holoEntity(1):angles()):roll()<=8)
+    {
+        holoAng(1,entity():isWeldedTo():toWorld(entity():isWeldedTo():toLocal(holoEntity(1):angles()-ang(0,0,1))))
+    }
+}

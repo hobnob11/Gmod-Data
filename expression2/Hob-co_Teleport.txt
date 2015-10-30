@@ -1,0 +1,27 @@
+@name Hob-co Teleport
+@inputs EGP:wirelink PAD1:entity PAD2:entity PAD3:entity PAD4:entity
+@persist Table:table
+
+interval(100)
+
+if(first()|duped())
+{
+    Table["1",entity]=PAD1
+    Table["2",entity]=PAD2
+    Table["3",entity]=PAD3
+    Table["4",entity]=PAD4
+    
+    EGP:egpClear()
+    EGP:egpText(1,"Hob-Co Teleporter: STATION 1",vec2(130,20))
+        EGP:egpBox(2,vec2(310,480),vec2(150,40))
+        EGP:egpBox(3,vec2(310,480),vec2(130,30))
+        EGP:egpColor(3,vec4(150,150,150,255))
+        EGP:egpText(4,"UPDATE",vec2(280,470))
+    for(I=1,Table:count())
+    {
+        EGP:egpBox(10+I*3,vec2(125,75+I*50),vec2(200,40))
+        EGP:egpBox(11+I*3,vec2(125,75+I*50),vec2(180,30))
+        EGP:egpColor(11+I*3,vec4(150,150,150,255))
+        EGP:egpText(12+I*3,"FLOOR " + I,vec2(80,65+I*50))
+    }
+}

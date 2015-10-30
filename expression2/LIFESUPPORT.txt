@@ -1,0 +1,372 @@
+@persist [Wirelinks Usage Production]:table
+@persist [RemovalFilter Filter GeneratorCount PumpStatus]:table
+@persist [FoundEntities]:array MaxEntities SortNum
+@persist ShipCore:entity MultCap WaterPumpDist
+@outputs OpStats:table
+@autoupdate
+@model models/props_lab/reciever_cart.mdl
+if(duped()){exit()}
+if(dupefinished()){reset()}
+if(first() | dupefinished())
+{
+    entity():soundPlay("sound",0,"ambient/office/tech_room.wav")
+    entity():setColor(vec(125,250,125))
+    MultCap = 100 #Maximum multiplier to reflect server limitations
+    WaterPumpDist=500 #Position to check below water pumps
+    #---START OF BASE MULTIPLIERS---#
+    
+    #-----Water Pump-----#
+    Usage["infinity_water_pump",number]=0.5
+    Production["infinity_water_pump",number]=0.1
+
+    #-----Water Air Extractor-----#
+    Usage["infinity_water_splitter",number]=1
+    Production["infinity_water_splitter",number]=0.1
+    
+    #-----Hydrogen Fuel Cell-----#
+    Usage["infinity_hydrogen_fuel_cell",number]=0.1
+    Production["infinity_hydrogen_fuel_cell",number]=0.5
+    
+    #-----Fusion Reactor-----#
+    Usage["infinity_fusion_reactor",number] = 0.005
+    Production["infinity_fusion_reactor",number] = 1
+    
+    #-----Air Compressor-----#
+    Usage["infinity_compressor",number] = 0.5
+    Production["infinity_compressor",number] = 0
+    
+    #-----Canister Recycler-----#
+    Usage["infinity_recycler",number] = 0.025 
+    Production["infinity_recycler",number] = 0.001
+    
+    #-----Antimatter Reactor-----#
+    Usage["infinity_antimatter_reactor",number] = 0.01
+    Production["infinity_antimatter_reactor",number] = 250
+    
+    #-----Volatile Storage-----#
+    Usage["infinity_antimatter_storage",number] = 4
+    
+    Usage["infinity_supercapacitor",number] = 0.2
+    
+    #---END OF BASE MULTIPLIERS---#
+
+######User Defined Functions######
+    #Takes: entity:func
+    #Returns: number
+    #This function returns the percentage of nitrogen in the atmosphere which the given entity is in
+    function number entity:nPercent()
+    {
+        local RV=0
+        if(This:lsName() != "Space")
+        {
+            RV = This:lsNPercent()
+        }
+        return RV
+    }
+    #Takes: entity:func
+    #Returns: number
+    #This function returns the amount of nitrogen in the atmosphere which the given entity is in
+    function number entity:nAmount()
+    {
+        local RV=0
+        if(This:lsName() != "Space")
+        {
+            RV = This:lsNAmount()
+        }
+        return RV
+    }
+    
+    #Takes: entity
+    #Returns: wirelink
+    #This function creates and returns a wirelink of the given entity
+    function wirelink createWL(Ent:entity)
+    {
+        return Ent:wirelink()
+    }
+    
+    #Takes: wirelink, number
+    #Returns: nothing
+    #This function controls whether a storage device is turned on or off
+    function void storageControl(WL:wirelink, On:number)
+    {
+        WL["Off",number]=!On
+    }
+    
+    #Takes: wirelink, number, number
+    #Returns: nothing
+    #This function controls whether a generator is on or off, and its multiplier
+    function void generatorControl(WL:wirelink, On:number, Mult:number)
+    {
+        WL["On",number]=On
+        WL["Multiplier",number]=Mult
+    }
+    
+    #Takes: string, entity
+    #Returns: nothing
+    #This function stores the wirelink of a given entity at the specified index in the 'Wirelinks' table.
+    function void addWirelink(Index:string,E:entity)
+    {
+        Wirelinks[Index,wirelink] = createWL(E)
+        Wirelinks[Index,wirelink]["Mute",number] = 1
+        if(E:type()=="infinity_water_pump")
+        {
+            PumpStatus[E:id():toString(),number]=0
+        }
+    }
+    
+    #Takes: string, string
+    #Returns: nothing
+    #This function adds a device to search for at runtime and gives it a nickname(Index)
+    function void addDevice(Index:string,Class:string)
+    {
+        Filter[Index,string] = Class
+    }
+    
+    #Takes: nothing
+    #Returns: nothing
+    #This function modifies the Usage table to store usage data for each generator/storage found at runtime
+    function void setUsage()
+    {
+        foreach(K,V:wirelink=Wirelinks)
+        {
+            TempEnt = V:entity()
+            Usage[K,number] = Usage[TempEnt:type(),number] * TempEnt:volume()/1000
+            Production[K,number] = Production[TempEnt:type(),number] * TempEnt:volume()/1000
+        }
+    }
+    
+    #Takes: number
+    #Returns: nothing
+    #This function performs witchcraft
+    function void wirelinkManage(Docked:number)
+    {
+        #print(Docked)
+        #First, get all resource values necessary for compatible generators
+        local Energy = ShipCore:rdAmount("Energy")
+        local MaxEnergy = ShipCore:rdCapacity("Energy")
+        
+        local Water = ShipCore:rdAmount("Water")
+        local MaxWater = ShipCore:rdCapacity("Water")
+        
+        local Oxygen = ShipCore:rdAmount("Oxygen")
+        local MaxOxygen = ShipCore:rdCapacity("Oxygen")
+        
+        local Hydrogen = ShipCore:rdAmount("Hydrogen")
+        local MaxHydrogen = ShipCore:rdCapacity("Hydrogen")
+        
+        local Nitrogen = ShipCore:rdAmount("Nitrogen")
+        local MaxNitrogen = ShipCore:rdCapacity("Nitrogen")
+        
+        local Antimatter = ShipCore:rdAmount("Antimatter")
+        local MaxAntimatter = ShipCore:rdCapacity("Antimatter")
+        
+        local EmptyCanister = ShipCore:rdAmount("Empty Canister")
+        local MaxEmptyCanister = ShipCore:rdCapacity("Empty Canister")
+        
+        local LSCanister = ShipCore:rdAmount("Lifesupport Canister")
+        local MaxLSCanister = ShipCore:rdCapacity("Lifesupport Canister")
+        
+        local Capacitor = ShipCore:wirelink()["Capacitor",number]
+        local MaxCapacitor = ShipCore:wirelink()["Max Capacitor",number]
+        
+        foreach(Idx,WL:wirelink=Wirelinks) #For every wirelink device stored in the Wirelinks table, do the following:
+        {
+            
+            local Class = Idx:explode(" ")[1,string] #Explode the index to get the first portion, which is the entity's class
+            local GenCountMul = GeneratorCount[Class,number] #Get the number of devices of that class
+            local Use = Usage[Idx,number] * GenCountMul #Grab the stored Usage for this specific device, then multiply by the number of devices
+            local Make = Production[Idx,number] * GenCountMul   #Grab the stored Production for this specific device, then multiply by the number of devices
+            
+            switch(Class)  #Switch statement by class
+            {
+                case "infinity_water_pump",   #Water pump, generates water when placed over water source
+                    ThisPumpDocked = PumpStatus[WL:entity():id():toString(),number]
+                    On=(ThisPumpDocked)
+                        ? (Energy>0) & (Water<MaxWater*0.985)
+                        : 0
+                    Mult=min(Energy/(Use*(2 + 5*(min(Energy<MaxEnergy*0.3,50000)))),(MaxWater-Water)/(3*Make),MultCap)
+                    generatorControl(WL,On,Mult)
+                    break
+                    
+                case "infinity_water_splitter", #Water Splitter, takes water and turns it into oxygen/hydrogen at a 1->1:2 ratio
+                    On=(Docked) 
+                        ? (Energy>min(MaxEnergy*0.25,5)) & (Oxygen<(MaxOxygen*0.99)|Hydrogen<(MaxHydrogen*0.99)) & (Water>min(MaxWater*0.25,1))
+                        : ((Energy>min(MaxEnergy*0.25,5)) & (Water>min(MaxWater*0.1,500))) & ((Oxygen<min(MaxOxygen*0.25,5000)) | (Hydrogen<min(MaxHydrogen*0.25,5000)))
+                    Mult=min(Energy/(Use*(4 + 5*(min(Energy<MaxEnergy*0.2,50000)))), (Water)/(2*Make),max((MaxOxygen-Oxygen)/(3*Make),(MaxHydrogen-Hydrogen)/(6*Make)),MultCap)
+                    generatorControl(WL,On,Mult)
+                    break
+                    
+                case "infinity_hydrogen_fuel_cell", #Fuel Cell, turns oxygen+hydrogen into water+energy
+                    On = ((Water < min(MaxWater*0.01,1000)) | Energy<min(MaxEnergy*0.01,1000)) & (Oxygen>min(MaxOxygen*0.5,1000)) & (Hydrogen>min(MaxHydrogen*0.5,2000))
+                    Mult=min(Oxygen/(Use*2), Hydrogen/(Use*4), max((MaxEnergy-Energy)/(2*Make),(MaxWater-Water)/(2*Use)),MultCap)
+                    generatorControl(WL,On,Mult)
+                    break
+                    
+                case "infinity_fusion_reactor", #Fusion reactor, takes hydrogen and energy and produces more energy
+                    On=(Docked)
+                        ? ((Hydrogen > 2) & (Energy > 2) & (Energy<MaxEnergy*0.985))
+                        : ((Hydrogen > min(MaxHydrogen*0.05,50)) & (Energy > 50) & (Energy < MaxEnergy*0.65))
+                    Mult=min(Hydrogen/(Use*1.25), (MaxEnergy-Energy)/(1.25*Make), Energy/(Make),MultCap)
+                    generatorControl(WL,On,Mult)
+                    break
+                
+                case "infinity_compressor",   #Atmosphere compressor, consumes energy to capture whatever's in the atmosphere
+                    Make = (WL:entity():nPercent()/10) * WL:entity():volume()/1000
+                    On=(Docked)
+                        ? ((Energy > min(2000,MaxEnergy*0.2)) & (Nitrogen<MaxNitrogen*0.985) & (WL:entity():nAmount()>0))
+                        : ((Energy > min(2000,MaxEnergy*0.2)) & (Nitrogen < MaxNitrogen*0.2) & (WL:entity():nAmount()>0))
+                    Mult=min(Energy/(Use*(1.25 + 5*(min(Energy<MaxEnergy*0.1,5000)))),(MaxNitrogen-Nitrogen)/(3*Make),MultCap)
+                    generatorControl(WL,On,Mult)
+                    break
+                    
+                case "infinity_antimatter_reactor",   #Antimatter reactor, takes hydrogen and antimatter and produces lots of energy
+                    On = (Docked)
+                        ? ((Antimatter > 50) & (Hydrogen > 50) & (Energy < MaxEnergy*0.995))
+                        : 0
+                    Mult= min(Antimatter/(Use*1.25),Hydrogen/(Use*1.25),(MaxEnergy-Energy)/(2*Make),MultCap)
+                    generatorControl(WL,On,Mult)
+                    break
+                    
+                case "infinity_antimatter_storage",   #Antimatter storage, used to store volatile antimatter
+                    Use = Use/GenCountMul / (WL:entity():volume()/1000)
+                    On = (Energy > (Use*max(Antimatter,1))*5)
+                    storageControl(WL,On)
+                    break
+                
+                case "infinity_supercapacitor",   #Supercapacitor storage, volatile storage used to store lots of energy
+                    Use = Use/GenCountMul 
+                    On = (Nitrogen > (Use*10)) & (Energy > (20*(WL:entity():volume()/1000))*0.95)
+                    storageControl(WL,On)
+                    break
+                    
+                case "infinity_recycler", #Recycler, used to reclaim empty LS cans for use in new LS cans
+                    On = (EmptyCanister > 0.1) & (Energy>MaxEnergy*0.2) & (Oxygen > MaxOxygen*0.1) (LSCanister < MaxLSCanister*0.9)
+                    Mult = min((10*Oxygen)/(Make*2),Energy/(Use*5),EmptyCanister/(Make*2),min((MaxLSCanister - LSCanister)/(Make*2),MultCap))
+                    generatorControl(WL,On,Mult)
+                    break
+                default,
+                    break
+            }
+        }
+    }
+    function number isDocked() #Return true(1) if at least one water pump is docked(Placed above water)
+    {
+        local Docked=0
+        foreach(PumpID,IsDocked:number=PumpStatus)
+        {
+            local PumpEnt = entity(PumpID:toNumber())
+            rangerFlags("W")
+            local R = rangerOffset(WaterPumpDist,PumpEnt:pos(),vec(0,0,-100))
+            if(R:hit())
+            {
+                PumpStatus[PumpID,number]=R:hit()
+                Docked=1
+            }
+        }
+        return Docked
+    }
+    function void getOpStats()
+    {
+        local OpsThisCycle = opcounter()
+        local MaxOps = OpStats["Maximum Ops Used",number]
+        OpStats["Ops Used This Cycle",number] = OpsThisCycle
+        OpStats["Average Ops",number] = ops()
+        OpStats["CPU Usage", number] = cpuUsage()*1000000
+        OpStats["Total Ops Used",number] = OpStats["Total Ops Used",number] + OpStats["Ops Used This Cycle",number]
+        
+        if(OpsThisCycle > MaxOps)
+        {
+            OpStats["Maximum Ops Used",number] = OpsThisCycle
+        }
+    }
+#####End Functions######
+    
+    #Add devices here
+    addDevice("Splitter","infinity_water_splitter")
+    
+    addDevice("Fusion","infinity_fusion_reactor")
+    
+    addDevice("Water","infinity_water_pump")
+    
+    addDevice("Nitrogen","infinity_compressor")
+    
+    addDevice("AMReactor","infinity_antimatter_reactor")
+    
+    addDevice("AMStorage","infinity_antimatter_storage")
+    
+    addDevice("Supercapacitor","infinity_supercapacitor")
+    
+    addDevice("Recycler","infinity_recycler")
+    
+    addDevice("Fuel Cell","infinity_hydrogen_fuel_cell")
+    #Finish adding devices
+    
+    #Ignored devices
+    RemovalFilter = table( "infinity_atmospheric_probe"=0,
+                            "infinity_resource_monitor"=0,
+                            "infinity_storage_cache"=0,
+                            "infinity_solar_panel"=0,
+                            "infinity_dispenser"=0)
+                            
+                            
+                            
+                            
+    #Get ship core and network entities
+    #ifdef entity:getCoreEnt()
+        ShipCore = entity():isConstrainedTo():getCoreEnt()
+    #endif
+    
+    FoundEntities = ShipCore:rdNetEntities()
+    MaxEntities = FoundEntities:count()
+    
+    if(!ShipCore) #If shipcore is not found
+    {
+        setName("Disabled - No ship core found.")
+    }
+}
+
+interval(1000)
+
+if(changed(MaxEntities)!=0 & MaxEntities > 0) #If new entities are found
+{
+    foreach(Idx,WL:wirelink=Wirelinks)   #Check if any entities are missing. If so, remove their wirelink from the table
+    {
+        if(!WL:entity())
+        {
+            Wirelinks:removeWirelink(Idx)
+            local Class = Idx:explode(" ")[1,string]
+            GeneratorCount[Class,number] = GeneratorCount[Class,number] - 1
+        }
+    }
+    for(I=1,MaxEntities)    #Look for new wirelinks #VERY EXPENSIVE, optimize?
+    {
+        local ID = FoundEntities[I,number]
+        local E = entity(ID)
+        local Class = E:type()
+        local Index = Class + " " + toString(ID)
+        if(!Wirelinks:exists(Index) & !RemovalFilter:exists(Class))
+        {
+            addWirelink(Index,E)
+            GeneratorCount[Class,number] = GeneratorCount[Class,number] + 1
+        }
+    }
+    Name=""
+    foreach(GenName,GenClass:string=Filter)
+    {
+        local Count = GeneratorCount[GenClass,number]
+        if(Count > 0)
+        {
+            Name = Name + GenName + "(" + toString(Count) + ")" + "\n"
+        }
+    }
+    setName(Name:left(Name:length()-1))
+    setUsage()
+    getOpStats()
+    exit()
+}
+FoundEntities = ShipCore:rdNetEntities()
+MaxEntities = FoundEntities:count()
+#print(MaxEntities)
+wirelinkManage(isDocked())
+getOpStats()
+

@@ -1,0 +1,43 @@
+@name spinny
+@inputs Entity:entity
+@outputs 
+@persist Base:entity X Target
+@trigger 
+
+interval(100)
+
+if(first()|duped())
+{
+    if(->Entity)
+    {
+        holoCreate(1,Entity:pos())
+        holoAng(1,Entity:angles())
+        Entity:parentTo(holoEntity(1))
+        foreach(K,V:entity=Entity:getConstraints())
+        {
+            V:parentTo(holoEntity(1))
+        }
+        Base=entity():isWeldedTo()
+        holoCreate(2,Base:pos()+vec(0,0,48))
+        holoAng(2,Base:angles())
+        holoParent(2,Base)
+        
+        holoPos(1,holoEntity(2):pos())
+        holoAng(1,holoEntity(2):angles())
+        holoParent(1,2)
+        Entity:soundPlay(1,0,"ambient/machines/engine1.wav")
+    }else{
+        stoptimer("interval")
+        exit()
+    }
+}
+
+X = X + 10
+
+holoAng(1,holoEntity(2):angles()+ang(0,X,0))
+
+if(X%360==0)
+{
+    Entity:soundPlay(1,0,"buttons/blip1.wav")
+}
+

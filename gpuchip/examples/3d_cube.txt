@@ -27,10 +27,10 @@ void Main()
 
     // Create perspective and matrix transformations
     glPerspective( 30, 1, 1, 20 ); // FOV, ASPECT RATIO, ZNEAR, ZFAR
-    glRotate( 0, 1, 0, time ); // AXIS X, Y, Z, ANGLE W
+    glRotate( 1, 1, 0, time ); // AXIS X, Y, Z, ANGLE W
     glTranslate( 0, 0, 0 ); // TRANSLATION X, Y, Z
-    glScale( 0.5, 0.5, 0.5 ); // SCALE X, Y, Z
-    
+    glScale( 1, 1, 1 ); // SCALE X, Y, Z
+
     glEnable( GL_VERTEX_BUFFER ); // Enable vertex buffer 
     glEnable( GL_VERTEX_ZSORT ); // Enable Z sorting
 
@@ -41,11 +41,11 @@ void Main()
     glFlush(); // Flush the vertex buffer to the screen
     
     // Wireframe 3D polygon
-//    glLineWidth( 1 ); // Set line width
-//    glFillMode( GL_FILL_WIREFRAME ); // Set fillmode as solid
-//    glColor4( 255, 255, 255, 255 ); // Set draw color with alpha
-//    glPoly3D( vertexBuffer, 12 ); // Draw 3D polygon 
-//    glFlush(); // Flush the vertex buffer to the screen
+    glLineWidth( 1 ); // Set line width
+    glFillMode( GL_FILL_WIREFRAME ); // Set fillmode as solid
+    glColor4( 255, 255, 255, 255 ); // Set draw color with alpha
+    glPoly3D( vertexBuffer, 12 ); // Draw 3D polygon 
+    glFlush(); // Flush the vertex buffer to the screen
     
     glExit(); // Exit
 }

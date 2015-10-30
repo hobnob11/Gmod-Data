@@ -1,0 +1,37 @@
+@name LED
+@inputs Button
+@outputs [Vec1 Vec2]:vector
+@persist State Url:string
+@trigger all
+
+runOnHTTP(1)
+
+Url = "http://hob.hacked.jp/Input/"
+
+if(httpCanRequest()){
+    Vec1 = vec(0,255,0)
+    
+    if(~Button&Button){
+        
+        if(State)
+        {
+            State = 0
+            httpRequest(Url+"0")
+            print("Sent: "+Url+"0")
+            Vec2 = vec(255,0,0)
+        }else{
+            State = 1
+            httpRequest(Url+"1")
+            print("Sent: "+Url+"1")
+            Vec2 = vec(0,255,0)
+        }
+    }
+}else{
+    Vec1 = vec(255,0,0)
+    timer("wat",500)
+}
+
+if(httpClk()){
+    print(httpData())
+    print(httpRequestUrl())
+}
