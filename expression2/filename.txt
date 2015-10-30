@@ -3,7 +3,14 @@
 @outputs 
 @persist 
 @trigger 
-runOnTick(1)
-for(I=1,20){
-    drawSprite(I,"effects/flares/halo-flare_001_ignorez",findPlayerByName("boo"):pos()+vec(0,0,I*200),20000,20000,vec(random(1,255),random(1,255),random(1,255)),255,findPlayerByName("boo"))
+
+findIncludePlayerProps(owner())
+findByClass("sc_weapon_base")
+local R = findToArray()
+
+for(I=1,R:count()) {
+    local E = R[I,entity]
+    E:makeWirelink()
+    local W = E:getWirelink()
+    W["Fire",number]=1   
 }

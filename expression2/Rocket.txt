@@ -252,8 +252,12 @@ timer("Move",100)
     Center:setVel(SpeedEND)
     
     if(Center:pos():distance(TargetA)<5000){
-        fx("sc_shipsplosion_titan",entity():pos(),1,ang(),vec(0,0,1),1)
-        
+        fx("impact_maccannon",entity():pos(),1,ang(),vec(0,0,1),20)
+        fx("impact_maccannon",entity():pos(),1,ang(),vec(0,0,1),20)
+        fx("impact_maccannon",entity():pos(),1,ang(),vec(0,0,1),20)
+        fx("impact_maccannon",entity():pos(),1,ang(),vec(0,0,1),20)
+        fx("impact_maccannon",entity():pos(),1,ang(),vec(0,0,1),20)
+        fx("impact_maccannon",entity():pos(),1,ang(),vec(0,0,1),20)        
         selfDestructAll()
     }
     

@@ -6,20 +6,11 @@
 if SERVER then
 
     local Lasers = find.byClass("sc_weapon_base",function(ent)
-                                                return ent:getOwner() == entities.owner()
-                                            end
+                                                    return ent:getOwner() == entities.owner()
+                                                 end
     )
-    local Outputs = {}
-    local Types  = {}
-    for K,V in pairs(Lasers) do
-        local Name = "Laser" .. K
-        Outputs[K] = Name
-        Types[K]  = "normal"
-    end
-    wire.adjustOutputs(Outputs,Types)
     for K,V in pairs(Lasers) do 
-        wire.create(V,entities.self(),"Fire",Outputs[K])
-        V:setPos(entities.self():getPos()+Vector(-100 + K*10,0,200))
+        V:setPos(entities.self():getPos()+Vector(-105 + K*10,0,200))
         V:setAngles(Angle(-90,0,90))
     end
     
