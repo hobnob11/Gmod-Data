@@ -1,1 +1,0 @@
-gpuchip/examples/3d_cube.txt;gpuchip/lib/drivers/drv_gl_toolkit.txt;gpuchip/lib/drivers/drv_gl.txt

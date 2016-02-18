@@ -1,6 +1,0 @@
-[playlist]
-NumberOfEntries=1
-File1=http://pub1.di.fm:80/di_vocaltrance
-Title1=Vocal Trance
-Length1=-1
-Version=2

@@ -1,6 +1,0 @@
-[playlist]
-NumberOfEntries=1
-File1=http://pub1.di.fm:80/di_trance
-Title1=Trance
-Length1=-1
-Version=2
