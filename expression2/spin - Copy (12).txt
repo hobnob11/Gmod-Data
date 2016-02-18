@@ -1,0 +1,13 @@
+@name spin
+@persists E:entity T:array
+
+if(first()){
+	runOnTick(1)
+	E = entity()
+	T = E:constraints()
+}
+
+for(k,v:entity=T){
+	V:setAng(ang(curtime()*100,0,0))
+	V:setPos(entity():toWorld(vec(cos(curtime())*100,sin(curtime())*100,0)))
+}
