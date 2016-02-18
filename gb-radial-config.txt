@@ -1,0 +1,10 @@
+"TableToKeyValues"
+{
+	"gbr-menudeadzone"		"40"
+	"gbr-menulabelssizedindividually"		"1"
+	"gbr-menufont"		"DermaDefault"
+	"gbr-version"		"2012-11-02"
+	"gbr-menusplitterlength"		"60"
+	"gbr-menushowsplitters"		"1"
+	"gbr-menushowtraceline"		"0"
+}

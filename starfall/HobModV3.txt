@@ -1,0 +1,58 @@
+--@name HobModV3
+--@author Hobnob
+--@shared
+
+if CLIENT then 
+    
+    MenuOpen = false
+    
+    function Sanity()
+        local ret = false
+        try(function() ret = (Menu ~= nil and Menu:IsValid()) end, function(error) print(error)  end)
+        return ret
+    end
+    function CreateMenu()
+        if not Sanity() then
+            ContextMenuOpen = false
+            Menu = vgui.Create("DMenu") 		
+            Menu:AddOption( "Simple option" ) 
+            Menu:AddOption( "Option with icon" ):SetIcon( "icon16/bug.png" )
+            Menu:AddSpacer()
+            Menu:AddSubMenu( "A Sub Menu" ):AddOption( "Sub Option #1" ):SetIcon( "icon16/group.png" )
+            Menu:SetBackgroundColor(Color(255,255,255,255))
+            Menu:SetVisible(false)
+        end
+    end
+    function OpenMenu()
+        print("Open",Sanity())
+        CreateMenu()
+        if Sanity() then Menu:Open() end
+    end
+    function CloseMenu()
+        print("Close",Sanity())
+        if Sanity() then
+            try(function()
+                Menu:Remove()
+            end,function(a)
+                print(a)
+            end)
+        end
+    end
+
+    hook.Add("PlayerButtonDown","HobHookDown",function(a,b)
+        if a == entities.owner() and b == 12 then
+            if not MenuOpen then
+                MenuOpen = true
+                OpenMenu()
+            end
+        end
+    end)
+    hook.Add("PlayerButtonUp","HobHookUp",function(a,b)
+        if a == entities.owner() and b == 12 then
+            if  MenuOpen then
+                MenuOpen = false
+                CloseMenu()
+            end
+        end
+    end)
+end

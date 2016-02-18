@@ -1,0 +1,13 @@
+"TableToKeyValues"
+{
+	"1"
+	{
+		"name"		"E2"
+		"rconcommand"		"gmod_tool wire_expression2"
+	}
+	"2"
+	{
+		"name"		"Wire"
+		"rconcommand"		"gmod_tool wire_advanced"
+	}
+}

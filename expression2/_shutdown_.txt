@@ -1,0 +1,7 @@
+@name 
+@inputs 
+@outputs 
+@persist 
+@trigger 
+
+seatSpawn("models/sprops/rectangles/size_1_5/rect_6x6x3.mdl",1)

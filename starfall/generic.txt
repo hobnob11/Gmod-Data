@@ -1,0 +1,9 @@
+--@name asdf
+
+
+
+function asdf ()
+    H1 = holograms.create(entities.self():GetPos(),Angle(0,0,0),"models/holograms/hq_sphere.mdl",Vector(10,10,10))
+end
+
+timer.Create("MichsTimer",100,0,function() asdf() end)
