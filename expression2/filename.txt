@@ -1,6 +1,0 @@
-@name 
-@inputs 
-@outputs 
-@persist 
-@trigger 
-entity():isWeldedTo():setAng(lsGetSunDirection():toAngle():up():toAngle())

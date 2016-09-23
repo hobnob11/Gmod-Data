@@ -1,6 +1,0 @@
-@name FireControl
-@inputs Entity:entity
-@outputs Ent:entity
-@trigger all
-
-Ent = entity(671)

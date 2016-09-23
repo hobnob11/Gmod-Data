@@ -1,0 +1,53 @@
+"TableToKeyValues"
+{
+	"1"
+	{
+		"name"		"Welder"
+		"rconcommand"		"gmod_tool weld"
+	}
+	"2"
+	{
+		"name"		"Stacker"
+		"rconcommand"		"gmod_tool ol_stacker"
+	}
+	"3"
+	{
+		"name"		"Duplicator"
+		"rconcommand"		"gmod_tool adv_duplicator"
+	}
+	"4"
+	{
+		"name"		"NS3"
+		"rconcommand"		"gmod_tool nebsupporter"
+	}
+	"5"
+	{
+		"name"		"Nocollide"
+		"rconcommand"		"gmod_tool nocollide2"
+	}
+	"6"
+	{
+		"name"		"Weight"
+		"rconcommand"		"gmod_tool weight"
+	}
+	"7"
+	{
+		"name"		"Color"
+		"rconcommand"		"gmod_tool color"
+	}
+	"8"
+	{
+		"name"		"Material"
+		"rconcommand"		"gmod_tool sortedmaterial"
+	}
+	"9"
+	{
+		"name"		"Luasool"
+		"rconcommand"		"gmod_tool luasool"
+	}
+	"10"
+	{
+		"name"		"E2"
+		"rconcommand"		"gmod_tool wire_expression2"
+	}
+}

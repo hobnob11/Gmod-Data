@@ -1,3 +1,0 @@
-@name Derp
-local E = entity():isWeldedTo()
-print(E["Linked",number])
