@@ -1,0 +1,117 @@
+@name Hob-Tech Quarry
+@inputs 
+@outputs 
+@persist Wait1 Wait2 Pos1:vector Pos2:vector Pos3:vector Pos4:vector Target:vector
+@trigger 
+
+if(first())
+{
+    runOnChat(1)
+    
+    setName("Hob-Tech Quarry: Init Stage")
+    
+    function output(Str:string)
+    {
+        #for(I=1,players():count()){
+        #    players()[I,entity]:plyPrint(Str)
+        #}
+        owner():plyPrint(Str)
+    }
+    timer("Stage1",1000)
+}
+if(clk("Stage1"))
+{
+    output("Pick Point 1 by typing !")
+    Wait1 = 1
+}
+if(clk("Stage2"))
+{
+    output("Pick Point 2 by typing !")
+    Wait2 = 1
+}
+if(clk("Stage3"))
+{
+    holoCreate(1,Pos1+vec(0,0,200))
+        holoScaleUnits(1,vec(10,10,400))
+    
+    holoCreate(2,Pos2+vec(0,0,200))
+        holoScaleUnits(2,vec(10,10,400))
+    
+    Pos3 = vec(Pos2:x(),Pos1:y(),(Pos1:z()+Pos2:z())/2)
+    Pos4 = vec(Pos1:x(),Pos2:y(),(Pos1:z()+Pos2:z())/2)
+    
+    holoCreate(3,Pos3+vec(0,0,200))
+        holoScaleUnits(3,vec(10,10,400))
+    
+    holoCreate(4,Pos4+vec(0,0,200))
+        holoScaleUnits(4,vec(10,10,400))
+   
+    holoCreate(5,Pos1 - (Pos1-Pos3)/2+vec(0,0,5))
+        holoScaleUnits(5,vec(Pos3:x()-Pos1:x(),10,10))
+        
+    holoCreate(6,Pos3 - (Pos3-Pos2)/2+vec(0,0,5))
+        holoScaleUnits(6,vec(10,Pos2:y()-Pos3:y(),10))
+        
+    holoCreate(7,Pos4 - (Pos4-Pos2)/2+vec(0,0,5))
+        holoScaleUnits(7,vec(Pos2:x()-Pos4:x(),10,10))
+        
+    holoCreate(8,Pos1 - (Pos1-Pos4)/2+vec(0,0,5))
+        holoScaleUnits(8,vec(10,Pos4:y()-Pos1:y(),10))
+        
+    holoCreate(9,Pos1 - (Pos1-Pos3)/2+vec(0,0,395))
+        holoScaleUnits(9,vec(Pos3:x()-Pos1:x(),10,10))
+        
+    holoCreate(10,Pos3 - (Pos3-Pos2)/2+vec(0,0,395))
+        holoScaleUnits(10,vec(10,Pos2:y()-Pos3:y(),10))
+        
+    holoCreate(11,Pos4 - (Pos4-Pos2)/2+vec(0,0,395))
+        holoScaleUnits(11,vec(Pos2:x()-Pos4:x(),10,10))
+        
+    holoCreate(12,Pos1 - (Pos1-Pos4)/2+vec(0,0,395))
+        holoScaleUnits(12,vec(10,Pos4:y()-Pos1:y(),10))
+        
+    timer("Stage4",1000)
+}
+if(clk("Stage4"))
+{
+    holoCreate(13,Pos1 - (Pos1-Pos3)/2+vec(0,10,395))
+        holoScaleUnits(13,vec(Pos3:x()-Pos1:x(),8,8))
+        holoColor(13,vec(255,150,50))
+    holoCreate(14,Pos1 - (Pos1-Pos4)/2+vec(10,0,395))
+        holoScaleUnits(14,vec(8,Pos4:y()-Pos1:y(),8))
+        holoColor(14,vec(255,150,50))
+    holoCreate(15,Pos1+vec(10,10,200))
+        holoScaleUnits(15,vec(8,8,400))
+        holoColor(15,vec(255,150,50))
+    timer("Main",1000)
+}
+if(clk("Main"))
+{
+    Target = clamp(owner():pos()+20,Pos1,Pos2+vec(0,0,400)-20)+10
+    
+    holoPos(13,Pos1 - (Pos1-Pos3)/2+vec(0,-(Pos1:y()-Target:y()),395))
+    holoPos(14,Pos1 - (Pos1-Pos4)/2+vec(-(Pos1:x()-Target:x()),0,395))
+    holoPos(15,Pos1+vec(-(Pos1:x()-Target:x()),-(Pos1:y()-Target:y()),(Target:z()-Pos1:z())/2))
+    
+    timer("Main",100)
+}   
+if(chatClk(owner()))
+{
+    if(Wait1){
+        if(owner():lastSaid()=="!"){
+            Wait1 = 0
+            Pos1 = owner():pos()
+            output("Point 1 set to: "+Pos1)
+            timer("Stage2",1000)
+        }
+    }elseif(Wait2){
+        if(owner():lastSaid()=="!"){
+            Wait2 = 0
+            Pos2 = owner():pos()
+            Pos2:setZ(Pos1:z())
+            output("Point 2 set to: "+Pos2)
+            timer("Stage3",1000)
+        }
+    }
+    
+}

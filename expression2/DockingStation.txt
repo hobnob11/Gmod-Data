@@ -1,0 +1,25 @@
+@name DockingStation
+@inputs Pump:entity
+@outputs 
+@persist A:entity Min:vector Max:vector P:string
+@trigger 
+
+interval(100)
+
+if(first())
+{
+    A = entity():isWeldedTo()
+    Min = A:pos() + A:boxMin()
+    Max = A:pos() + A:boxMax()
+    P = "sc_resource_pump"
+}
+
+findInBox(Min,Max)
+findClipToClass(P)
+B = find()
+
+if(B)
+{
+    Pump:lsPumpConnect(B)
+    Pump:lsPumpQueueTask("Energy",99999,1)
+}

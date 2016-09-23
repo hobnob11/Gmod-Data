@@ -1,0 +1,25 @@
+@name Hob Holos
+@inputs 
+@outputs 
+@persist  PropL:entity
+@trigger 
+
+interval(60000)
+I = 1
+findIncludePlayerProps(findPlayerByName("hob"))
+findByClass("prop_physics")
+foreach(J,PropL:entity=findToArray()) {
+    Radius = PropL:radius()
+    Scale = 50
+    holoCreate(I,PropL:forward()*Radius + PropL:pos(),vec(PropL:radius()/Scale),PropL:angles(),vec(255,0,0),PropL:model())
+    holoParent(I,PropL)
+    I++
+    holoCreate(I,PropL:right()*Radius + PropL:pos(),vec(PropL:radius()/Scale),PropL:angles(),vec(255,0,0),PropL:model())
+    holoColor(I,vec(0,255,0))
+    holoParent(I,PropL)
+    I++
+    holoCreate(I,PropL:up()*Radius + PropL:pos(),vec(PropL:radius()/Scale),PropL:angles(),vec(255,0,0),PropL:model())
+    holoColor(I,vec(0,0,255))
+    holoParent(I,PropL)
+    I++
+}

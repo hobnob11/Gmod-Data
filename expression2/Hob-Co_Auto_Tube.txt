@@ -2,16 +2,27 @@
 @outputs 
 @outputs T Inc StepDist
 @persist [StartPos EndPos LastPos]:vector NumProps [P0 P1 P2 P3]:vector [E1 E2]:entity
-@persist IDX N R:array Nodes:array
+@persist IDX N R:array Nodes:array Safe Target:entity String:string
 @trigger 
-@model models/sprops/cuboids/height12/size_1/cube_12x12x12.mdl
+if(dupefinished())
+{
+    reset()
+}
 if(first())
 {
-    #entity():setPos(owner():pos())
     findIncludePlayerProps(owner())
-    findInSphere(entity():pos(),50000)
-    findClipToModel("models/smallbridge/panels/sbpaneldoorsquare.mdl")
-    Nodes=findToArray()
+    findInCone(entity():pos(),entity():up(),10000000000000000,90)
+    findClipToClass("gmod_wire_expression2")
+    findSortByDistance(entity():pos())
+    local Array = findToArray()
+    foreach(K,V:entity = Array)
+    {
+        if(V:getName()==entity():getName()){
+            Target = V
+            break
+        }
+    }
+    Nodes=array(entity():isWeldedTo(),Target:isWeldedTo())
     propSpawnUndo(1)
     if(Nodes:count()==2)
     {
@@ -31,8 +42,14 @@ if(first())
         
     }
     Inc=0.0001
-    
-    StepDist = 111/1.5 #First number is length of prop
+    if(entity():pos():distance(Target:pos())>1000){
+        StepDist = 222/1.5 #First number is length of prop
+        String = "models/smallbridge/hulls_sw/sbhulle1.mdl"
+    }else{
+        StepDist = 111/1.5 #First number is length of prop
+        String = "models/smallbridge/hulls_sw/sbhulle05.mdl"
+    }
+    print(E1:pos():distance(E2:pos()))
     function vector bezier4(P0:vector, P1:vector, P2:vector, P3:vector, Step)
     {
         return P0*(1-Step)^3+3*P1*Step*(1-Step)^2+3*P2*Step^2*(1-Step)+Step^3*P3
@@ -44,24 +61,24 @@ if(first())
     runOnLast(1)
 }
 interval(100)
-while(LastPos:distance(EndPos) > StepDist & perf() & propCanCreate())
+while(LastPos:distance(EndPos) > StepDist & perf() & holoCanCreate())
 {
     
     T+=Inc
     local V = bezier4(P0,P1,P2,P3,T)
     if(V:distance(LastPos)>StepDist)
     {
-        local E = propSpawn("models/smallbridge/hulls_sw/sbhulle05.mdl",1)
+        local E = propSpawn(String,1)
         if(E)
         {
             R:pushEntity(E)
             local A = (bezier4(P0,P1,P2,P3,T+Inc) - V):toAngle()
             LastPos = V
             E:setPos(V)
-            E:setAng(A:rotateAroundAxis(A:up()*100,0):rotateAroundAxis(A:forward()*100,0))
+            E:setAng(A:rotateAroundAxis(A:up()*100,0):rotateAroundAxis(-A:forward()*100,0))
             E:propPhysicalMaterial("ice")
             E:combatImmune(1)
-            E:setSkin(1)
+            E:setSkin(3)
             E:weld(E1)
             N++
         }
@@ -71,7 +88,15 @@ while(LastPos:distance(EndPos) > StepDist & perf() & propCanCreate())
         }
     }
 }
+if(LastPos:distance(EndPos) < StepDist&holoCanCreate()&Target:isValid())
+{
+    Safe = 1
+    Target:propDelete()
+    selfDestruct()
+}
 if(last())
 {
-    R:propDelete()
+    if(!Safe){
+        R:propDelete()
+    }
 }

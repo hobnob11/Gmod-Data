@@ -1,0 +1,27 @@
+@name Heh-energy
+@persist Heh:table
+if(first()){
+
+findByClass("sc_generator")
+findClipToSphere(entity():pos(),50)
+findIncludePlayerProps(owner())
+holoCreate(1)
+holoPos(1,entity():pos())
+holoAng(1,entity():angles())
+holoParent(1,entity():isWeldedTo())
+Heh = findToTable()
+foreach(K,V:entity=Heh){
+    V:setPos(entity():toWorld(vec(0,0,10)))
+    V:setAng(entity():angles())
+    V:freeze()
+    V:weld(entity():isWeldedTo())
+}
+timer("heh",100)
+}
+
+if(clk("heh"))
+{
+    foreach(K,V:entity=Heh){
+        V:parentTo(holoEntity(1))
+    }
+}

@@ -1,0 +1,39 @@
+"TableToKeyValues"
+{
+	"1"
+	{
+		"id"		"STEAM_0:1:26603751"
+		"rank"		"0"
+		"name"		"H08"
+	}
+	"2"
+	{
+		"id"		"STEAM_0:1:32345716"
+		"rank"		"1"
+		"name"		"Kanzuke"
+	}
+	"3"
+	{
+		"id"		"loopback"
+		"rank"		"0"
+		"name"		"Hob"
+	}
+	"4"
+	{
+		"id"		"STEAM_0:0:16624679"
+		"rank"		"1"
+		"name"		"Łτ•βЃĄЙĐΘИ-"
+	}
+	"5"
+	{
+		"id"		"STEAM_0:0:20115714"
+		"rank"		"1"
+		"name"		"Err"
+	}
+	"6"
+	{
+		"id"		"STEAM_0:0:0"
+		"rank"		"0"
+		"name"		"Hob"
+	}
+}

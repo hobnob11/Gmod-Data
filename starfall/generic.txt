@@ -1,0 +1,9 @@
+--@name 
+--@author 
+
+entities.entity(277):SetParent(entities.entity(273))
+
+hook.Add("Think","heh",function()
+    entities.entity(277):SetAngles(Angle(0,CurTime()*10,0))
+    entities.entity(273):SetAngles(Angle(0,0,CurTime()*10))  
+end)
