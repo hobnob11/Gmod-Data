@@ -1,0 +1,11 @@
+@name 
+@inputs 
+@outputs 
+@persist 
+@trigger 
+
+findByClass("sc_generator")
+foreach(K,V:entity=findToTable())
+{
+    V:weld(entity():isWeldedTo())
+}

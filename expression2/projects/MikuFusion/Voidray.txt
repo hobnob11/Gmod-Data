@@ -16,6 +16,7 @@ if(first()){
     for(I=1,Miku:count()){
         Miku[I,entity]:setPos( entity():pos()+vec(150,0,0):rotate(ang(0,I/Miku:count()*360,0)))
         Miku[I,entity]:createWire(entity(),"On","On"+I)
+        Miku[I,entity]:setAng(ang(0,I/Miku:count()*360 +180,0))
         #Miku[I,entity]:drawBeam(I,"MikuBeam"+I,Miku[I,entity]:pos(),entity():pos()+vec(0,0,200),2,1,1,vec(255,255,255),255,1)
         timer("parent",100)
     }

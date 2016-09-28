@@ -1,0 +1,7 @@
+@name Toggle Switch
+@inputs Input
+@outputs Output
+@persist 
+@trigger Input
+
+if(Input) {Output = !Output}

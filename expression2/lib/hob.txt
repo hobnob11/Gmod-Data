@@ -1,0 +1,50 @@
+@name Hob
+@persist
+
+
+#Hob-Co Library for ease of use.
+print("hob-os loaded")
+#gets the closest planet
+function entity closestPlanet(Vec:vector)
+{
+    local Ret = noentity()
+    local Dist = 1e9
+    foreach(K,V:entity=getPlanets())
+    {
+        if(V:pos():distance(Vec)<Dist)
+        {
+            Dist = V:pos():distance(Vec)
+            Ret = V
+        }
+    }
+    return Ret
+}
+
+#returns an array of vectors representing the verticies of a sphere.
+function void array:sphere(R,Devisions,OnFinish:string,Theta)
+{
+    if(!This:count()) {
+        This:pushVector(vec(0,0,-R))
+        Theta = pi() - pi() / Devisions
+    }
+    while( Theta > 0 && perf(70) ) # Elevation pi - 0
+    {
+        local Phi = 0 
+        while( Phi < 2*pi() ) # Azimuth 0 - 2pi
+        {
+            local X = R * cosr(Phi) * sinr(Theta)
+            local Y = R * sinr(Phi) * sinr(Theta)
+            local Z = R             * cosr(Theta)
+            This:pushVector(vec(X,Y,Z))
+            Phi = Phi + pi()/Devisions 
+        }
+        Theta = Theta - pi()/Devisions
+    }
+    if(Theta > 0) {
+        timer(10,1,"SphereContinue","sphere(r:nnsn)",This,R,Devisions,OnFinish,Theta)
+    }
+    else{
+        This:pushVector(vec(0,0,R))
+        timer(100,1,"SphereFinish",OnFinish + "(r)", This)
+    }
+}

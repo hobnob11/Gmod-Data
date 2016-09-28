@@ -1,0 +1,33 @@
+"TableToKeyValues"
+{
+	"1"
+	{
+		"name"		"Multi-Weld"
+		"cb"		"0"
+		"exp"		"0"
+		"cr"		"0"
+		"cg"		"0"
+		"ca"		"0"
+		"rconcommand"		"gmod_tool multi_weld"
+	}
+	"2"
+	{
+		"name"		"E2"
+		"cb"		"0"
+		"exp"		"1"
+		"cr"		"0"
+		"cg"		"0"
+		"ca"		"0"
+		"rconcommand"		"gmod_tool wire_expression2"
+	}
+	"3"
+	{
+		"name"		"Wire"
+		"cb"		"255"
+		"exp"		"0"
+		"cr"		"0"
+		"cg"		"255"
+		"ca"		"0"
+		"rconcommand"		"gmod_tool wire_adv"
+	}
+}

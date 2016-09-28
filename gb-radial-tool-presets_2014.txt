@@ -1,0 +1,252 @@
+"TableToKeyValues"
+{
+	"____last"
+	{
+		"t"
+		{
+			"1"
+			{
+				"name"		"Welder"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool weld"
+			}
+			"2"
+			{
+				"name"		"Stacker"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool ol_stacker"
+			}
+			"3"
+			{
+				"name"		"Duplicator"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool adv_duplicator"
+			}
+			"4"
+			{
+				"name"		"NS3"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool nebsupporter"
+			}
+			"5"
+			{
+				"name"		"Nocollide"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool nocollide2"
+			}
+			"6"
+			{
+				"name"		"Weight"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool weight"
+			}
+			"7"
+			{
+				"name"		"Color"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool color"
+			}
+			"8"
+			{
+				"name"		"Material"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool sortedmaterial"
+			}
+			"9"
+			{
+				"name"		"Luasool"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool luasool"
+			}
+			"10"
+			{
+				"name"		"E2"
+				"cb"		"0"
+				"exp"		"0"
+				"cr"		"0"
+				"cg"		"0"
+				"ca"		"0"
+				"rconcommand"		"gmod_tool wire_expression2"
+			}
+		}
+		"s"
+		{
+			"gbr-menushowtraceline"		"0"
+			"gbr-hg"		"255"
+			"gbr-boudkey"		"0"
+			"gbr-skinvars"
+			{
+				"shape"
+				{
+					"1"
+					{
+						"1"		"true"
+						"__type"		"Bool"
+					}
+					"2"
+					{
+						"1"		"gbr-spacing"
+						"2"		"gbr-selectedinner"
+						"3"		"gbr-selectedouter"
+						"4"		"gbr-drawborder"
+						"5"		"gbr-menudeadzone"
+						"6"		"gbr-menuradius"
+						"7"		"gbr-menusplitterlength"
+						"8"		"gbr-clampx"
+						"9"		"gbr-clampy"
+					}
+				}
+				"color"
+				{
+					"1"
+					{
+						"1"		"true"
+						"__type"		"Bool"
+					}
+					"2"
+					{
+						"1"		"gbr-hr"
+						"2"		"gbr-hg"
+						"3"		"gbr-hb"
+						"4"		"gbr-dr"
+						"5"		"gbr-dg"
+						"6"		"gbr-db"
+						"7"		"gbr-tr"
+						"8"		"gbr-tg"
+						"9"		"gbr-tb"
+					}
+				}
+				"gbr-rotatetext"
+				{
+					"1"		"false"
+					"__type"		"Bool"
+				}
+				"general"		"General:"
+				"Font"
+				{
+					"1"
+					{
+						"1"		"true"
+						"__type"		"Bool"
+					}
+					"2"
+					{
+						"1"		"gbr-font"
+						"2"		"gbr-fontscale"
+						"3"		"gbr-outline"
+					}
+				}
+				"gbr-menushowtraceline"
+				{
+					"1"		"false"
+					"__type"		"Bool"
+				}
+				"gbr-enablesounds"
+				{
+					"1"		"false"
+					"__type"		"Bool"
+				}
+				"amin"
+				{
+					"1"
+					{
+						"1"		"true"
+						"__type"		"Bool"
+					}
+					"2"
+					{
+						"1"		"gbr-colorspeed"
+						"2"		"gbr-animspeed"
+					}
+				}
+				"gbr-onclose"
+				{
+					"1"		"false"
+					"__type"		"Bool"
+				}
+				"misc"		"Misc.:"
+				"gbr-showhelp"
+				{
+					"1"		"false"
+					"__type"		"Bool"
+				}
+				"gbr-rotate"
+				{
+					"1"		"true"
+					"__type"		"Bool"
+				}
+			}
+			"gbr-dr"		"50"
+			"gbr-enablesounds"		"1"
+			"gbr-tr"		"255"
+			"gbr-hr"		"0"
+			"gbr-selectedouter"		"1.1998000144958"
+			"gbr-rotate"		"0"
+			"gbr-version"		"2016-9-4"
+			"gbr-fontscale"		"0.19990000128746"
+			"gbr-showhelp"		"1"
+			"gbr-menudeadzone"		"40"
+			"gbr-spacing"		"0.69969999790192"
+			"gbr-drawborder"		"0"
+			"gbr-menuradius"		"40"
+			"gbr-selectedinner"		"1.1998000144958"
+			"gbr-menushowsplitters"		"1"
+			"gbr-dg"		"50"
+			"gbr-tg"		"255"
+			"gbr-rotatetext"		"1"
+			"gbr-db"		"50"
+			"gbr-hb"		"255"
+			"gbr-clampx"		"1"
+			"gbr-menufont"		"DermaDefault"
+			"gbr-animspeed"		"0.19990000128746"
+			"gbr-colorspeed"		"0.29979997873306"
+			"gbr-tb"		"255"
+			"isskin"
+			{
+				"1"		"false"
+				"__type"		"Bool"
+			}
+			"gbr-menulabelssizedindividually"		"1"
+			"gbr-outline"		"1"
+			"gbr-menusplitterlength"		"60"
+			"gbr-clampy"		"0"
+			"gbr-font"		"Arial"
+		}
+	}
+}
