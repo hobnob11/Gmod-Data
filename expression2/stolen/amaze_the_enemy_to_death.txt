@@ -21,6 +21,22 @@ if (first()) {
         return Quat:toAngle()
     }
     
+    
+    function number ang(V1:vector,V2:vector) {
+        local Ret = acos(V1:dot(V2))
+        if (Ret == Ret) {
+            return Ret
+        } else {
+            return 0
+        }
+    }
+    
+    function angle smoothness2(Current:vector,Wanted:vector) {
+        local CurAng = ang(Current,Wanted)
+        local CurSpeed = clamp(Speed / CurAng,0,1)
+        return mix(Wanted,Current,CurSpeed):toAngle()
+    }
+    
     if (Target) {
         activate()
     }

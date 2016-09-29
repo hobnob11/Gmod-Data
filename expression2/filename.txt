@@ -4,9 +4,4 @@
 @persist 
 @trigger 
 
-findByClass("sc_generator")
-foreach(K,V:entity=findToTable())
-{
-    V:weld(entity():isWeldedTo())
-}
-#GIT TEST
+entity():isWeldedTo():getMaterial()
