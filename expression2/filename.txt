@@ -1,7 +1,35 @@
 @name 
 @inputs 
-@outputs 
-@persist 
+@outputs X
+@persist I Sphere:array Y Z R Res Size
 @trigger 
+runOnTick(1)
+Pos = entity():pos()+vec(0,0,200)
 
-entity():isWeldedTo():getMaterial()
+R =10 * Size
+Res = 100
+Size = 1
+while(perf()){
+if(holoCanCreate()){
+if(X<Res){
+    if(Y<Res){
+        if(Z<Res){
+            local V = vec(X-(Res/2),Y-(Res/2),Z-(Res/2)) * Size
+            if(inrange(V:distance(vec()),R*0.95,R*1.05)){
+                I++
+                holoCreate(I,Pos+V)
+                holoModel(I,"hqicosphere")
+                holoScaleUnits(I,vec(5,5,5))
+            }
+            Z++
+        }else{
+            Z=0
+            Y++
+        }
+    }else{
+        Y=0
+        X++
+    }
+}
+}
+}

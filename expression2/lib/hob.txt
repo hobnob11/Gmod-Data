@@ -48,6 +48,21 @@ function void array:sphere(R,Devisions,OnFinish:string,Theta)
     }
 }
 
+#a sphere so retarded it may work
+function array icosphere(R,Devisions)
+{
+    local Ret = array()
+    for(I=1,Devisions)
+    {
+        local A = (360/Devisions)*I
+        local X = 0
+        local Y = cos(A) * R
+        local Z = sin(A) * R
+        Ret:pushVector(vec(X,Y,Z))
+    }
+    return Ret
+}
+
 ######DIV TECH ANGLE MATH#####
     function angle smoothness(CurrentAngle:angle,WantedAngle:angle,Speed) {
         local WantedQuat = quat(WantedAngle)

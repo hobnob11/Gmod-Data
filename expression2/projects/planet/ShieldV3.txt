@@ -1,7 +1,8 @@
 @name ShieldV3
-@persist Sphere:array R Planet:entity I PlanetName:string PlanetPos:vector Built Props:array
+@persist Sphere:array R Planet:entity I PlanetName:string PlanetPos:vector Built Props:array WeaponBase:entity SurfaceCenter:vector TurretBase:entity
+@persist Weapons:array
 @outputs State
-interval(100)
+interval(80)
 if(first())
 {
     #include "lib/hob"
@@ -18,6 +19,7 @@ if(first())
                 local E = propSpawn("models/hunter/plates/plate32x32.mdl",V,A,1)
                 if(E:isValid()){
                     E:weld(entity():isWeldedTo())
+                    E:setMaterial("models/props_combine/combine_fenceglow")
                     Props[I,entity] = E
                 }else{
                     interval(10) 
@@ -25,6 +27,9 @@ if(first())
                 }
             }
         }else{
+            #turret stuff
+            WeaponBase = propSpawn("models/Boba_Fett/catwalk_build/gate_platform.mdl",SurfaceCenter+vec(0,0,30),ang(),1)
+            TurretBase = holoCreate(1,PlanetPos)
             Built = 1
             State = 1
         }
@@ -35,6 +40,34 @@ if(first())
         build()
     }
     
+    function parentWeps()
+    {
+        foreach(K,V:entity=Weapons)
+        {
+            V:parentTo(WeaponBase)
+        }
+    }
+    function deparentWeps()
+    {
+        foreach(K,V:entity=Weapons){
+            V:deparent()
+        }
+    }
+    function parentWepBase()
+    {
+        WeaponBase:setPos(PlanetPos+vec(0,0,R))
+        WeaponBase:setAng(ang(0,0,0))
+        timer(100,1,"parentWepBase2()","parentWepBase2()")
+    }
+    function parentWepBase2()
+    {
+        WeaponBase:parentTo(TurretBase)
+    }
+    function moveWepBase()
+    {
+        WeaponBase:setPos(SurfaceCenter+vec(0,0,30))
+        WeaponBase:setAng(ang(0,0,0))
+    }
     #runOnTick(1)
     propSpawnUndo(0)
     runOnChat(1)
@@ -49,8 +82,12 @@ if(first())
     #Planet pos
     PlanetPos = (PlanetName=="Kobol" ? Planet:pos()+vec(0,0,250) : Planet:pos())
     
+    #Center of the surface of the planet
+    rangerFlags("W")
+    SurfaceCenter = rangerOffset(PlanetPos+vec(0,0,R),PlanetPos):position()
+    
     #sphere! :D
-    array():sphere(R,10,"sphereFinish",0)
+    array():sphere(R,15,"sphereFinish",0)
 }
 if(Built==0 & Sphere:count())
 {
@@ -84,16 +121,43 @@ if(Built==0 & Sphere:count())
                 local E = Props[I,entity]
                 E:setAlpha(0)
                 E:setSolid(0)
-            }else{State=4}
+            }else{
+                State=4
+                WeaponBase:deparent()
+                timer(100,1,"moveWepBase()","moveWepBase()")
+                timer(200,1,"deparentWeps()","deparentWeps()")
+            }
             break
             
         case 3,# Closing
-            if(I<Props:count()){I++
+            if(I==0){I++
+                Weapons = array()
+                foreach(K,V:entity=WeaponBase:getConstraints())
+                {
+                    print(V:type())
+                    if(V:type()=="sc_weapon")
+                    {
+                        Weapons:pushEntity(V)
+                    }
+                }
+                print(Weapons:count())
+                for(I=1,Weapons:count())
+                {
+                    V = Weapons[I,entity]
+                    V:constraintBreak()
+                    V:lsLink(entity():isWeldedTo())
+                    V:setPos(vec(cos(I*(Weapons:count()/360))*125,sin(I*(Weapons:count()/360))*125,0))
+                    V:setAng(ang(0,0,0))
+                }
+                timer(100,1,"parentWeps()","parentWeps()")
+                
+            }elseif(I<Props:count()){I++
                 local E = Props[I,entity]
                 E:setAlpha(255)
                 E:setSolid(1)
             }else{
                 State = 1
+                
             }
             break
             

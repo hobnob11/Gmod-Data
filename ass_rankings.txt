@@ -28,7 +28,7 @@
 	{
 		"id"		"STEAM_0:0:0"
 		"rank"		"0"
-		"name"		"Hob"
+		"name"		"H08"
 	}
 	"6"
 	{
