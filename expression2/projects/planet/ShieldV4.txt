@@ -1,8 +1,11 @@
-@name ShieldV3
+@name ShieldV4
 @inputs Target:vector
-@persist Sphere:array R Planet:entity I PlanetName:string PlanetPos:vector Built Props:array WeaponBase:entity SurfaceCenter:vector TurretBase:entity
+@outputs [Current Wanted]:vector New:angle
+@persist Sphere:array R Planet:entity I PlanetName:string PlanetPos:vector Built Props:array WeaponBase:entity SurfaceCenter:vector TurretBase:entity HologramBase:entity
 @persist Weapons:array
 @outputs State
+@trigger none
+
 interval(80)
 if(first())
 {
@@ -31,7 +34,10 @@ if(first())
             #turret stuff
             print("yo wtf")
             WeaponBase = propSpawn("models/Boba_Fett/catwalk_build/gate_platform.mdl",SurfaceCenter+vec(0,0,40),ang(),1)
-            TurretBase = holoCreate(1,PlanetPos)
+            TurretBase = holoCreate(1,PlanetPos,vec(1),ang(-90,0,0))
+            HologramBase = holoCreate(2,PlanetPos,vec(1),ang(-90,0,0))
+            #holoModel(1,"models/player/items/engineer/clockwerk_hat.mdl")
+            #holoScaleUnits(1,vec(1,1,1)*R*3)
             Built = 1
             State = 1
         }
@@ -116,12 +122,14 @@ if(Built==0 & Sphere:count())
     switch(State) #1:Closed 2:Opening 3:Closing 4:Open 5:Repairing
     {
         case 1,
-            local WantedAngle = (Target-TurretBase:pos()):toAngle()
-            local CurrentAngle = TurretBase:angles()-ang(0,0,0) #the -ang(90,0,0) is just offset crap, you don't need to use it
-            local NewAngle = smoothness(CurrentAngle,WantedAngle,12.5)
-            holoAng(holoIndex(TurretBase),NewAngle)
-            break
+            Current = HologramBase:toLocal(TurretBase:angles()):forward()
+
+            Wanted = HologramBase:toLocal((Target - TurretBase:pos()):normalized():toAngle()):forward()
+            New = angnorm(smoothness2(Current,Wanted,17.6777777777777777777777777777777777*(80/1000))):setRoll(0)
             
+            holoAng(holoIndex(TurretBase),HologramBase:toWorld(New))
+            
+            break
         case 2,
             if(I>0){
                 while(perf() & I>0){
@@ -132,14 +140,13 @@ if(Built==0 & Sphere:count())
                 }
             }else{
                 State=4
-                holoAng(holoIndex(TurretBase),ang())
+                holoAng(holoIndex(TurretBase),ang(-90,0,0))
                 WeaponBase:deparent()
                 WeaponBase:unWeld(entity():isWeldedTo())
                 timer(100,1,"moveWepBase()","moveWepBase()")
                 timer(200,1,"deparentWeps()","deparentWeps()")
             }
             break
-            
         case 3,# Closing
             if(I==0){I++
                 WeaponBase:weld(entity():isWeldedTo())
