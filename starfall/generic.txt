@@ -1,9 +1,8 @@
 --@name 
 --@author 
 
-entities.entity(277):SetParent(entities.entity(273))
-
-hook.Add("Think","heh",function()
-    entities.entity(277):SetAngles(Angle(0,CurTime()*10,0))
-    entities.entity(273):SetAngles(Angle(0,0,CurTime()*10))  
-end)
+if SERVER then
+    hook.Add("Think","Think",function()
+    entities.entity(637):SetPos(entities.self():GetPos()+Vector(math.sin(CurTime())*100,0,0))
+    end)
+end

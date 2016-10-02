@@ -1,7 +1,43 @@
 @name 
 @inputs 
 @outputs 
-@persist 
+@persist First Vector:vector Count 
 @trigger 
 
-entity():isWeldedTo():lsConsumeResource("Energy",-100000)
+if(first())
+{
+    #include "lib/octree_builder"
+    #include "lib/hob"
+    local P = closestPlanet(entity():pos())
+    DebugMode = 0
+    ScanVolume = P:boxSize():x()
+    ScanOrigin = P:pos()
+    MaxDepth = 3
+    Ranger_Flags = "IW"
+    buildOctree()
+    
+    function loop(Octopus:table)
+    {
+        foreach(K,V:table=Octopus){
+            if(V["isBlocked",number]){
+                Vector = Vector + V["Position",vector]
+                Count++
+            }
+            if(V["Children",table]:count()>0){
+                loop(V["Children",table])
+            }
+        }
+    }
+}
+interval(1000)
+
+if(Octree_Status==0){
+    if(!First){
+        loop(Octree["Children",table])
+        Vector = Vector/Count
+        print(Vector)
+        holoCreate(1,Vector)
+        holoScale(1,vec(5,5,5))
+        First = 1
+    }
+}

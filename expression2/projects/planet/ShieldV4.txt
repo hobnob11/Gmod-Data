@@ -1,6 +1,6 @@
 @name ShieldV4
-@inputs Target:vector
-@outputs [Current Wanted]:vector New:angle
+@inputs Target:vector FireIn
+@outputs [Current Wanted]:vector New:angle Fire
 @persist Sphere:array R Planet:entity I PlanetName:string PlanetPos:vector Built Props:array WeaponBase:entity SurfaceCenter:vector TurretBase:entity HologramBase:entity
 @persist Weapons:array
 @outputs State
@@ -20,7 +20,7 @@ if(first())
                 local V = PlanetPos+Sphere[I,vector]
                 if(!V:isInWorld()) {interval(10) exit()}
                 local A = Sphere[I,vector]:toAngle():up():toAngle()
-                local E = propSpawn("models/hunter/plates/plate32x32.mdl",V,A,1)
+                local E = propSpawn("models/hunter/plates/plate16x16.mdl",V,A,1)
                 if(E:isValid()){
                     E:weld(entity():isWeldedTo())
                     E:setMaterial("models/props_combine/combine_fenceglow")
@@ -63,7 +63,7 @@ if(first())
     }
     function parentWepBase()
     {
-        WeaponBase:setPos(PlanetPos+vec(0,0,R+160))
+        WeaponBase:setPos(PlanetPos+vec(0,0,R*1.1))
         WeaponBase:setAng(ang(0,0,0))
         timer(100,1,"parentWepBase2()","parentWepBase2()")
     }
@@ -84,12 +84,17 @@ if(first())
     PlanetName = Planet:lsName()
     print(PlanetName)
     
-    #Planet Radius
-    R = ( max(Planet:boxSize():x(),Planet:boxSize():y(),Planet:boxSize():z())/2 ) *0.95
-    
-    #Planet pos
-    PlanetPos = (PlanetName=="Kobol" ? Planet:pos()+vec(0,0,250) : Planet:pos())
-    
+    if(map()=="gm_interplaneteryfunk")
+    {
+        R = 8192
+        PlanetPos = vec(-10000,-10000,-6000)
+    }else{
+        #Planet Radius
+        R = ( max(Planet:boxSize():x(),Planet:boxSize():y(),Planet:boxSize():z())/2 ) *0.95
+        
+        #Planet pos
+        PlanetPos =(PlanetName=="Kobol" ? Planet:pos()+vec(0,0,250) : Planet:pos())
+    }
     #Center of the surface of the planet
     rangerFlags("W")
     SurfaceCenter = rangerOffset(PlanetPos+vec(0,0,R),PlanetPos):position()
@@ -126,7 +131,6 @@ if(Built==0 & Sphere:count())
 
             Wanted = HologramBase:toLocal((Target - TurretBase:pos()):normalized():toAngle()):forward()
             New = angnorm(smoothness2(Current,Wanted,17.6777777777777777777777777777777777*(80/1000))):setRoll(0)
-            
             holoAng(holoIndex(TurretBase),HologramBase:toWorld(New))
             
             break
@@ -160,8 +164,9 @@ if(Built==0 & Sphere:count())
                     V = Weapons[X,entity]
                     V:constraintBreak()
                     V:lsLink(entity():isWeldedTo())
-                    V:setPos(SurfaceCenter+vec(cos(X*(360/Weapons:count()))*140,sin(X*(360/Weapons:count()))*140,20))
+                    V:setPos(SurfaceCenter+vec(cos(X*(360/Weapons:count()))*140,sin(X*(360/Weapons:count()))*140,50))
                     V:setAng(ang(0,0,0))
+                    V:createWire(entity(),"Fire","Fire")
                 }
                 timer(100,1,"parentWeps()","parentWeps()")
                 timer(200,1,"parentWepBase()","parentWepBase()")
@@ -192,3 +197,6 @@ if(Built==0 & Sphere:count())
             break
     }
 }
+
+
+Fire = FireIn

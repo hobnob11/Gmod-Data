@@ -63,7 +63,7 @@ DebugMode = 1
 ScanVolume = 5000
 ScanOrigin = entity():pos()#vec(0, 0, 0)
 MaxDepth = 4
-CheckEnts = 0
+Ranger_Flags = ""
 
 #--End Editable Variables-----
 
@@ -119,6 +119,7 @@ function table getOctantPoint(Point:vector) { return getOctantPoint(Point, Octre
 function number checkOctant(Octant:table)
 {
     local Size = Octant["Size",number]
+    rangerFlags()
     local Trace = rangerOffsetHull(Octant["Position",vector], Octant["Position",vector], vec(Size, Size, Size))
     
     if(Trace:hit())
@@ -208,7 +209,7 @@ function void builder()
 {
     local Finished = 0
     
-    while(perf() & !Finished)
+    while(perf() & !Finished & holoCanCreate())
     {
         #Check if this octant should be a leaf
         if(!checkOctant(Temp_CurOctant))
@@ -303,7 +304,7 @@ function void buildOctree()
         
         #Setup Hull Tracer
         rangerPersist(1)
-        rangerHitEntities(CheckEnts)
+        rangerFlags(Ranger_Flags)
         rangerFilter(players())
         
         #Create a new Octree
