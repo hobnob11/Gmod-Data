@@ -7,47 +7,97 @@
 	}
 	"2"
 	{
-		"name"		"Stacker"
-		"rconcommand"		"gmod_tool ol_stacker"
+		"name"		"Multi-Weld"
+		"rconcommand"		"gmod_tool multi_weld "
 	}
 	"3"
 	{
-		"name"		"Duplicator"
-		"rconcommand"		"gmod_tool adv_duplicator"
+		"name"		"Auto-Parenter"
+		"rconcommand"		"gmod_tool auto_parent "
 	}
 	"4"
 	{
-		"name"		"NS3"
-		"rconcommand"		"gmod_tool nebsupporter"
+		"name"		"No collide"
+		"rconcommand"		"gmod_tool nocollide"
 	}
 	"5"
-	{
-		"name"		"Nocollide"
-		"rconcommand"		"gmod_tool nocollide2"
-	}
-	"6"
 	{
 		"name"		"Weight"
 		"rconcommand"		"gmod_tool weight"
 	}
+	"6"
+	{
+		"name"		"Remover"
+		"rconcommand"		"gmod_tool remover"
+	}
 	"7"
 	{
-		"name"		"Color"
-		"rconcommand"		"gmod_tool color"
+		"name"		"Material"
+		"rconcommand"		"gmod_tool material"
 	}
 	"8"
 	{
-		"name"		"Material"
-		"rconcommand"		"gmod_tool sortedmaterial"
+		"name"		"Colour"
+		"rconcommand"		"gmod_tool colour"
 	}
 	"9"
 	{
-		"name"		"Luasool"
-		"rconcommand"		"gmod_tool luasool"
+		"name"		"E2"
+		"rconcommand"		"gmod_tool wire_expression2"
 	}
 	"10"
 	{
-		"name"		"E2"
-		"rconcommand"		"gmod_tool wire_expression2"
+		"name"		"Starfall"
+		"rconcommand"		"gmod_tool starfall_processor"
+	}
+	"11"
+	{
+		"name"		"Debugger"
+		"rconcommand"		"gmod_tool wire_debugger"
+	}
+	"12"
+	{
+		"name"		"Wire"
+		"rconcommand"		"gmod_tool wire_adv"
+	}
+	"13"
+	{
+		"name"		"Sim Data"
+		"rconcommand"		"gmod_tool wire_simulate_data"
+	}
+	"14"
+	{
+		"name"		"Precision"
+		"rconcommand"		"gmod_tool precision"
+	}
+	"15"
+	{
+		"name"		"PA"
+		"rconcommand"		"gmod_tool precision_align"
+	}
+	"16"
+	{
+		"name"		"Adv Dupe 1"
+		"rconcommand"		"gmod_tool adv_duplicator"
+	}
+	"17"
+	{
+		"name"		"Adv Dupe 2"
+		"rconcommand"		"gmod_tool advdupe2"
+	}
+	"18"
+	{
+		"name"		"Part Assembler"
+		"rconcommand"		"gmod_tool sbep_part_assembler "
+	}
+	"19"
+	{
+		"name"		"Stacker"
+		"rconcommand"		"gmod_tool stacker "
+	}
+	"20"
+	{
+		"name"		"Generator Tool"
+		"rconcommand"		"gmod_tool sc_generators"
 	}
 }
