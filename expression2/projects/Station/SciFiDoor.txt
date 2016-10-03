@@ -9,6 +9,10 @@ if(first()){
     Closed:unWeld(Open)
     holoCreate(1,Open:pos())
     holoModel(1,"models/lt_c/sci_fi/door_airlock_96x192x16.mdl")
+    local Skin = 2
+    holoSkin(1,Skin)
+    entity():isWeldedTo():setSkin(Skin)
+    entity():setSkin(Skin)
     holoAng(1,Open:angles())
     Closed:setAlpha(0)
     Closed:setPos(Open:pos())

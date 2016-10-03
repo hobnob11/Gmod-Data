@@ -18,7 +18,7 @@ if SERVER then
         if Trace.Hit then return true else return false end
     end
     Memes = false
-    hoboctant = SC.Octree.Builder:New(entities.self():GetPos(), 8192, 5, true, 0.005, function() loop(hoboctant.RootOctant) Memes = true end)
+    hoboctant = SC.Octree.Builder:New(entities.self():GetPos(), 4096, 5, true, 0.5, function() loop(hoboctant.RootOctant) Memes = true end)
     hoboctant:Rebuild()
     local octols = {}
     function loop(octo)
@@ -51,7 +51,7 @@ if SERVER then
         while I<#octols and holograms.canSpawn() and quotaCheck(0.8) do
             if I<#octols and holograms.canSpawn() then
                 I=I+1
-                if depthMeter(octols[I])==hoboctant.MaxDepth then
+                if depthMeter(octols[I])>=0 then
                     local E = holograms.create(octols[I].Position,Angle(0,0,0),"models/sprops/cuboids/height06/size_1/cube_6x6x6.mdl",Vector(0.16,0.16,0.16)*octols[I].Size)
                     E:SetMaterial("models/wireframe")
                     E:SetColor(Color(0,255,0,100))
