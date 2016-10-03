@@ -1,0 +1,62 @@
+--@name octreeeeeeeeeeeeeeeeeeeeees
+--@author Hab
+--@include lib/sekret/octree.txt
+if SERVER then 
+    require("lib/sekret/octree.txt")
+    
+    --override this so we can hit what we want. 
+    function SC.Octree.Octant:Check(CheckEntities)
+        local Size = self.Size
+        local Trace = trace.TraceHull(
+            self.Position, 
+    	    self.Position, 
+    	    Vector(self.Size * -0.5, self.Size * -0.5, self.Size * -0.5), 
+    	    Vector(self.Size * 0.5, self.Size * 0.5, self.Size * 0.5),
+    	    {},
+            CheckEntities and nil or MASK_NPCWORLDSTATIC
+        )
+        if Trace.Hit then return true else return false end
+    end
+
+    hoboctant = SC.Octree.Builder:New(entities.self():GetPos(), 512, 4, true, 0.01, function() loop(hoboctant.RootOctant) end)
+    hoboctant:Rebuild()
+    local octols = {}
+    function loop(octo)
+        
+        for I = 1 , #octo.Children do
+            local V = octo.Children[I]
+            if #V.Children > 0 then 
+                loop(V)
+            end
+            table.insert(octols,V)
+        end
+    end
+    
+    function depthMeter(octo)
+        local Depth = 1
+        local O = octo
+        for I = 1 , hoboctant.MaxDepth do
+            if O.Parent == hoboctant.RootOctant then 
+                return Depth
+            else
+                Depth = Depth + 1 
+                O = O.Parent
+            end
+        end
+    end
+    local I = 0
+    hook.Add("Think","Think",function()
+        if I<#octols and holograms.canSpawn() then
+            I=I+1
+            if depthMeter(octols[I])>3 then
+                local E = holograms.create(octols[I].Position,Angle(0,0,0),"models/sprops/cuboids/height06/size_1/cube_6x6x6.mdl",Vector(0.16,0.16,0.16)*octols[I].Size)
+                print(octols[I].Position)
+                E:SetColor(Color(0,255,0))
+                if octols[I].IsBlocked then 
+                    E:SetColor(Color(255,0,0))
+                end
+            end
+        end
+    end)
+
+end
