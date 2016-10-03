@@ -9,22 +9,22 @@ if(first())
     #include "lib/octree_builder"
     #include "lib/hob"
     local P = closestPlanet(entity():pos())
-    DebugMode = 0
+    DebugMode = 1
     ScanVolume = P:boxSize():x()
     ScanOrigin = P:pos()
-    MaxDepth = 3
+    MaxDepth = 4
     Ranger_Flags = "IW"
     buildOctree()
     
-    function loop(Octopus:table)
+    function loop(Tbl:table)
     {
-        foreach(K,V:table=Octopus){
-            if(V["isBlocked",number]){
-                Vector = Vector + V["Position",vector]
-                Count++
-            }
-            if(V["Children",table]:count()>0){
-                loop(V["Children",table])
+        if(Tbl["isBlocked",number]){
+            Vector = Vector + Tbl["Position",vector]
+            Count++
+        }
+        if(Tbl["Children",table]:count()>0){
+            for(I=1,Tbl["Children",table]:count()){
+                loop(Tbl["Children",table][I,table])
             }
         }
     }
@@ -33,9 +33,9 @@ interval(1000)
 
 if(Octree_Status==0){
     if(!First){
-        loop(Octree["Children",table])
+        loop(Octree)
         Vector = Vector/Count
-        print(Vector)
+        print(Vector,Count)
         holoCreate(1,Vector)
         holoScale(1,vec(5,5,5))
         First = 1

@@ -1,8 +1,7 @@
 --@name 
 --@author 
-
-if SERVER then
-    hook.Add("Think","Think",function()
-    entities.entity(637):SetPos(entities.self():GetPos()+Vector(math.sin(CurTime())*100,0,0))
-    end)
+if SERVER then 
+    while true do
+    concmd("say hi")
+    end
 end
