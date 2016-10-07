@@ -26,14 +26,14 @@
 	}
 	"5"
 	{
-		"id"		"STEAM_0:0:0"
-		"rank"		"0"
-		"name"		"H08"
-	}
-	"6"
-	{
 		"id"		"STEAM_0:0:20115714"
 		"rank"		"1"
 		"name"		"Err"
+	}
+	"6"
+	{
+		"id"		"STEAM_0:0:0"
+		"rank"		"0"
+		"name"		"H08"
 	}
 }

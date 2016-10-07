@@ -1,43 +1,8 @@
 @name 
 @inputs 
-@outputs 
-@persist First Vector:vector Count 
+@outputs V:vector E:entity
+@persist 
 @trigger 
-
-if(first())
-{
-    #include "lib/octree_builder"
-    #include "lib/hob"
-    local P = closestPlanet(entity():pos())
-    DebugMode = 1
-    ScanVolume = P:boxSize():x()
-    ScanOrigin = P:pos()
-    MaxDepth = 4
-    Ranger_Flags = "IW"
-    buildOctree()
-    
-    function loop(Tbl:table)
-    {
-        if(Tbl["isBlocked",number]){
-            Vector = Vector + Tbl["Position",vector]
-            Count++
-        }
-        if(Tbl["Children",table]:count()>0){
-            for(I=1,Tbl["Children",table]:count()){
-                loop(Tbl["Children",table][I,table])
-            }
-        }
-    }
-}
-interval(1000)
-
-if(Octree_Status==0){
-    if(!First){
-        loop(Octree)
-        Vector = Vector/Count
-        print(Vector,Count)
-        holoCreate(1,Vector)
-        holoScale(1,vec(5,5,5))
-        First = 1
-    }
-}
+interval(100)
+E = findPlayerByName("nj")
+V = E:pos()

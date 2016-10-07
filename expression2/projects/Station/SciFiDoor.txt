@@ -3,13 +3,13 @@
 @persist A Closed:entity Open:entity Go Opening
 @model models/lt_c/sci_fi/door_airlock_96x192x16_static.mdl
 if(first()){
+    runOnLast(1)
     Closed = entity()
     Closed:freeze()
     Open = entity():isWeldedTo()
-    Closed:unWeld(Open)
     holoCreate(1,Open:pos())
     holoModel(1,"models/lt_c/sci_fi/door_airlock_96x192x16.mdl")
-    local Skin = 2
+    local Skin = 1
     holoSkin(1,Skin)
     entity():isWeldedTo():setSkin(Skin)
     entity():setSkin(Skin)
@@ -23,6 +23,9 @@ if(first()){
     timer("parent",100)
     runOnLast(1)
     runOnUse(1)
+}
+if(dupefinished()){
+    reset()
 }
 if(clk("parent")){
     Open:parentTo(Closed)
@@ -50,4 +53,6 @@ if(Go==1)
 
 if(last()){
     Open:deparent()
+    Open:setAlpha(255)
+    Closed:deparent()
 }

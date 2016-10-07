@@ -20,7 +20,7 @@ if(first())
                 local V = PlanetPos+Sphere[I,vector]
                 if(!V:isInWorld()) {interval(10) exit()}
                 local A = Sphere[I,vector]:toAngle():up():toAngle()
-                local E = propSpawn("models/hunter/plates/plate16x16.mdl",V,A,1)
+                local E = propSpawn("models/hunter/plates/plate32x32.mdl",V,A,1)
                 if(E:isValid()){
                     E:weld(entity():isWeldedTo())
                     E:setMaterial("models/props_combine/combine_fenceglow")
@@ -86,7 +86,7 @@ if(first())
     
     if(map()=="gm_interplaneteryfunk")
     {
-        R = 8192
+        R = 4864
         PlanetPos = vec(-10000,-10000,-6000)
     }else{
         #Planet Radius
@@ -100,7 +100,7 @@ if(first())
     SurfaceCenter = rangerOffset(PlanetPos+vec(0,0,R),PlanetPos):position()
     
     #sphere! :D
-    array():sphere(R,15,"sphereFinish",0)
+    array():sphere(R,7,"sphereFinish",0)
 }
 if(Built==0 & Sphere:count())
 {
