@@ -30,4 +30,14 @@
 		"ca"		"0"
 		"rconcommand"		"gmod_tool wire_adv"
 	}
+	"4"
+	{
+		"name"		"Starfall - Processor"
+		"cb"		"255"
+		"exp"		"0"
+		"cr"		"0"
+		"cg"		"255"
+		"ca"		"0"
+		"rconcommand"		"gmod_tool starfall_processor"
+	}
 }

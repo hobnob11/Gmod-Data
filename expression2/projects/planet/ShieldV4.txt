@@ -23,7 +23,7 @@ if(first())
                 local E = propSpawn("models/hunter/plates/plate32x32.mdl",V,A,1)
                 if(E:isValid()){
                     E:weld(entity():isWeldedTo())
-                    E:setMaterial("models/props_combine/combine_fenceglow")
+                   # E:setMaterial("models/props_combine/combine_fenceglow")
                     Props[I,entity] = E
                 }else{
                     interval(10) 
@@ -93,14 +93,14 @@ if(first())
         R = ( max(Planet:boxSize():x(),Planet:boxSize():y(),Planet:boxSize():z())/2 ) *0.95
         
         #Planet pos
-        PlanetPos =(PlanetName=="Kobol" ? Planet:pos()+vec(0,0,250) : Planet:pos())
+        PlanetPos = (PlanetName=="Kobol" ? Planet:pos()+vec(0,0,250) : Planet:pos())
     }
     #Center of the surface of the planet
     rangerFlags("W")
     SurfaceCenter = rangerOffset(PlanetPos+vec(0,0,R),PlanetPos):position()
     
     #sphere! :D
-    array():sphere(R,7,"sphereFinish",0)
+    array():sphere(R,8,"sphereFinish",0)
 }
 if(Built==0 & Sphere:count())
 {

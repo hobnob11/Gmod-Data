@@ -1,0 +1,21 @@
+
+10/10[20:33] - H08 spawned models/sprops/cylinders/size_3/cylinder_6x48.mdl
+10/10[20:33] - H08 spawned models/sprops/rectangles/size_2/rect_12x72x3.mdl
+10/10[20:33] - H08 spawned models/sprops/rectangles/size_2/rect_12x72x3.mdl
+10/10[20:33] - H08 spawned models/sprops/rectangles/size_2_5/rect_18x18x3.mdl
+10/10[20:33] - H08 spawned models/sprops/rectangles/size_4_5/rect_42x42x3.mdl
+10/10[20:33] - H08 spawned models/sprops/cylinders/size_4/cylinder_9x36.mdl
+10/10[20:33] - H08 spawned models/sprops/rectangles/size_2/rect_12x72x3.mdl
+10/10[20:33] - H08 spawned models/sprops/geometry/fdisc_12.mdl
+10/10[20:33] - H08 spawned models/sprops/rectangles/size_2/rect_12x72x3.mdl
+10/10[20:33] - H08 spawned models/sprops/rectangles/size_2_5/rect_18x18x3.mdl
+10/10[20:35] - H08 spawned models/sprops/cylinders/size_3/cylinder_6x48.mdl
+10/10[20:35] - H08 spawned models/sprops/rectangles/size_2/rect_12x72x3.mdl
+10/10[20:35] - H08 spawned models/sprops/rectangles/size_2/rect_12x72x3.mdl
+10/10[20:35] - H08 spawned models/sprops/rectangles/size_2_5/rect_18x18x3.mdl
+10/10[20:35] - H08 spawned models/sprops/rectangles/size_4_5/rect_42x42x3.mdl
+10/10[20:35] - H08 spawned models/sprops/cylinders/size_4/cylinder_9x36.mdl
+10/10[20:35] - H08 spawned models/sprops/rectangles/size_2/rect_12x72x3.mdl
+10/10[20:35] - H08 spawned models/sprops/geometry/fdisc_12.mdl
+10/10[20:35] - H08 spawned models/sprops/rectangles/size_2/rect_12x72x3.mdl
+10/10[20:35] - H08 spawned models/sprops/rectangles/size_2_5/rect_18x18x3.mdl

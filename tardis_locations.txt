@@ -1,0 +1,1 @@
+~"sb_omen_v2v":{{~"angv":a0,0,0;"posv":v1,1,1;"namev":"center of pastav"}{~"angv":a0,0,0;"posv":v9376.6171875,5071.755859375,-7770.470703125;"namev":"Razorv"}}
