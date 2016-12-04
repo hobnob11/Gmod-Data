@@ -1,7 +1,38 @@
-@name 
-@inputs 
-@outputs E
-@persist 
-@trigger 
+@name fox's turret
+@inputs Target:entity Gun:entity
+@persist Go
 
-E = findPlayerByName("Ka")
+interval(100)
+ 
+if(first()){
+    runOnLast(1)
+
+    #include "lib/hob"
+ 
+    holoCreate(1)
+    holoPos(1,entity():pos())
+    holoAng(1,entity():angles())
+    holoParent(1,entity())
+ 
+    holoCreate(2)
+    holoPos(2,Gun:pos())
+    holoAng(2,Gun:angles())
+ 
+    function p(){
+        Gun:parentTo(holoEntity(2))
+        timer(100,1,"memes","p2()")
+    }
+    function p2(){
+        holoPos(2,holoEntity(1):pos())
+        holoParent(2,1)
+        Go = 1
+    }
+    timer(100,1,"lol","p()")
+}
+if(Go){
+    holoAng(2,smoothness2(holoEntity(1):pos(),Target:pos(),15))
+}
+if(last()){
+    Gun:deparent()
+
+    }

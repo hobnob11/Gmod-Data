@@ -10,8 +10,8 @@ if(first() | duped() | dupefinished()){
     Center = (entity():isWeldedTo():isValid() ? entity():isWeldedTo() : entity())
     Floof = 5
     Wham  = 4
-    Zoom  = 0.000002
-    TargetA =playersAdmins()[random(1,playersAdmins():count()),entity]:pos()
+    Zoom  = 0.000001
+    TargetA = findPlayerByName("Slam"):pos()
     #TargetA = vec()
     Target = entity():pos()+vec(0,0,50000)
     Center:soundPlay(1,0,"thrusters/rocket04.wav")
@@ -172,8 +172,11 @@ timer("Move",100)
     
     Center:setVel(SpeedEND)
     
-    if(Center:pos():distance(TargetA)<300){
-        fx("sc_shipsplosion_capital",entity():pos(),1,ang(),vec(0,0,1),1)
+    if(Center:pos():distance(TargetA)<500){
+        fx("sc_shipsplosion_titan",entity():pos(),1,ang(),vec(0,0,1),1)
+        fx("sc_shipsplosion_titan",entity():pos(),1,ang(),vec(0,0,1),1)
+        fx("sc_shipsplosion_titan",entity():pos(),1,ang(),vec(0,0,1),1)
+        fx("sc_shipsplosion_titan",entity():pos(),1,ang(),vec(0,0,1),1)
         selfDestructAll()
     }
     

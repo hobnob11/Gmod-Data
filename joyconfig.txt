@@ -1,10 +1,8 @@
 GUID Guide
-	{390948960-38494-4582-128:1:68:69:83:84:0:0} = Controller (XBOX 360 For Windows)
-	{301934816-10462-1-0:0:80:73:68:86:73:68} = Controller (XBOX 360 For Windows)
 Binding List (Lower entries override higher entries)
 [GUID START]
-	{301934816-10462-1-0:0:80:73:68:86:73:68}=Controller (XBOX 360 For Windows)
 	{390948960-38494-4582-128:1:68:69:83:84:0:0}=Controller (XBOX 360 For Windows)
+	{301934816-10462-1-0:0:80:73:68:86:73:68}=Controller (XBOX 360 For Windows)
 [GUID END]
 [START]
 jm_1
