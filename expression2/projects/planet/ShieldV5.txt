@@ -1,0 +1,8 @@
+@name ShieldV5
+@trigger none
+
+local M = entity():isWeldedTo():model()
+
+holoCreate(1)
+holoModel(1,M)
+holoAnim(1,1)

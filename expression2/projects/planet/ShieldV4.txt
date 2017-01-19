@@ -23,7 +23,7 @@ if(first())
                 local E = propSpawn("models/hunter/plates/plate32x32.mdl",V,A,1)
                 if(E:isValid()){
                     E:weld(entity():isWeldedTo())
-                   # E:setMaterial("models/props_combine/combine_fenceglow")
+                    E:setMaterial("models/props_combine/combine_fenceglow")
                     Props[I,entity] = E
                 }else{
                     interval(10) 
@@ -130,7 +130,7 @@ if(Built==0 & Sphere:count())
             Current = HologramBase:toLocal(TurretBase:angles()):forward()
 
             Wanted = HologramBase:toLocal((Target - TurretBase:pos()):normalized():toAngle()):forward()
-            New = angnorm(smoothness2(Current,Wanted,17.6777777777777777777777777777777777*(80/1000))):setRoll(0)
+            New = angnorm(smoothness2(Current,Wanted,45*(80/1000))):setRoll(0)
             holoAng(holoIndex(TurretBase),HologramBase:toWorld(New))
             
             break

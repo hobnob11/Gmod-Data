@@ -64,9 +64,9 @@ function array icosphere(R,Devisions)
 }
 
 #because fuck holo index's
-function void entity:hSetAng( Angle:angle )
+function void entity:holoAng( Angle:angle )
 {
-    holoAng(holoIndex(This), Angle)
+    holoAng(holoEntity(This), Angle)
 }
 
 ######DIV TECH ANGLE MATH#####

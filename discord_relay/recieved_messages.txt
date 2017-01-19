@@ -1,0 +1,2183 @@
+
+[
+	
+	{
+		"content": ":O",
+		"id": "266382879221612545",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "👏",
+		"id": "266382939330183169",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "`👏\n`",
+		"id": "266382957592313856",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "So it's getting messages, but not sending to discord?",
+		"id": "266383000776736782",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "the things putty supports",
+		"id": "266383007420645390",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "thats the server",
+		"id": "266383041897824267",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "lol",
+		"id": "266383056573562882",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "my client was seeing nothing, but new addons usually require client restarts",
+		"id": "266383110340345873",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "<:DD:254035375650111489>",
+		"id": "266383121711235083",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "But no prints from <@266351967406784514>",
+		"id": "266383125385445388",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "lol the URL",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383245300596736"
+	},
+	
+	{
+		"content": "what the shit",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383384098373633"
+	},
+	
+	{
+		"content": "the bot",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383388116647937"
+	},
+	
+	{
+		"content": "actually spawns",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383409054482444"
+	},
+	
+	{
+		"content": "and walks forward",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383433331245056"
+	},
+	
+	{
+		"content": "this is fucking creepy",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383435193516032"
+	},
+	
+	{
+		"content": "Maybe have a var in the config for ip address so we can subsitute those resolved IP's for gmod1.etc",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383439765307392"
+	},
+	
+	{
+		"content": "Yeah?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383458178301952"
+	},
+	
+	{
+		"content": "You've never seen the gmod bots?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383506039504902"
+	},
+	
+	{
+		"content": "test",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383512872026125"
+	},
+	
+	{
+		"content": ":D",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383525387829251"
+	},
+	
+	{
+		"content": "Is Main dev still online?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383585269776386"
+	},
+	
+	{
+		"content": "my dev is",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383603846348800"
+	},
+	
+	{
+		"content": "Can someone join it?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383604345470979"
+	},
+	
+	{
+		"content": "yes",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383617414922250"
+	},
+	
+	{
+		"content": "im just not connected",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383630958329868"
+	},
+	
+	{
+		"content": "I am wondering if",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383637816016921"
+	},
+	
+	{
+		"content": "KANZ",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383643570733063"
+	},
+	
+	{
+		"content": "GO CONNECT",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383676281978892"
+	},
+	
+	{
+		"content": "AAA",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383682317713410"
+	},
+	
+	{
+		"content": "The bots will relay between servers",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383683458433025"
+	},
+	
+	{
+		"content": "Because that would be so- fuuuuuck",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383691964612609"
+	},
+	
+	{
+		"content": "DISCORD MESSAGES",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383692786565120"
+	},
+	
+	{
+		"content": "NOW IS NOT THE TIME",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383698495012867"
+	},
+	
+	{
+		"content": "GOGOGOG",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383710268555264"
+	},
+	
+	{
+		"content": "AISJF{AOISPEJGR",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383714483699715"
+	},
+	
+	{
+		"content": "THERES ONLY ONE MEMER THAT CAN SAVE US NOW",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383764735787009"
+	},
+	
+	{
+		"content": "<@185176899352264705>",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383790165721089"
+	},
+	
+	{
+		"content": "WE NEED YOU!",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266383793823285249"
+	},
+	
+	{
+		"content": "Wait aren't the IP's for both the same?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383828212383744"
+	},
+	
+	{
+		"content": "It's just me.h08.us, right?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383904951238658"
+	},
+	
+	{
+		"content": "Both local and hob-de, oh",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383941022253057"
+	},
+	
+	{
+		"content": "but same port?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383954368528386"
+	},
+	
+	{
+		"content": "can we not join your local then?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266383992121458700"
+	},
+	
+	{
+		"content": "fukit",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266384197197758464"
+	},
+	
+	{
+		"content": "i cri",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266385303659347970"
+	},
+	
+	{
+		"content": "lambda base, do you read hob-co local!",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266385317064343552"
+	},
+	
+	{
+		"content": "every tiem",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266385330444173312"
+	},
+	
+	{
+		"content": "awwww",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266385347578036224"
+	},
+	
+	{
+		"content": "okay",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266385355953930240"
+	},
+	
+	{
+		"content": "we need multiple bots",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266385375453380608"
+	},
+	
+	{
+		"content": "weee",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266385399478353921"
+	},
+	
+	{
+		"content": "unless we can like",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266385436530704384"
+	},
+	
+	{
+		"content": "See if it's ignoring it's own messages somewhere?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266385507443802114"
+	},
+	
+	{
+		"content": "yeah",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266385520035233793"
+	},
+	
+	{
+		"content": "Isn't it \\n bones \\n ?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266386046105681921"
+	},
+	
+	{
+		"content": "either work?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266386090477355008"
+	},
+	
+	{
+		"content": "none",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266386118096715777"
+	},
+	
+	{
+		"content": "```Lua\n        if body[i].mentions then\n            for k,v in pairs(body[i].mentions) do\n                local tofind = \"(<@!\" .. v.id .. \">)\"\n                local toreplace = \"@\" .. v.username\n                body[i].content = string.gsub(body[i].content, tofind, toreplace, 1)\n            end\n        end\n```",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386253295910914"
+	},
+	
+	{
+		"content": "it actually has code to fix mentions",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386272875053056"
+	},
+	
+	{
+		"content": "i wonder why it doesnt work",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386291631980555"
+	},
+	
+	{
+		"content": "yeah we just need multiple bots",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386721820639245"
+	},
+	
+	{
+		"content": "tl;dr",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386733476610049"
+	},
+	
+	{
+		"content": "its not ignoring itself because it doesnt trigger its own webhooks",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386791303610378"
+	},
+	
+	{
+		"content": "Ooooh",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266386815018074112"
+	},
+	
+	{
+		"content": "so *shrug*",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386816146472961"
+	},
+	
+	{
+		"content": "Hmm",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266386833359765507"
+	},
+	
+	{
+		"content": "how hard was it to make 1 bot?",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386858743693313"
+	},
+	
+	{
+		"content": "cant we make more than",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386870089416704"
+	},
+	
+	{
+		"content": "Pretty easy",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266386879652429844"
+	},
+	
+	{
+		"content": "Yeah",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266386886090686474"
+	},
+	
+	{
+		"content": "well",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386902444146688"
+	},
+	
+	{
+		"content": "gogo",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386905946390529"
+	},
+	
+	{
+		"content": "...is 2am",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266386930772475914"
+	},
+	
+	{
+		"content": "gib Hob-Co LocalDev bot",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386945372848129"
+	},
+	
+	{
+		"content": "proof of concept: huge success",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266386959612510217"
+	},
+	
+	{
+		"content": "I WANA GET INTERMEME COMMUNICATION WORKING",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266386974833770507"
+	},
+	
+	{
+		"content": "YOU'RE THE ONLY ONE WHO CAN",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266387009080262666"
+	},
+	
+	{
+		"content": "It's hard to overstate my need for sleeptime",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266387013136154625"
+	},
+	
+	{
+		"content": "help us obieone kanzobie",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266387139216801793"
+	},
+	
+	{
+		"content": "it gets what the server sees",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266387310352793611"
+	},
+	
+	{
+		"content": "heh",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266387314245238784"
+	},
+	
+	{
+		"content": "hahaha",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266387505346117635"
+	},
+	
+	{
+		"content": "this old meme",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266387528976826370"
+	},
+	
+	{
+		"content": "",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266387708795027456"
+	},
+	
+	{
+		"content": "a message was just lost?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266387809323974657"
+	},
+	
+	{
+		"content": "huh",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266387827988758539"
+	},
+	
+	{
+		"content": "\"hm\"",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266387829452570624"
+	},
+	
+	{
+		"content": "Oh it lose my hahaha and your hm",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266387928089886720"
+	},
+	
+	{
+		"content": "curious",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266387943793491968"
+	},
+	
+	{
+		"content": "\"Lλmbdλ: A soon&trade a.\"",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388045740244993"
+	},
+	
+	{
+		"content": "thanks server",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388053164163073"
+	},
+	
+	{
+		"content": "HOO",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388103642611712"
+	},
+	
+	{
+		"content": "https://imgur.com/a/0hLY0",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388113214013440"
+	},
+	
+	{
+		"content": "is that still brok- ooh right, weapons-rewrite",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266388118163292160"
+	},
+	
+	{
+		"content": "PL JUST GOT BOMBED TO FUCK",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388142880325632"
+	},
+	
+	{
+		"content": "HOB STOP LOOKING AT MEMES",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266388148769128448"
+	},
+	
+	{
+		"content": "we broke chat due to weapons.",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388151939891200"
+	},
+	
+	{
+		"content": "120B",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388179064455168"
+	},
+	
+	{
+		"content": "mmmmmmm, tasty tasty bombs",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388217199067137"
+	},
+	
+	{
+		"content": "i don't give a fuc my sub just expired",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388227173253120"
+	},
+	
+	{
+		"content": "fam",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388259578314752"
+	},
+	
+	{
+		"content": "u want a plex?",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388276124844032"
+	},
+	
+	{
+		"content": "nooo.",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388304050520066"
+	},
+	
+	{
+		"content": "buy me scholar of the first sin",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388324753735690"
+	},
+	
+	{
+		"content": "is that the ds3 dlc?",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388374183477248"
+	},
+	
+	{
+		"content": "or the 2?",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388384895860738"
+	},
+	
+	{
+		"content": "the remake of 2",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388399554953217"
+	},
+	
+	{
+		"content": "because ascuse me",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388406253256707"
+	},
+	
+	{
+		"content": "checkurself",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388421033852928"
+	},
+	
+	{
+		"content": "mmmmmmmmmm",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388435835682816"
+	},
+	
+	{
+		"content": "i might buy you 2",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388458560290817"
+	},
+	
+	{
+		"content": "2 copies of scholar of the last sin",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388493381402626"
+	},
+	
+	{
+		"content": "y2?",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388509303111681"
+	},
+	
+	{
+		"content": "first",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388515334389770"
+	},
+	
+	{
+		"content": "fuck.",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388521395159041"
+	},
+	
+	{
+		"content": "you said you'd buy me 2",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388540521185281"
+	},
+	
+	{
+		"content": "dark souls 2",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388574193188865"
+	},
+	
+	{
+		"content": "not 2 copies",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388582686523392"
+	},
+	
+	{
+		"content": "u fuck",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388587141005312"
+	},
+	
+	{
+		"content": "is it",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388638936465408"
+	},
+	
+	{
+		"content": "not £40",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388652106579968"
+	},
+	
+	{
+		"content": "it's unclear",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388675540025356"
+	},
+	
+	{
+		"content": "therefore try mount",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388688785768448"
+	},
+	
+	{
+		"content": "do u own origional ds2?",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388762009796609"
+	},
+	
+	{
+		"content": "on stem",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388767605129216"
+	},
+	
+	{
+		"content": "no",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388773879676928"
+	},
+	
+	{
+		"content": "wait",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388781899186186"
+	},
+	
+	{
+		"content": "so i do",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388819916357633"
+	},
+	
+	{
+		"content": "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388847523397633"
+	},
+	
+	{
+		"content": "on one condition",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388868528472064"
+	},
+	
+	{
+		"content": "no don't actually",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388889004933120"
+	},
+	
+	{
+		"content": "i was just fuckin around",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266388908772818945"
+	},
+	
+	{
+		"content": "you drop the \"must git gud\" no mp meme and actually play it",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388934487965696"
+	},
+	
+	{
+		"content": "with me <:DD:254035375650111489>",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388946127159318"
+	},
+	
+	{
+		"content": "i never finished two",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266388986908377089"
+	},
+	
+	{
+		"content": "well okay actually",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389034027188235"
+	},
+	
+	{
+		"content": "i was actually watching a let's play of 2 so",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389075060195329"
+	},
+	
+	{
+		"content": "okay it comes down to has natwest reopened yet",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266389082362347530"
+	},
+	
+	{
+		"content": "it's like the one game in the series i can do mp through first time",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389127321223180"
+	},
+	
+	{
+		"content": "Hey Hob",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266389170241536002"
+	},
+	
+	{
+		"content": "<@266388433356849162>",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266389192924200961"
+	},
+	
+	{
+		"content": "we has 2 bots?",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266389222913605633"
+	},
+	
+	{
+		"content": "what type in config to change",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266389236880637953"
+	},
+	
+	{
+		"content": "hey kanz come buy dark souls 2 scholar of the big dick fuckin go find king vendrick",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389275795390464"
+	},
+	
+	{
+		"content": "he ran away",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389284095787009"
+	},
+	
+	{
+		"content": "hmm",
+		"author": 
+		{
+			"username": "andrew[andrboot]",
+			"id": "180601553168629760"
+		},
+		"id": "266389311186927617"
+	},
+	
+	{
+		"content": "<@179613386747674624> @Hobnob voice chat in #mod chat?",
+		"author": 
+		{
+			"username": "andrew[andrboot]",
+			"id": "180601553168629760"
+		},
+		"id": "266389367071703042"
+	},
+	
+	{
+		"content": "noone uses voice chat lul",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266389405428613131"
+	},
+	
+	{
+		"content": "its k",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266389409375453194"
+	},
+	
+	{
+		"content": "`https://discordapp.com/api/webhooks/266389232178823168/I2HxZcM8wJd6_8IZmJpkYNLRm3PaYOM3MKXFOiLTAHLcaqxovEkL7ZJ21Xa8G6HuNVxB` is webhook, botID is 266388433356849162",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266389413133549569"
+	},
+	
+	{
+		"content": "well teamspeak then?",
+		"author": 
+		{
+			"username": "andrew[andrboot]",
+			"id": "180601553168629760"
+		},
+		"id": "266389424076488704"
+	},
+	
+	{
+		"content": "problem was fixed",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266389458419449858"
+	},
+	
+	{
+		"content": "am going to bed now -ish",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266389481114959872"
+	},
+	
+	{
+		"content": "confirmed",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389609183707136"
+	},
+	
+	{
+		"content": "no mic",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389623226368000"
+	},
+	
+	{
+		"content": "oh god now i'm using text in discord for teamspeak voice",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389660400484365"
+	},
+	
+	{
+		"content": "fuck the pain away",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389668654874636"
+	},
+	
+	{
+		"content": "bot token?",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266389669468569600"
+	},
+	
+	{
+		"content": "<@179613386747674624> kanz get in big teamspeak clak needs a work",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266389767560757249"
+	},
+	
+	{
+		"content": "indeed.",
+		"id": "266389938734497794",
+		"author": 
+		{
+			"id": "185176899352264705",
+			"username": "Lambda217"
+		}
+	},
+	
+	{
+		"content": "i think",
+		"id": "266389966609711115",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "thats using the new bot",
+		"id": "266389977871548419",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "lam",
+		"id": "266389993642000386",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "I think so",
+		"id": "266389997198770186",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "u still on dev?",
+		"id": "266390003960119296",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "pls pls pls pls pls",
+		"id": "266390092287836161",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "BAH",
+		"id": "266390100215201793",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "fuck",
+		"id": "266390128811966485",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "are you sure i dont need a new bot token kanz?",
+		"id": "266390159795290112",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": "You're not using the new bot-token?",
+		"id": "266390289663393792",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "The one I DM'd you?",
+		"id": "266390307858415616",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "..",
+		"id": "266390317295599617",
+		"author": 
+		{
+			"id": "181324798046109697",
+			"username": "Hobnob"
+		}
+	},
+	
+	{
+		"content": ":v",
+		"id": "266390335356141579",
+		"author": 
+		{
+			"id": "179613386747674624",
+			"username": "Kanzuke"
+		}
+	},
+	
+	{
+		"content": "come on kanz into the ts",
+		"id": "266390347737726987",
+		"author": 
+		{
+			"id": "185176899352264705",
+			"username": "Lambda217"
+		}
+	},
+	
+	{
+		"content": "DMS DONT GO BOOP",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390424187437057"
+	},
+	
+	{
+		"content": "also im fixing this, buying you SOFS",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390457385353217"
+	},
+	
+	{
+		"content": "I just wanted to set up this bot so I could go to sleep",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266390460669362186"
+	},
+	
+	{
+		"content": "and then going to bed",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390469079072769"
+	},
+	
+	{
+		"content": "scholar of the big nap time",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390512074752000"
+	},
+	
+	{
+		"content": "you're cutting into my \"waste money on plex\" meme",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390527878889473"
+	},
+	
+	{
+		"content": "\"oh no\"",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390538025041920"
+	},
+	
+	{
+		"content": "now i can only buy 6 plex instead of 8",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390596858544128"
+	},
+	
+	{
+		"content": "the shame",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390607226732555"
+	},
+	
+	{
+		"content": "whatever consider it hiring me and my dumb knight face as a coop buddy",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390610317934592"
+	},
+	
+	{
+		"content": "glorious co-",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390618232586240"
+	},
+	
+	{
+		"content": "HEY",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390624289292288"
+	},
+	
+	{
+		"content": "LET'S ALL LOOK FORWARD TO",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390650092650496"
+	},
+	
+	{
+		"content": "SMELTER DEMON",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390658074279956"
+	},
+	
+	{
+		"content": "i got pretty far in the base game",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390733261504512"
+	},
+	
+	{
+		"content": "and i got the first helmet.",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390749208248322"
+	},
+	
+	{
+		"content": "crown",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390755944169473"
+	},
+	
+	{
+		"content": "thing",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390758293110786"
+	},
+	
+	{
+		"content": "i never expected to play 2 so i just watched a big let's play o fit",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390796704415756"
+	},
+	
+	{
+		"content": "but the way i went into magic was tilting",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390815952076800"
+	},
+	
+	{
+		"content": "i deff want to replay",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390846214111242"
+	},
+	
+	{
+		"content": "with an ew char",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390853889556480"
+	},
+	
+	{
+		"content": "okay which of us is gonna be magic",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390859627495425"
+	},
+	
+	{
+		"content": "new*",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390862957641737"
+	},
+	
+	{
+		"content": "because we need one magic dude and one hit dude",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390884919017472"
+	},
+	
+	{
+		"content": "im horrible at hitting in 2",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390911024496640"
+	},
+	
+	{
+		"content": "so erm",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390914925068289"
+	},
+	
+	{
+		"content": "dibs? <:DD:254035375650111489>",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266390953672048642"
+	},
+	
+	{
+		"content": "fine i'll be greatsword dude",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266390953747677184"
+	},
+	
+	{
+		"content": "[Discord] Hobnob: dibs? <<:DD:254035375650111489>254035375650111489>",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266391008550322187"
+	},
+	
+	{
+		"content": "nope",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266391050086645761"
+	},
+	
+	{
+		"content": "shit's not working",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266391061423718400"
+	},
+	
+	{
+		"content": "That was him copy pasting a message",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266391145670508544"
+	},
+	
+	{
+		"content": "oh",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266391158597353477"
+	},
+	
+	{
+		"content": "yup",
+		"author": 
+		{
+			"username": "Lambda217",
+			"id": "185176899352264705"
+		},
+		"id": "266391167883542528"
+	},
+	
+	{
+		"content": "daww",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266391188175585282"
+	},
+	
+	{
+		"content": "oh well",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266391214859878401"
+	},
+	
+	{
+		"content": "intermeme mission failed",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266391234895937536"
+	},
+	
+	{
+		"content": "I guess bot posts just don't trigger webhooks?",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266391240377892864"
+	},
+	
+	{
+		"content": "maybe theres a setting or something",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266391254969876481"
+	},
+	
+	{
+		"content": "idk",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266391264918765568"
+	},
+	
+	{
+		"content": "we will have to 1v1 tommorw.",
+		"author": 
+		{
+			"username": "Hobnob",
+			"id": "181324798046109697"
+		},
+		"id": "266391287286988801"
+	},
+	
+	{
+		"content": "meme for another day",
+		"author": 
+		{
+			"username": "Kanzuke",
+			"id": "179613386747674624"
+		},
+		"id": "266391293133979658"
+	}
+]
