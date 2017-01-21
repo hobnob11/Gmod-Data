@@ -1,5 +1,6 @@
 @name Hob
 @persist
+@autoupdate 
 
 #Hob-Co Library for ease of use.
 print("hob-os loaded")
@@ -98,3 +99,38 @@ function void entity:hSetPos( Position:vector )
         return mix(Wanted,Current,CurSpeed):toAngle()
     }
     
+##hob tech velocity prediction
+function number first_positive_soluition_of_quadratic_equasion(A, B, C)
+{
+    local Discriminant = B*B - 4 * A * C
+    if( Discriminant < 0 )
+    {
+        return -1 #this means there isnt one
+    }
+    local S = sqrt(Discriminant)
+    local X1 = (-B-S) / (2*A)
+    if(X1 > 0)
+    {
+        return X1
+    }
+    local X2 = (-B+S) / (2*A)
+    if(X2 > 0)
+    {
+        return X2
+    }
+    return -1 #we failed
+}
+
+function vector direct_solution( TargetPos:vector, TargetVel:vector, ProjectileSpeed )
+{
+    local A = TargetVel:dot(TargetVel) - ProjectileSpeed * ProjectileSpeed
+    local B = 2 * TargetPos:dot(TargetVel)
+    local C = TargetPos:dot(TargetPos)
+    
+    local T = first_positive_soluition_of_quadratic_equasion(A, B, C)
+    if( T <= 0 )
+    {
+        return TargetPos #we failed D:
+    }
+    return TargetPos + T * TargetVel
+}

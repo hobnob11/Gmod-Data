@@ -3,8 +3,18 @@
 @outputs Ent:entity A1 A2 D1 D2 AimVec:vector Mult
 @persist Str:string
 @trigger 
+@autoupdate 
+if(first())
+{
+#include "lib/hob"
+
 runOnChat(1)
 runOnTick(1)
+}
+if(dupefinished())
+{
+reset()
+}
 if(chatClk(owner()))
 {
 Str = owner():lastSaid()
@@ -34,11 +44,5 @@ if(RM)
     D1 = D
 }
 
-V = 2666.666 #speed of torpedo
-Dist = entity():isWeldedTo():pos():distance(Ent:pos()) # distance to target
-T = Dist/V #flight time
-
-local TVel = Ent:vel() # Velocity of target
-local Offset = TVel * T #Tvel is where the target will be in 1 second (i hope) so * T to get where they will be when hte missiles arrive
-
-AimVec = Ent:pos() + Offset
+V = 2666.666    #2000 #<friget ones  |   fighter ones>#2666.666 #speed of torpedo
+AimVec = direct_solution(Ent:pos(), Ent:vel(), V)

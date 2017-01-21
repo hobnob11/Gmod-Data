@@ -3,14 +3,14 @@
 @outputs 
 @persist Ents:array Cloaked
 @trigger 
-
-if(first())
+@autoupdate
+if(first() | dupefinished())
 {
     Ents = entity():getConstraints()
     Ents:pushEntity(entity())
 }
 
-if(Cloak & Cloaked == 0)
+if(Cloak & $Cloak & Cloaked == 0)
 {
     Cloaked = 1
     for(I=1,Ents:count())
@@ -19,7 +19,7 @@ if(Cloak & Cloaked == 0)
         Ents[I,entity]:setSolid(0)
     }
 }
-if(Cloak == 0 & Cloaked == 1)
+if(Cloak == 0 & $Cloak & Cloaked == 1)
 {
     Cloaked = 0
     for(I=1,Ents:count())
