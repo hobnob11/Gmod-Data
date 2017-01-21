@@ -68,6 +68,10 @@ function void entity:hSetAng( Angle:angle )
 {
     holoAng(holoIndex(This), Angle)
 }
+function void entity:hSetPos( Position:vector )
+{
+    holoPos(holoIndex(This), Position)
+}
 
 ######DIV TECH ANGLE MATH#####
     function angle smoothness(CurrentAngle:angle,WantedAngle:angle,Speed) {

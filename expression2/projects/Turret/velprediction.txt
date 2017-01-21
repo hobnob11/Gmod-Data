@@ -1,4 +1,4 @@
-@name 
+@name Velocity Prediction
 @inputs RM A D
 @outputs Ent:entity A1 A2 D1 D2 AimVec:vector Mult
 @persist Str:string
