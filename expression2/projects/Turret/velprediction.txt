@@ -20,7 +20,7 @@ hideChat(1)
 }
 if(RM)
 {
-    Mult = 5
+    Mult = clamp(Ent:vel():length()/1600 * 10, 1, 10)
     A1 = 0
     D1 = 0
     A2 = A

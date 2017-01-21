@@ -1,0 +1,30 @@
+@name cloaking tech
+@inputs Cloak
+@outputs 
+@persist Ents:array Cloaked
+@trigger 
+
+if(first())
+{
+    Ents = entity():getConstraints()
+    Ents:pushEntity(entity())
+}
+
+if(Cloak & Cloaked == 0)
+{
+    Cloaked = 1
+    for(I=1,Ents:count())
+    {
+        Ents[I,entity]:setAlpha(0)
+        Ents[I,entity]:setSolid(0)
+    }
+}
+if(Cloak == 0 & Cloaked == 1)
+{
+    Cloaked = 0
+    for(I=1,Ents:count())
+    {
+        Ents[I,entity]:setAlpha(255)
+        Ents[I,entity]:setSolid(1)
+    }
+}
