@@ -7,7 +7,7 @@ if(first()|dupefinished()){
     Prop = entity():isWeldedTo()
     
     Material1 = "models/props_wasteland/concretewall064b"
-    A = 2
+    A = 1.4
     Tick = 0
     
     #------Movement holos------#

@@ -1,44 +1,9 @@
 @name 
-@inputs RM A D
-@outputs Ent:entity A1 A2 D1 D2 AimVec:vector Mult
-@persist Str:string
+@inputs 
+@outputs 
+@persist A:vector
 @trigger 
-runOnChat(1)
+
 runOnTick(1)
-if(chatClk(owner()))
-{
-Str = owner():lastSaid()
-if(Str:sub(1,1) == "!")
-{
-Ent = findPlayerByName(Str:sub(2))
-hideChat(1)
-}elseif(Str:sub(1,1) == ".")
-{
-Ent = entity(Str:sub(2):toNumber())
-hideChat(1)
-}
-}
-if(RM)
-{
-    Mult = 5
-    A1 = 0
-    D1 = 0
-    A2 = A
-    D2 = D
-} else
-{
-    Mult = 1
-    A2 = 0
-    D2 = 0
-    A1 = A
-    D1 = D
-}
 
-V = 2666.666 #speed of torpedo
-Dist = entity():isWeldedTo():pos():distance(Ent:pos()) # distance to target
-T = Dist/V #flight time
-
-local TVel = Ent:vel() # Velocity of target
-local Offset = TVel * T #Tvel is where the target will be in 1 second (i hope) so * T to get where they will be when hte missiles arrive
-
-AimVec = Ent:pos() + Offset
+entity():isWeldedTo():setCapAmount(300000)

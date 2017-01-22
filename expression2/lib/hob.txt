@@ -134,3 +134,13 @@ function vector direct_solution( TargetPos:vector, TargetVel:vector, ProjectileS
     }
     return TargetPos + T * TargetVel
 }
+
+function vector array:averageVector()
+{
+    local Total = vec()
+    for(I=1,This:count())
+    {
+        Total = Total + This[I,vector]
+    }
+    return Total / This:count()
+}
