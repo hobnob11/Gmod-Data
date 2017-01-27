@@ -5,7 +5,7 @@
 @persist Vel Acc MaxVel Height MaxHeight AngVel AngAcc MaxAngVel Angle MaxAngle
 @model models/sprops/misc/fittings/cubinder_1_5_to_1_5.mdl
 @autoupdate
-if( first() )
+if ( dupefinished() | (first() & !duped()) )
 {
     #include "lib/hob"
     runOnUse(1)
@@ -30,10 +30,7 @@ if( first() )
         runOnTick(1)
     }
 }
-if( dupefinished() )
-{
-    timer(100,1,"reset","reset()")
-}
+
 switch( State )
 {
     case 0, #setup
@@ -74,8 +71,8 @@ switch( State )
         {
             Driver = ChairEnt:driver()
             ChairEnt:lock( 1 ) # so we can listen for keyUse() to do the animation before letting them exit
+            if( Driver == owner() ){ owner():disableSpawnMenu( 1 ) }
             State = 3
-            ChairEnt:soundPlay( "ChairSound1", 0, "music/mvm_start_wave.wav")
         }
         break
     
@@ -101,6 +98,7 @@ switch( State )
         if( Driver:keyPressed("LSHIFT") & Driver:keyPressed("F") )
         {
             State = 5
+            if( Driver == owner() ){ owner():disableSpawnMenu( 0 ) }
         }
         break
     

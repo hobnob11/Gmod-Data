@@ -5,7 +5,7 @@
 @persist State Bay:entity BayHinge:entity DoorHinge:entity DoorHolo:entity DoorAngle Speed MaxSpeed Acc DoorProp:entity
 @trigger 
 @autoupdate
-if ( first() ) 
+if ( dupefinished() | (first() & !duped()) ) 
 {
     ## fuck with these
     DoorModel = "models/smallbridge/ship parts/sblandramppdw.mdl"
@@ -23,10 +23,6 @@ if ( first() )
     Bay = entity():isWeldedTo()
     
     runOnTick(1)
-}
-if( dupefinished() )
-{
-    timer(100,1,"reset","reset()")
 }
 switch( State )
 {

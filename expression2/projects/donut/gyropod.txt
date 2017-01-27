@@ -4,16 +4,12 @@
 @persist Parent:entity State:string Frozen Ary:array Driver:entity YawVelL YawVelR Force:vector Mass
 @persist Keys:table
 @autoupdate
-
-if( first() )
+if ( dupefinished() | (first() & !duped()) )
 {
     function updateKeys()
     {
         Driver = Chair:driver()
         if( !Driver:isValid() ){ return }
-        
-        Chair:lock( 1 )
-        Driver:disableSpawnMenu( 1 )
         
         Keys[ "Forward",     number ] = Driver:keyPressed( "W" )
         Keys[ "Backward",    number ] = Driver:keyPressed( "S" )
@@ -22,15 +18,7 @@ if( first() )
         Keys[ "TurnLeft",    number ] = Driver:keyPressed( "A" )
         Keys[ "TurnRight",   number ] = Driver:keyPressed( "D" )
         Keys[ "Up",          number ] = Driver:keyPressed( "SPACE" )
-        Keys[ "Down",        number ] = Driver:keyPressed( "LCONTROL" )
-        
-        if( Driver:keyPressed("LALT") )
-        {
-            Driver:disableSpawnMenu( 0 )
-            Chair:lock( 0 )
-            Chair:ejectPod()
-        }
-            
+        Keys[ "Down",        number ] = Driver:keyPressed( "LCONTROL" )   
     }
                 
     #include "lib/hob"
@@ -47,10 +35,6 @@ if( first() )
     runOnTick( 1 )
     runOnLast( 1 )
     State = "Flying"
-}
-if( dupefinished() )
-{
-    timer(100,1,"reset","reset()")
 }
 if( last() )
 {
