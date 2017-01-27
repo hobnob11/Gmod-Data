@@ -1,9 +1,22 @@
 @name 
 @inputs 
 @outputs 
-@persist A:vector
+@persist I
 @trigger 
 
-runOnTick(1)
+if(first())
+{
+    runOnTick(1)
+    #include "lib/hob"
+    entity():isWeldedTo():setMass(50000)
+    entity():isWeldedTo():sbSetGravityOverride(1)
+    entity():isWeldedTo():propGravity( 0 )
+    I = 6000000000
+}
 
-entity():isWeldedTo():setCapAmount(300000)
+entity():isWeldedTo():applyTorque( vec( -I, 0, 0 ) )
+I = I + 1000000
+print(I,entity():angVel())
+
+entity():isWeldedTo():applyTorque( vec( I, 0, 0 ) )
+

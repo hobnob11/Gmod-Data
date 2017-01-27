@@ -1,7 +1,7 @@
 @name Velocity Prediction
 @inputs RM A D
 @outputs Ent:entity A1 A2 D1 D2 AimVec:vector Mult Defelction TARGET_VEL:vector Offset:vector
-@persist Str:string TPos:vector OldPos:vector Time OldTime LastVels:array LastVel:vector E:entity
+@persist Str:string TPos:vector OldPos:vector Time OldTime LastVels:array LastVel:vector E:entity FailedCount
 @trigger 
 @autoupdate 
 if(first())
@@ -31,14 +31,17 @@ if(chatClk(owner()))
 }
 
 
-V = 10666    #2000 #<friget ones  |   fighter ones>#2666.666 #speed of torpedo
+V = 2666.666   #2000 #<friget ones  |   fighter ones>#2666.666 #speed of torpedo
 
-if( TPos != Ent:pos() )
+if( TPos != Ent:pos() | FailedCount>10 )
 {
+    FailedCount = 0
     OldPos = TPos
     TPos = Ent:pos()
     OldTime = Time
     Time = curtime()
+}else{
+    FailedCount++
 }
 
 local DeltaTime = Time - OldTime #time in seconds since last exec

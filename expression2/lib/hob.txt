@@ -143,4 +143,25 @@ function vector array:averageVector()
         Total = Total + This[I,vector]
     }
     return Total / This:count()
+}  
+
+function void entity:applyQTorque( TargetAngle:angle, Number1, Number2 )
+{
+    local TarQ = quat( TargetAngle ) #Calculate quaternion for target orientation
+    local CurQ = quat( This ) #Calculate current orientation quaternion
+     
+    #TarQ/CurQ is a quaternion representing the rotation that will rotate the object from current orientation to the target one.
+    local Q = TarQ/CurQ
+     
+    #applyTorque() works on intrinsic vectors! Get the rotation vector and transform it.
+    local V = This:toLocal( rotationVector( Q ) + This:pos() )
+    #Alternatively, can use "V = transpose(matrix(E))*rotationVector(Q)"
+    
+    #Apply torque. angVelVector() works like a delta term.
+    #Factors 100 and 12 can be adjusted to achieve best effect.
+    local Torque = (Number1*V - Number2*This:angVelVector())*This:inertia()
+    #dynamic clamp:
+    Torque = clamp(Torque, -vec(2^31), vec(2^31))
+    This:applyTorque( Torque )
 }
+

@@ -1,0 +1,130 @@
+@name Donut Gyropod
+@inputs Chair:entity
+@outputs DebugAng:angle DebugVec:vector DebugNum
+@persist Parent:entity State:string Frozen Ary:array Driver:entity YawVelL YawVelR Force:vector Mass
+@persist Keys:table
+@autoupdate
+
+if( first() )
+{
+    function updateKeys()
+    {
+        Driver = Chair:driver()
+        if( !Driver:isValid() ){ return }
+        
+        Chair:lock( 1 )
+        Driver:disableSpawnMenu( 1 )
+        
+        Keys[ "Forward",     number ] = Driver:keyPressed( "W" )
+        Keys[ "Backward",    number ] = Driver:keyPressed( "S" )
+        Keys[ "StrafeLeft",  number ] = Driver:keyPressed( "Q" )
+        Keys[ "StrafeRight", number ] = Driver:keyPressed( "E" )
+        Keys[ "TurnLeft",    number ] = Driver:keyPressed( "A" )
+        Keys[ "TurnRight",   number ] = Driver:keyPressed( "D" )
+        Keys[ "Up",          number ] = Driver:keyPressed( "SPACE" )
+        Keys[ "Down",        number ] = Driver:keyPressed( "LCONTROL" )
+        
+        if( Driver:keyPressed("LALT") )
+        {
+            Driver:disableSpawnMenu( 0 )
+            Chair:lock( 0 )
+            Chair:ejectPod()
+        }
+            
+    }
+                
+    #include "lib/hob"
+    Parent = entity():isWeldedTo()
+    Parent:setMass(50000)
+    Ary = Parent:getConstraints()
+    Ary:pushEntity( Parent )
+    for( I=1, Ary:count() )
+    {
+        Ary[I,entity]:sbSetGravityOverride( 1 )
+        Ary[I,entity]:propGravity( 0 )
+        Mass = Mass + Ary[I,entity]:mass()
+    }
+    runOnTick( 1 )
+    runOnLast( 1 )
+    State = "Flying"
+}
+if( dupefinished() )
+{
+    timer(100,1,"reset","reset()")
+}
+if( last() )
+{
+    owner():disableSpawnMenu( 0 )
+}
+switch( State )
+{
+    case "Landed",
+    
+        break
+    
+    case "Flying",
+        updateKeys()
+
+        local InputDirection = vec(  Keys[ "Forward", number ] -    Keys[ "Backward", number ], 
+                                     Keys[ "StrafeLeft", number ] - Keys[ "StrafeRight", number ],
+                                     Keys[ "Up", number ] -         Keys[ "Down", number ] ):normalized():rotate( Parent:angles() )
+
+        local Force = InputDirection * Mass * 8
+        
+        local InertialDampingForce = Parent:velL()
+
+        if( Keys[ "Forward",     number] ) { if( InertialDampingForce:x() > 0 ) { InertialDampingForce = InertialDampingForce:setX( 0 ) } }
+        if( Keys[ "Backward",    number] ) { if( InertialDampingForce:x() < 0 ) { InertialDampingForce = InertialDampingForce:setX( 0 ) } }
+        
+        if( Keys[ "StrafeRight", number] ) { if( InertialDampingForce:y() < 0 ) { InertialDampingForce = InertialDampingForce:setY( 0 ) } }
+        if( Keys[ "StrafeLeft",  number] ) { if( InertialDampingForce:y() > 0 ) { InertialDampingForce = InertialDampingForce:setY( 0 ) } }
+
+        if( Keys[ "Up",          number] ) { if( InertialDampingForce:z() > 0 ) { InertialDampingForce = InertialDampingForce:setZ( 0 ) } }
+        if( Keys[ "Down",        number] ) { if( InertialDampingForce:z() < 0 ) { InertialDampingForce = InertialDampingForce:setZ( 0 ) } }
+        
+        DebugVec = InertialDampingForce
+        
+        InertialDampingForce = InertialDampingForce:rotate( Parent:angles() )
+                
+        InertialDampingForce *= Mass * 0.05
+        
+        Parent:applyForce( Force - InertialDampingForce )
+        
+        local Pitch = -Parent:vel():z() / 100        
+        
+        if( Keys[ "TurnLeft", number] )
+        {
+            YawVelL = clamp( YawVelL + 0.1, 0, 5 )
+        } else {
+            YawVelL = clamp( YawVelL - 0.2, 0, 5 )
+        }
+        if( Keys[ "TurnRight", number] )
+        {
+            YawVelR = clamp( YawVelR + 0.1, 0, 5 )
+        } else {
+            YawVelR = clamp( YawVelR - 0.2, 0, 5 )
+        }
+        
+        local Yaw = Parent:angles():yaw() + YawVelL*4 - YawVelR*4
+        
+        local WantedAng = ang( Pitch, Yaw , 0 )
+        DebugAng = WantedAng
+        
+        Parent:applyQTorque( WantedAng, 100, 12 )
+        
+        break
+        
+    case "Frozen",
+        if( !Frozen )
+        {
+            foreach( K, V:entity=Ary )
+            {
+                V:propFreeze( 1 ) 
+            }
+            Frozen = 1
+        }
+        
+        break
+}
+        
+

@@ -4,7 +4,7 @@
 @persist DoorModel:string DoorOffset:vector BayOffset:vector DoorAngOffset:angle TraceOffset:vector
 @persist State Bay:entity BayHinge:entity DoorHinge:entity DoorHolo:entity DoorAngle Speed MaxSpeed Acc DoorProp:entity
 @trigger 
-
+@autoupdate
 if ( first() ) 
 {
     ## fuck with these
@@ -24,7 +24,10 @@ if ( first() )
     
     runOnTick(1)
 }
-
+if( dupefinished() )
+{
+    timer(100,1,"reset","reset()")
+}
 switch( State )
 {
     case 1, #setup

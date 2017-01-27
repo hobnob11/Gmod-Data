@@ -1,9 +1,10 @@
 @name Donut Command Chair
-@outputs State
+@outputs State Chair:entity
 @persist ChairModel:string ChairOffset:vector HoloOffset:vector Axis:entity 
 @persist ChairHolo:entity ChairEnt:entity HoloScale:vector Driver:entity
 @persist Vel Acc MaxVel Height MaxHeight AngVel AngAcc MaxAngVel Angle MaxAngle
 @model models/sprops/misc/fittings/cubinder_1_5_to_1_5.mdl
+@autoupdate
 if( first() )
 {
     #include "lib/hob"
@@ -29,7 +30,10 @@ if( first() )
         runOnTick(1)
     }
 }
-
+if( dupefinished() )
+{
+    timer(100,1,"reset","reset()")
+}
 switch( State )
 {
     case 0, #setup
@@ -57,8 +61,9 @@ switch( State )
         if( useClk() )
         {
             ChairEnt = seatSpawn( "models/sprops/rectangles_thin/size_1/rect_3x3x1_5.mdl", ChairHolo:toWorld( ChairOffset ), ChairHolo:toWorld( ang( 0, 0, 0 ) ), 1 )
+            Chair = ChairEnt
             ChairEnt:setAlpha( 0 )
-            ChairEnt:vehicleSetExitPoint( ChairEnt:toLocal( entity():isWeldedTo():boxCenterW() + vec( 0, 0, entity():isWeldedTo():boxSize():z() ) ) )
+            ChairEnt:vehicleSetExitPoint( vec( -5, 0, 0 ) )
             timer( 100, 1, "parentEnt", "parent()" )
             State = 2
         }
@@ -93,7 +98,7 @@ switch( State )
         break
     
     case 4, #up
-        if( Driver:keyUse() )
+        if( Driver:keyPressed("LSHIFT") & Driver:keyPressed("F") )
         {
             State = 5
         }

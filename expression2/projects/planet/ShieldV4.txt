@@ -87,7 +87,7 @@ if(first())
     if(map()=="gm_interplaneteryfunk")
     {
         R = 4864
-        PlanetPos = vec(-10000,-10000,-6000)
+        PlanetPos = vec(0,0,0)#vec(-10000,-10000,-6000)
     }else{
         #Planet Radius
         R = ( max(Planet:boxSize():x(),Planet:boxSize():y(),Planet:boxSize():z())/2 ) *0.95
@@ -100,7 +100,7 @@ if(first())
     SurfaceCenter = rangerOffset(PlanetPos+vec(0,0,R),PlanetPos):position()
     
     #sphere! :D
-    array():sphere(R,8,"sphereFinish",0)
+    array():sphere(R,12,"sphereFinish",0)
 }
 if(Built==0 & Sphere:count())
 {

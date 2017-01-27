@@ -2,17 +2,19 @@
 @persist E:entity
 if(first())
 {
+    #E = entity()
+    E = entity():isWeldedTo()
     runOnTick(1)
     holoCreate(1)
     holoModel(1,"hqsphere")
     holoColor(1,vec(255,0,0))
     holoAlpha(1,150)
-    #E = entity():isWeldedTo()
-    E = entity():isWeldedTo()
+    holoParent(1,E)
     holoCreate(2)
     holoModel(2,"hqcylinder")
     holoColor(2,vec(255,0,0))
     holoAlpha(2,150)
+    holoParent(2,E)
     
 }
 #local Pos = E:toWorld(vec(E:boxSize():x()/2,0,0))
