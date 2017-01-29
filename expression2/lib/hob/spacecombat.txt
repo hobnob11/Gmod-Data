@@ -1,0 +1,56 @@
+@name Space Combat Library
+@persist WEAPON_LOOKUP_TABLE:table
+@autoupdate
+print(_HUD_PRINTCONSOLE,"Hob-OS: [SC] Loaded")
+local FighterTable = table()
+FighterTable["Fighter Autocannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+
+FighterTable["Fighter Light Missile Launcher", table] = table( "Type" = "Missile", "Targeting" = 1 )
+FighterTable["Fighter Dumbfire Rocket", table] = table( "Type" = "Missile", "Targeting" = 0 )
+FighterTable["Fighter Light Torpedo Launcher", table] = table( "Type" = "Missile", "Targeting" = 0 )
+FighterTable["Fighter Mine Layer", table] = table( "Type" = "Missile", "Targeting" = 0 )
+
+FighterTable["Fighter Pulse Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+FighterTable["Fighter Beam Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+FighterTable["Fighter Plasma Beam", table] = table( "Type" = "Laser", "Targeting" = 1 )
+FighterTable["Fighter Mineral Collection Beam", table] = table( "Type" = "Laser", "Targeting" = 0 )
+
+local FrigateTable = table()
+FrigateTable["Frigate Autocannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+
+FrigateTable["Frigate Missile Launcher", table] = table( "Type" = "Missile", "Targeting" = 1 )
+FrigateTable["Frigate Torpedo Launcher", table] = table( "Type" = "Missile", "Targeting" = 0 )
+FrigateTable["Frigate Swarm Missile", table] = table( "Type" = "Missile", "Targeting" = 1 )
+
+FrigateTable["Frigate Pulse Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+FrigateTable["Frigate Beam Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+FrigateTable["Frigate Ship Repair Beam", table] = table( "Type" = "Laser", "Targeting" = 0 )
+FrigateTable["Frigate Salvaging Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+FrigateTable["Frigate Mining Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+FrigateTable["Frigate Plasma Beam", table] = table( "Type" = "Laser", "Targeting" = 1 )
+
+local CruiserTable = table()
+CruiserTable["Cruiser Autocannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+CruiserTable["Cruiser Antimatter Cannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+CruiserTable["Cruiser Artillery", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+CruiserTable["Cruiser Pulse Cannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+
+CruiserTable["Cruiser Heavy Missile Launcher", table] = table( "Type" = "Missile", "Targeting" = 1 )
+CruiserTable["Cruiser Heavy Torpedo Launcher", table] = table( "Type" = "Missile", "Targeting" = 0 )
+
+CruiserTable["Cruiser Pulse Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+CruiserTable["Cruiser Beam Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+CruiserTable["Cruiser Mining Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+
+local BattleshipTable = table()
+BattleshipTable["Battleship Autocannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+BattleshipTable["Battleship Antimatter Cannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+BattleshipTable["Battleship 1400mm Artillery", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+BattleshipTable["Battleship Pulse Cannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+
+BattleshipTable["Battleship Cruise Missile Launcher", table] = table( "Type" = "Missile", "Targeting" = 1 )
+BattleshipTable["Battleship Spartan Torpedo Launcher", table] = table( "Type" = "Missile", "Targeting" = 0 )
+
+BattleshipTable["Battleship Pulse Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+BattleshipTable["Battleship Beam Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+BattleshipTable["Battleship Mining Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )

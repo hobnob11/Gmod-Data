@@ -16,7 +16,7 @@ switch( State )
     case "Init",
         CentralAxisInner = holoCreate( 1 )
             holoPos( 1, Parent:toWorld( vec( 0, 0, 0 ) ) )
-            holoAng( 1, Parent:toWorld( ang( 90, 90, 0 ) ) )
+            holoAng( 1, Parent:toWorld( ang( 90, -90, 0 ) ) )
             holoModel( 1, "hqcylinder" )
             holoScaleUnits( 1, vec( 1, 1, 500 ) )
             holoParent( 1, Parent )

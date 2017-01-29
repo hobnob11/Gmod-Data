@@ -90,7 +90,7 @@ elseif(signalClk("G400 Strip Miner Pod", "Link", 0)){
         findInSphere(S:pos(), 200)
         Laser = find()
         if(Laser){
-            Laser:link(Node)
+            Laser:lsLink(Node)
             rangerFilter(Laser)
             On = Laser:getWirelink()
             On["On",number] = 0
@@ -188,7 +188,7 @@ elseif(first()){
         findInSphere(S:pos(), 200)
         Laser = find()
         if(Laser){
-            Laser:link(Node)
+            Laser:lsLink(Node)
             rangerFilter(Laser)
             On = Laser:getWirelink()
             On["On",number] = 0

@@ -4,14 +4,4 @@
 @persist 
 @trigger 
 
-if(first())
-{
-    runOnTick(1)
-    #include "lib/hob"
-    entity():isWeldedTo():setMass(20000)
-    entity():isWeldedTo():sbSetGravityOverride( 1 )
-    entity():isWeldedTo():propGravity( 0 )
-    print(lsGetSunDirection(),lsGetSunDirection():toAngle())
-}    
-entity():isWeldedTo():applyQTorque(lsGetSunDirection():toAngle() - ang(90,0,0), 100, 12)
-    
+print(entity():isWeldedTo():getProjectileVel())

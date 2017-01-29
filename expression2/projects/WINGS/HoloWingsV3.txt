@@ -4,12 +4,14 @@
 if(first())
 {
     holoCreate(1)
-    holoPos(1,entity():pos()+vec(0,0,40))
-    holoParent(1,entity())
+    holoPos(1,entity():isWeldedTo():pos())
+    holoAng(1,ang(0,0,0))
+    entity():isWeldedTo():parentTo(holoEntity(1))
+    entity():parentTo(holoEntity(1))
     local  Long = "models/hunter/blocks/cube05x8x025.mdl"
     local Short = "models/hunter/blocks/cube05x3x025.mdl"
 ##########################  LEFT  WING  ###########################################
-    for(I=1,4)
+    for(I=1,5)
     {
         #Angle Sections
         holoCreate(I*2)
@@ -42,7 +44,7 @@ if(first())
         
     }
 ##########################  RIGHT  WING  ##########################################
-    for(I=1,4)
+    for(I=1,5)
     {
         #Angle Sections
         holoCreate(I*2+50)
@@ -153,7 +155,7 @@ if(first())
         local A = A45
         A45 = clamp(A+Mod,0,45)
         ######################### Left Wing ######################
-        for(I=1,4)
+        for(I=1,5)
         {
             if(I==1)
             {
@@ -177,7 +179,7 @@ if(first())
         
         }
         ########################## Right Wing #######################
-        for(I=1,4)
+        for(I=1,5)
         {
             if(I==1)
             {
@@ -270,7 +272,7 @@ if(first())
             Props[X,entity]=propSpawn(holoEntity(X):model(),holoEntity(X):pos(),holoEntity(X):angles(),1)
             holoAlpha(X,0)
             Props[X,entity]:parentTo(holoEntity(X))
-            Props[X,entity]:weld()
+            Props[X,entity]:weld(entity():isWeldedTo())
         }
     }
     function toMe()
@@ -294,6 +296,7 @@ if(first())
     }
     
     runOnChat(1)
+    runOnLast(1)
 }
 if(chatClk(owner()))
 {
@@ -330,4 +333,8 @@ if(chatClk(owner()))
             lol()
         }
     }
+}
+if(last())
+{
+    entity():isWeldedTo():deparent()
 }

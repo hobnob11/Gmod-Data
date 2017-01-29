@@ -1,7 +1,7 @@
 @name Donut Gyropod
 @inputs Chair:entity
 @outputs DebugAng:angle DebugVec:vector DebugNum
-@persist Parent:entity State:string Frozen Ary:array Driver:entity YawVelL YawVelR Force:vector Mass
+@persist Parent:entity State:string Frozen Ary:array Driver:entity YawVelL YawVelR Force:vector Mass HandbrakePressed
 @persist Keys:table
 @autoupdate
 if ( dupefinished() | (first() & !duped()) )
@@ -18,7 +18,8 @@ if ( dupefinished() | (first() & !duped()) )
         Keys[ "TurnLeft",    number ] = Driver:keyPressed( "A" )
         Keys[ "TurnRight",   number ] = Driver:keyPressed( "D" )
         Keys[ "Up",          number ] = Driver:keyPressed( "SPACE" )
-        Keys[ "Down",        number ] = Driver:keyPressed( "LCONTROL" )   
+        Keys[ "Down",        number ] = Driver:keyPressed( "LCONTROL" )
+        Keys[ "Handbrake",   number ] = Driver:keyPressed( "R" )
     }
                 
     #include "lib/hob"
@@ -48,7 +49,17 @@ switch( State )
     
     case "Flying",
         updateKeys()
-
+        if( Keys[ "Handbrake", number] )
+        {
+            if( !HandbrakePressed ) 
+            {
+                State = "Frozen"
+                HandbrakePressed = 1
+            }
+        }else{
+            HandbrakePressed = 0
+        }
+        
         local InputDirection = vec(  Keys[ "Forward", number ] -    Keys[ "Backward", number ], 
                                      Keys[ "StrafeLeft", number ] - Keys[ "StrafeRight", number ],
                                      Keys[ "Up", number ] -         Keys[ "Down", number ] ):normalized():rotate( Parent:angles() )
@@ -78,20 +89,20 @@ switch( State )
         
         if( Keys[ "TurnLeft", number] )
         {
-            YawVelL = clamp( YawVelL + 0.1, 0, 5 )
+            YawVelL = clamp( YawVelL + 1, 0, 1 )
         } else {
-            YawVelL = clamp( YawVelL - 0.2, 0, 5 )
+            YawVelL = clamp( YawVelL - 1, 0, 1 )
         }
         if( Keys[ "TurnRight", number] )
         {
-            YawVelR = clamp( YawVelR + 0.1, 0, 5 )
+            YawVelR = clamp( YawVelR + 1, 0, 1 )
         } else {
-            YawVelR = clamp( YawVelR - 0.2, 0, 5 )
+            YawVelR = clamp( YawVelR - 1, 0, 1 )
         }
         
-        local Yaw = Parent:angles():yaw() + YawVelL*4 - YawVelR*4
-        
-        local WantedAng = ang( Pitch, Yaw , 0 )
+        local Yaw = Parent:angles():yaw() + YawVelL*10 - YawVelR*10
+        local YawVelT = YawVelL - YawVelR
+        local WantedAng = ang( Pitch, Yaw , -YawVelT*1.5 )
         DebugAng = WantedAng
         
         Parent:applyQTorque( WantedAng, 100, 12 )
@@ -99,6 +110,22 @@ switch( State )
         break
         
     case "Frozen",
+        updateKeys()
+        if( Keys[ "Handbrake", number] )
+        {
+            if( !HandbrakePressed ) 
+            {
+                foreach( K, V:entity=Ary )
+                {
+                    V:propFreeze( 0 ) 
+                }
+                Frozen = 0
+                State = "Flying"
+                HandbrakePressed = 1
+            }
+        }else{
+            HandbrakePressed = 0
+        }
         if( !Frozen )
         {
             foreach( K, V:entity=Ary )

@@ -10,7 +10,7 @@ if(first() | dupefinished())
     Ents:pushEntity(entity())
 }
 
-if(Cloak & $Cloak & Cloaked == 0)
+if(Cloak & ~Cloak & Cloaked == 0)
 {
     Cloaked = 1
     for(I=1,Ents:count())
@@ -20,8 +20,7 @@ if(Cloak & $Cloak & Cloaked == 0)
         Ents[I,entity]:soundPlay("POP"+I, 0.1, "garrysmod/balloon_pop_cute.wav")
         soundPitch("POP"+I, randint(95,125))
     }
-}
-if(Cloak == 0 & $Cloak & Cloaked == 1)
+}elseif(Cloak & ~Cloak & Cloaked == 1)
 {
     Cloaked = 0
     for(I=1,Ents:count())
@@ -32,3 +31,4 @@ if(Cloak == 0 & $Cloak & Cloaked == 1)
         soundPitch("POP"+I, randint(75,100))
     }
 }
+

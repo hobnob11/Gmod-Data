@@ -1,0 +1,66 @@
+@name Hob-Co Turret V1
+
+@persist [E SwivelBase SwivelJoint TurretBase TurretJoint]:entity
+@outputs [State]:string
+@persist
+@model models/stat_turrets/st_turretbase.mdl
+
+@autoupdate
+switch( State )
+{
+    default,
+        ######################basic bitch shit###############################
+        #include "lib/hob"
+        E = entity()
+        State = "Offline"
+        Interval = 1e30
+        ##########################holoooooos################################
+        SwivelJoint = holoCreate( 1 )
+            holoPos( 1, E:toWorld( E:boxCenter() + vec( 0, 0, 18.7 ) ) )
+            holoAng( 1, E:toWorld( ang( 0, 0, 0 ) ) )
+            holoParent( 1, E )
+            
+        SwivelBase = holoCreate( 2 )
+            holoPos( 2, SwivelJoint:toWorld( vec( 0, 0, 0 ) ) )
+            holoAng( 2, SwivelJoint:toWorld( ang( 0, 0, 0 ) ) )
+            holoModel( 2, "models/stat_turrets/st_turretswivel.mdl" )
+            holoParent( 2, 1 )
+            
+        TurretJoint = holoCreate( 3 )
+            holoPos( 3, SwivelBase:toWorld( vec( 0, 0, 30 ) ) )
+            holoAng( 3, SwivelBase:toWorld( ang( 30, 0, 0 ) ) )
+            holoParent( 3, 2 )
+            
+        TurretBase = holoCreate( 4 )
+            holoPos( 4, TurretJoint:toWorld( vec( 0, 0, 0 ) ) )
+            holoAng( 4, TurretJoint:toWorld( ang( 0, 0, 0 ) ) )
+            holoModel( 4, "models/stat_turrets/st_turretheavy.mdl" )
+            holoParent( 4, 3 )
+        
+        #################the fuck is a datasignal###########################
+        dsJoinGroup( "Hob-Co Turret Secure DataSignal, pls no steal mah dataz" )
+        dsSetScope( 0 )
+        
+        break
+    case "Offline",
+        if( dsClk( "Initalize" ) )
+        {
+            runOnTick(1)
+            State = "Init"
+        }
+        break
+    
+    case "Init",
+        if( SwivelBase:toLocal( TurretJoint:angles() ):pitch() > 0 )
+        {
+            TurretJoint:hSetAng( SwivelBase:toLocal( TurretJoint:angles() ) - ang( 0.1, 0, 0 ) )
+        } else {
+            State = "Idle"
+            runOnTick( 0 )
+        }
+        break
+        
+    case "Idle",
+    
+        break
+}

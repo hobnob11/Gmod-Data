@@ -1,5 +1,5 @@
 @name Donut Command Chair
-@outputs State Chair:entity
+@outputs State Chair:entity Active
 @persist ChairModel:string ChairOffset:vector HoloOffset:vector Axis:entity 
 @persist ChairHolo:entity ChairEnt:entity HoloScale:vector Driver:entity
 @persist Vel Acc MaxVel Height MaxHeight AngVel AngAcc MaxAngVel Angle MaxAngle
@@ -60,7 +60,7 @@ switch( State )
             ChairEnt = seatSpawn( "models/sprops/rectangles_thin/size_1/rect_3x3x1_5.mdl", ChairHolo:toWorld( ChairOffset ), ChairHolo:toWorld( ang( 0, 0, 0 ) ), 1 )
             Chair = ChairEnt
             ChairEnt:setAlpha( 0 )
-            ChairEnt:vehicleSetExitPoint( vec( -5, 0, 0 ) )
+            ChairEnt:vehicleSetExitPoint( vec( 5, 0, 0 ) )
             timer( 100, 1, "parentEnt", "parent()" )
             State = 2
         }
@@ -90,13 +90,15 @@ switch( State )
         }else{
             Vel = 0
             AngVel = 0
-            State = 4            
+            State = 4       
+            Active = 1     
         }
         break
     
     case 4, #up
         if( Driver:keyPressed("LSHIFT") & Driver:keyPressed("F") )
         {
+            Active = 0
             State = 5
             if( Driver == owner() ){ owner():disableSpawnMenu( 0 ) }
         }
