@@ -1,0 +1,21 @@
+@name 
+@inputs 
+@outputs 
+@persist E:entity
+@trigger 
+E = entity(140)
+interval(100)
+entity():isWeldedTo():setCapAmount(entity():isWeldedTo():getCapMax())
+print(_HUD_PRINTCENTER,"Speed: "+ round(E:vel():length()) + ", "+round(convertUnit("u/s","mi/h",E:vel():length()))+"MPH")
+if(first())
+{
+findByClass("sc_turret")
+findClipToPlayerProps(owner())
+local TBL = findToArray()
+foreach(K,V:entity=TBL)
+{
+    local WL = V:wirelink()
+    WL["Target",entity] = E
+    WL["Active",number] = 1
+}
+}

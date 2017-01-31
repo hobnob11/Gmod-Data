@@ -54,3 +54,35 @@ BattleshipTable["Battleship Spartan Torpedo Launcher", table] = table( "Type" = 
 BattleshipTable["Battleship Pulse Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
 BattleshipTable["Battleship Beam Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
 BattleshipTable["Battleship Mining Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+
+local CapitalTable = table()
+CapitalTable["Capital Autocannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+CapitalTable["Capital Big Bertha", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+CapitalTable["Capital Artillery", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+CapitalTable["Capital Pulse Cannon", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+CapitalTable["Capital MAC", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+CapitalTable["Capital Railgun", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+CapitalTable["Capital Blaster", table] = table( "Type" = "Cannon", "Targeting" = 0 )
+
+CapitalTable["Capital Cruise Missile Launcher", table] = table( "Type" = "Missile", "Targeting" = 1 )
+CapitalTable["Capital Spartan Torpedo Launcher", table] = table( "Type" = "Missile", "Targeting" = 0 )
+
+CapitalTable["Capital Pulse Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+CapitalTable["Capital Beam Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+CapitalTable["Capital Shipyard Repair Beam", table] = table( "Type" = "Laser", "Targeting" = 0 )
+CapitalTable["Capital Mining Laser", table] = table( "Type" = "Laser", "Targeting" = 0 )
+
+WEAPON_LOOKUP_TABLE["Fighter",table] = FighterTable
+WEAPON_LOOKUP_TABLE["Frigate",table] = FrigateTable
+WEAPON_LOOKUP_TABLE["Cruiser",table] = CruiserTable
+WEAPON_LOOKUP_TABLE["Battleship",table] = BattleshipTable
+WEAPON_LOOKUP_TABLE["Capital",table] = CapitalTable
+
+function string entity:getWeaponType()
+{
+    return WEAPON_LOOKUP_TABLE[This:getWeaponClass(),table][This:getWeaponName(),table]["Type",string]
+}
+function number entity:getWeaponTargeting()
+{
+    return WEAPON_LOOKUP_TABLE[This:getWeaponClass(),table][This:getWeaponName(),table]["Targeting",number]
+}

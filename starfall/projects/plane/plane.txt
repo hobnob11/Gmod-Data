@@ -11,7 +11,7 @@ if SERVER then
     D = 0
     Shift = 0
     Space = 0
-    Seat = 559
+    Seat = 479
     Driver = entities.entity(Seat):GetDriver() 
     Mass = 0
     for K,V in pairs(entities.self():GetAllConstrainedEnts()) do
