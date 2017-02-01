@@ -1,40 +1,16 @@
 GUID Guide
+	{301934816-10462-1-0:0:80:73:68:86:73:68} = Controller (XBOX 360 For Windows)
 Binding List (Lower entries override higher entries)
 [GUID START]
 	{390948960-38494-4582-128:1:68:69:83:84:0:0}=Controller (XBOX 360 For Windows)
 	{301934816-10462-1-0:0:80:73:68:86:73:68}=Controller (XBOX 360 For Windows)
 [GUID END]
 [START]
-jm_1
-	GUID={390948960-38494-4582-128:1:68:69:83:84:0:0}
-	TYPE=analog
-	type=str:axis
-	index=num:0
-	axismod=num:1
-jm_
-	GUID={390948960-38494-4582-128:1:68:69:83:84:0:0}
-	TYPE=analog
-	type=str:axis
-	index=num:0
-	axismod=num:1
-	invert=boo:false
-jm_x
-	GUID={390948960-38494-4582-128:1:68:69:83:84:0:0}
-	TYPE=analog
-	type=str:axis
-	index=num:0
-	axismod=num:1
 jm_y
 	GUID={390948960-38494-4582-128:1:68:69:83:84:0:0}
 	TYPE=analog
 	type=str:axis
 	index=num:1
 	axismod=num:1
-	invert=boo:true
-jm_2
-	GUID={390948960-38494-4582-128:1:68:69:83:84:0:0}
-	TYPE=analog
-	type=str:axis
-	index=num:1
-	axismod=num:1
+	invert=boo:false
 [END]

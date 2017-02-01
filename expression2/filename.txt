@@ -4,4 +4,4 @@
 @persist 
 @trigger 
 
-print(entity():isWeldedTo():getProjectileVel())
+entity():isWeldedTo():setCapAmount(entity():isWeldedTo():getCapMax())

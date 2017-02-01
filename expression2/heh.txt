@@ -3,7 +3,7 @@
 @outputs 
 @persist E:entity
 @trigger 
-E = entity(140)
+E = entity(259)
 interval(100)
 entity():isWeldedTo():setCapAmount(entity():isWeldedTo():getCapMax())
 print(_HUD_PRINTCENTER,"Speed: "+ round(E:vel():length()) + ", "+round(convertUnit("u/s","mi/h",E:vel():length()))+"MPH")

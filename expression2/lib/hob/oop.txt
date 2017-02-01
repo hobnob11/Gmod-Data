@@ -51,4 +51,4 @@ function table table:extends(BaseClass:string)
     return This
 }
 
-Cat = public_class( "Cat" ):extends( "Animal" )
+
