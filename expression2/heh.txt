@@ -1,21 +1,42 @@
 @name 
-@inputs 
+@inputs
 @outputs 
-@persist E:entity
+@persist E:entity Tbl:array
 @trigger 
-E = entity(259)
+
 interval(100)
-entity():isWeldedTo():setCapAmount(entity():isWeldedTo():getCapMax())
-print(_HUD_PRINTCENTER,"Speed: "+ round(E:vel():length()) + ", "+round(convertUnit("u/s","mi/h",E:vel():length()))+"MPH")
+
 if(first())
 {
+    findClearWhiteList()
+    findIncludePlayerProps(findPlayerByName("Nj"))
+    findByClass("ship_core")
+    E = find()
+    
+    runOnLast(1)
+}
+
+entity():getCoreEnt():setCapAmount(entity():getCoreEnt():getCapMax())
+
+if(E:isValid()) {print(_HUD_PRINTCENTER,"S: " + round(E:getCoreEnt():getShieldPercent()*100) + " A: " + round(E:getCoreEnt():getArmorPercent()*100) + " H: " + round(E:getCoreEnt():getHullPercent()*100))}
+
+findClearWhiteList()
+findIncludePlayerProps(owner())
 findByClass("sc_turret")
-findClipToPlayerProps(owner())
-local TBL = findToArray()
-foreach(K,V:entity=TBL)
-{
+Tbl = findToArray()
+foreach(K,V:entity=Tbl){
     local WL = V:wirelink()
     WL["Target",entity] = E
     WL["Active",number] = 1
+    WL["Fire",number] = 1
+    WL["Detonate Distance",number] = 500
 }
+if(last())
+{
+    print(_HUD_PRINTCENTER,"Shuting Down...")
+    foreach(K,V:entity=Tbl){
+        local WL = V:wirelink()
+        WL["Active",number] = 0
+        WL["Fire",number] = 0
+    }
 }

@@ -2,7 +2,7 @@
 @inputs Target:vector FireIn
 @outputs [Current Wanted]:vector New:angle Fire
 @persist Sphere:array R Planet:entity I PlanetName:string PlanetPos:vector Built Props:array WeaponBase:entity SurfaceCenter:vector TurretBase:entity HologramBase:entity
-@persist Weapons:array
+@persist Weapons:array ASDF
 @outputs State
 @trigger none
 
@@ -86,8 +86,8 @@ if(first())
     
     if(map()=="gm_interplaneteryfunk")
     {
-        R = 4864
-        PlanetPos = vec(0,0,0)#vec(-10000,-10000,-6000)
+        R = 4096
+        PlanetPos = vec(-10000,-10000,-6000)
     }else{
         #Planet Radius
         R = ( max(Planet:boxSize():x(),Planet:boxSize():y(),Planet:boxSize():z())/2 ) *0.95
@@ -100,7 +100,7 @@ if(first())
     SurfaceCenter = rangerOffset(PlanetPos+vec(0,0,R),PlanetPos):position()
     
     #sphere! :D
-    array():sphere(R,12,"sphereFinish",0)
+    array():sphere(R,7,"sphereFinish",0)
 }
 if(Built==0 & Sphere:count())
 {
@@ -178,7 +178,15 @@ if(Built==0 & Sphere:count())
                     E:setSolid(1)
                 }
             }else{
-                State = 1
+                function s1()
+                {
+                    State = 1
+                    ASDF = 0
+                }
+                if(!ASDF){
+                    ASDF = 1
+                    timer(300,1,"heh","s1()")
+                }
                 
             }
             break

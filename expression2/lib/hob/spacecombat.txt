@@ -1,5 +1,5 @@
 @name Space Combat Library
-@persist WEAPON_LOOKUP_TABLE:table
+@persist WEAPON_LOOKUP_TABLE:table WEAPON_SPEED_LOOKUP_TABLE:table
 @autoupdate
 print(_HUD_PRINTCONSOLE,"Hob-OS: [SC] Loaded")
 local FighterTable = table()
@@ -78,6 +78,8 @@ WEAPON_LOOKUP_TABLE["Cruiser",table] = CruiserTable
 WEAPON_LOOKUP_TABLE["Battleship",table] = BattleshipTable
 WEAPON_LOOKUP_TABLE["Capital",table] = CapitalTable
 
+WEAPON_SPEED_LOOKUP_TABLE = table("Fighter" = 70, "Frigate" = 50, "Cruiser" = 20, "Battleship" = 12.5, "Capital" = 7.5)
+
 function string entity:getWeaponType()
 {
     return WEAPON_LOOKUP_TABLE[This:getWeaponClass(),table][This:getWeaponName(),table]["Type",string]
@@ -85,4 +87,8 @@ function string entity:getWeaponType()
 function number entity:getWeaponTargeting()
 {
     return WEAPON_LOOKUP_TABLE[This:getWeaponClass(),table][This:getWeaponName(),table]["Targeting",number]
+}
+function number entity:getWeaponSpeed()
+{
+    return WEAPON_SPEED_LOOKUP_TABLE[This:getWeaponClass(),number]
 }

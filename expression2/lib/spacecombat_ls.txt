@@ -11,8 +11,8 @@
 @persist [Wirelinks Usage Production BaseVolume]:table
 @persist [Filter GeneratorCount PumpStatus]:table
 @persist [FoundEntities]:array MaxEntities
-@persist ShipCore:entity Mute MultMin MultMax PriorityMod PriorityModBase  WaterPumpDist
-@outputs OpStats:table
+@persist ShipCore:entity Mute MultMin MultMax PriorityMod PriorityModBase  WaterPumpDist OutputOpStats
+@outputs OpStats:table PriorityMod 
 @autoupdate
 @model models/jaanus/wiretool/wiretool_controlchip.mdl
 if(duped()){exit()}
@@ -28,12 +28,15 @@ if(first() | dupefinished())
     OpStats=table()
     FoundEntities=array()
     entity():setColor(vec(125,250,125))
-    Mute = 1
-    MultMin = 1
-    MultMax = 50 #Maximum multiplier to reflect server limitations
     PriorityMod = 0
     PriorityModBase = 150
-    WaterPumpDist=500 #Position to check below water pumps
+    
+    #CUSTOMISATIONS
+    Mute = 1 #Mute generators, 1 = muted, 0 = normal sounds
+    MultMin = 1 #Minimum multiplier to run generators at, recommended to keep at 1
+    MultMax = 50 #Maximum multiplier to reflect server limitations
+    WaterPumpDist=500 #Position to check below water pumps for water source
+    OutputOpStats = 0 #Output op statistics about the e2, turning this on slightly increases op usage
     #---START OF BASE MULTIPLIERS---#
     
     #-----Water Production-----#
@@ -119,7 +122,7 @@ if(first() | dupefinished())
     
     Usage["Water Purifier",number] = 2.669 #Energy cost
     Production["Water Purifier",number] = 4.003 #Radioactive Coolant consumed, water produced, 1/50 carbon consumed
-    BaseVolume["Water Purifier",number] = 5338 
+    BaseVolume["Water Purifier",number] = 5338
     
     Usage["Water Distillator",number] = 35.238 #Energy cost
     Production["Water Distillator",number] = 13.214 #Radioactive Coolant consumed, steam produced
@@ -133,6 +136,14 @@ if(first() | dupefinished())
     Production["Suit Dispenser",number] = 1
     BaseVolume["Suit Dispenser",number] = 2
     
+    Usage["Canister Recycler",number] = 600 #Energy Consumed
+    Production["Canister Recycler",number] = 30 #Canisters produced, empty canisters used, *5 Oxygen Used
+    BaseVolume["Canister Recycler",number] = 25520
+    
+    Usage["Mining Drill Rig",number] = 5000 #Energy Consumed
+    Production["Mining Drill Rig",number]=1
+    BaseVolume["Mining Drill Rig",number]=1
+    
     #---END OF BASE MULTIPLIERS---#
 
 ######User Defined Functions######
@@ -144,20 +155,20 @@ if(first() | dupefinished())
     }
     function number priority2(Energy:number,EnergyPcnt:number,Use:number)
     {
-        local EnergyMin = PriorityMod*2
-        local EnergyPcntMin = 0.01
+        local EnergyMin = PriorityMod*1.5
+        local EnergyPcntMin = 0.015
         return ((Energy > EnergyMin) | (EnergyPcnt > EnergyPcntMin)) & (Energy > Use)
     }
     function number priority3(Energy:number,EnergyPcnt:number,Use:number)
     {
-        local EnergyMin = PriorityMod*4
+        local EnergyMin = PriorityMod*3
         local EnergyPcntMin = 0.025
         return ((Energy > EnergyMin) | (EnergyPcnt > EnergyPcntMin)) & (Energy > Use)
     }
     function number priority4(Energy:number,EnergyPcnt:number,Use:number)
     {
-        local EnergyMin = PriorityMod*8
-        local EnergyPcntMin = 0.05
+        local EnergyMin = PriorityMod*6
+        local EnergyPcntMin = 0.03
         return ((Energy > EnergyMin) | (EnergyPcnt > EnergyPcntMin)) & (Energy > Use)
     }
     function number priority5(Energy:number,EnergyPcnt:number,Use:number)
@@ -319,13 +330,18 @@ if(first() | dupefinished())
     #This function modifies the Usage table to store usage data for each generator/storage found at runtime
     function void setUsage()
     {
-        local Avg = 0
+        local Avg = array()
         local Ignore = 0
         foreach(K,V:wirelink=Wirelinks)
         {
             TempEnt = V:entity()
             local Class = TempEnt:lsDeviceName()
-            if(Class == "Suit Dispenser" | Class == "Life Support Core") {Ignore++ continue}
+            if(Class == "Suit Dispenser" | Class == "Life Support Core" ) {continue}
+            elseif(Class == "Mining Drill Rig")
+            {
+                Usage[K,number] = Usage[Class,number]
+                continue
+            }
             local Vol = round(TempEnt:volume())
             local BaseVol = BaseVolume[Class,number]
             local Negative = Vol>=BaseVol ? 1 : -1
@@ -333,9 +349,10 @@ if(first() | dupefinished())
             Usage[K,number] = Usage[Class,number] * Mod
             Production[K,number] = Production[Class,number] * Mod
             #print(Class,Mod)
-            Avg+=Mod
+            Avg:pushNumber(Mod)
         }
-        PriorityMod = (Avg/(Wirelinks:count() - Ignore)) * PriorityModBase
+        #Avg:removeNumber(Avg:maxIndex())
+        PriorityMod = (Avg:sum()/Avg:count()) * PriorityModBase
         #print(PriorityMod)
     }
     
@@ -344,6 +361,7 @@ if(first() | dupefinished())
     #This function performs witchcraft
     function void wirelinkManage(Docked:number)
     {
+        #print("Entered WirelinkManage")
         #First, get all resource values necessary for compatible generators
         local Energy = ShipCore:lsAmount("Energy")
         local MaxEnergy = ShipCore:lsCapacity("Energy")
@@ -414,7 +432,18 @@ if(first() | dupefinished())
         local MaxRadioactiveCoolant = ShipCore:lsCapacity("Radioactive Coolant")
         local RadioactiveCoolantPcnt = RadioactiveCoolant/MaxRadioactiveCoolant
         local RadioactiveCoolantLeft = MaxRadioactiveCoolant - RadioactiveCoolant
-
+        
+        local EmptyCanister = ShipCore:lsAmount("Empty Canister")
+        local MaxEmptyCanister = ShipCore:lsCapacity("Empty Canister")
+        local EmptyCanisterPcnt = EmptyCanister/MaxEmptyCanister
+        local EmptyCanisterLeft = MaxEmptyCanister - EmptyCanister
+        
+        local LSCanister = ShipCore:lsAmount("Lifesupport Canister")
+        local MaxLSCanister = ShipCore:lsCapacity("Lifesupport Canister")
+        local UraniumPcnt = Uranium/MaxLSCanister
+        local LSCanisterLeft = MaxLSCanister - LSCanister
+        
+        local N=0
         foreach(Idx,WL:wirelink=Wirelinks) #For every wirelink device stored in the Wirelinks table, do the following:
         {
             local IdxR = Idx:explode("|")
@@ -423,6 +452,8 @@ if(first() | dupefinished())
             local Use = Usage[Idx,number] * GenCountMul #Grab the stored Usage for this specific device, then multiply by the number of devices
             local Make = Production[Idx,number] * GenCountMul   #Grab the stored Production for this specific device, then multiply by the number of devices
             local Atmo = WL:entity():inAtmo()
+            local On = 0
+            local Mult =1
             switch(Class)  #Switch statement by class
             {
                 case "Water Pump",   #Water pump, generates water when placed over water source
@@ -430,6 +461,7 @@ if(first() | dupefinished())
                     On = (ThisPumpDocked) & priority4(Energy,EnergyPcnt,Use) & (WaterLeft>Make*2)
                     Mult = min(Energy/(Use*6),(WaterLeft)/(2*Make))
                     generatorControl(WL,On,Mult)
+                    #print(On,Mult)
                     break
                     
                 case "Moisture Vaporator",
@@ -448,9 +480,9 @@ if(first() | dupefinished())
                     
                 case "Fusion Reactor", #Fusion reactor, takes hydrogen and energy and produces more energy
                     On = (Docked)
-                        ? (Energy > Make/6) & (Hydrogen > Use) & (EnergyPcnt < 0.985) & ((AntimatterPcnt < 0.1) | (MaxAntimatter == 0))
-                        : (Energy > Make/6) & (Hydrogen > Use) & (EnergyPcnt < 0.85) & ((AntimatterPcnt < 0.05) | (MaxAntimatter == 0))
-                    Mult = min(Hydrogen/(Use*2), (Energy)/(Make*(3/3)), (EnergyLeft)/(Make))
+                        ? (Energy > Make/3) & (Hydrogen > Use) & (EnergyPcnt < 0.985) & ((AntimatterPcnt < 0.05) | (MaxAntimatter == 0))
+                        : (Energy > Make/3) & (Hydrogen > Use) & (EnergyPcnt < 0.85) & ((AntimatterPcnt < 0.05) | (MaxAntimatter == 0))
+                    Mult = min(Hydrogen/(Use*2), (Energy)/(Make*(2/3)), (EnergyLeft)/(Make))
                     #print(AntimatterPcnt,MaxAntimatter)
                     generatorControl(WL,On,Mult)
                     break
@@ -490,7 +522,7 @@ if(first() | dupefinished())
                     
                 case "Hydrogen Fuel Cell", #Electrocutes Hydrogen and Oxygen to generate Water and Energy
                     On = (Atmo)
-                        ? ((WaterPcnt < 0.05) | EnergyPcnt < 0.05) & (OxygenPcnt > 0.05) & (HydrogenPcnt > 0.05)
+                        ? ((WaterPcnt < 0.05) | EnergyPcnt < 0.05) & (OxygenPcnt > 0.025) & (HydrogenPcnt > 0.025)
                         : 0
                     Mult = min(Oxygen/(2*Use),Hydrogen/(4*Use),WaterLeft/(Use*0.5),EnergyLeft/(Make))
                     generatorControl(WL,On,Mult)
@@ -498,7 +530,7 @@ if(first() | dupefinished())
                     
                 case "Antimatter Creator", #Captures antimatter using lots of energy and hydrogen
                     On = (Docked|Atmo)
-                        ? priority2(Energy,EnergyPcnt,Use) & (Hydrogen > Use/2) & (AntimatterLeft > Make) & (Antimatter < (Hydrogen)*0.95)
+                        ? priority2(Energy,EnergyPcnt,Use) & (Hydrogen > Use/2) & (AntimatterLeft > Make)
                         : (Energy > Use) & (Hydrogen > Use/2) & (AntimatterPcnt < 0.05) & (Antimatter < (Hydrogen)*0.95)
                     Mult = min(Energy/(Use*5),Hydrogen/(Use/2),AntimatterLeft/(2*Make))
                     generatorControl(WL,On,Mult)
@@ -506,8 +538,8 @@ if(first() | dupefinished())
                     
                 case "Antimatter Reactor", #Annihilates antimatter with Hydrogen to generate buckets of Energy
                     On = (Docked)
-                        ? (Energy > Make/6) & (Hydrogen > Use) & (Antimatter > Use) & (EnergyPcnt < 0.975)
-                        : (Energy > Make/6) & (Hydrogen > Use*1) & (Antimatter > Use*1) & (EnergyPcnt < 0.9)
+                        ? (Energy > Make/6) & (Hydrogen > Use) & (Antimatter > Use) & (EnergyPcnt < 0.975) 
+                        : (Energy > Make/6) & (Hydrogen > Use*1) & (Antimatter > Use*1) & (EnergyPcnt < 0.75)
                     Mult = min(Energy/(Make/3),Hydrogen/(Use*4),Antimatter/(Use*4),EnergyLeft/(2*Make))
                     generatorControl(WL,On,Mult)
                     break
@@ -523,16 +555,16 @@ if(first() | dupefinished())
                 
                 case "Fission Reactor",
                     On = (Docked)
-                        ? (Uranium > Use) & (Water > Make/8) & (RadioactiveCoolantLeft > Make/8) & (EnergyPcnt < 0.995)
-                        : (Uranium > Use*5) & (Water > Make) & (RadioactiveCoolantLeft > Make) & (EnergyPcnt < 0.85)
-                    Mult = min(Uranium/(Use*2),Water/(Make*2),RadioactiveCoolantLeft/(Make*2),EnergyLeft/(Make))
+                        ? (Uranium > Use) & (Water > Make) & (RadioactiveCoolantLeft > Make) & (EnergyPcnt < 0.995)
+                        : (Uranium > Use*5) & (Water > Make*2) & (RadioactiveCoolantLeft > Make*2) & (EnergyPcnt < 0.85)
+                    Mult = min(Uranium/(Use),Water/(Make),RadioactiveCoolantLeft/(Make*2),EnergyLeft/(Make))
                     generatorControl(WL,On,Mult)
                     break
                 
                 case "PN Reactor",
                     On = (Docked)
-                        ? (PoloniumNitrate > Use) & (Water > Use*6) & (RadioactiveCoolantLeft > Use*6) & (EnergyPcnt < 0.99)
-                        : (PoloniumNitrate > Use*5) & (Water > Use*12) & (RadioactiveCoolantLeft > Use*12) & (EnergyPcnt < 0.8)
+                        ? (PoloniumNitrate > Use) & (Water > Use*3) & (RadioactiveCoolantLeft > Use*6) & (EnergyPcnt < 0.99)
+                        : (PoloniumNitrate > Use*5) & (Water > Use*6) & (RadioactiveCoolantLeft > Use*12) & (EnergyPcnt < 0.8)
                     Mult = min(PoloniumNitrate/(Use),Water/(Use*6),RadioactiveCoolantLeft/(Use*12),EnergyLeft/(Make))
                     generatorControl(WL,On,Mult)
                     break
@@ -541,15 +573,24 @@ if(first() | dupefinished())
                     On = (Energy > Use*5) & (RadioactiveCoolant > Make) & (Carbon > (Make/50))
                     Mult = min(Energy/(Use*2),RadioactiveCoolant/(Make*2), Carbon/(Make/25))
                     generatorControl(WL,On,Mult)
+                    break
                 
                 case "Water Distillator",
                     On = (Energy > Use*5) & (RadioactiveCoolant > Make)
                     Mult = min(Energy/(Use*2),RadioactiveCoolant/(Make*2))
                     generatorControl(WL,On,Mult)
+                    break
+                    
+                case "Canister Recycler",
+                    On = (Energy > Use*5) & (EmptyCanister > Make) & (LSCanister < MaxLSCanister)
+                    Mult = min(Energy/(Use*2), EmptyCanister/(Make*2), LSCanisterLeft/(Make))
+                    generatorControl(WL,On,Mult)
+                    break
                 
                 case "Suit Dispenser",
                     On = priority5(Energy,EnergyPcnt,0)
                     suitDispenserControl(WL,On)
+                    break
                 
                 case "Life Support Core",
                     Use1 = WL["Required Energy",number]
@@ -560,8 +601,10 @@ if(first() | dupefinished())
                     break
                 
                 case "Mining Drill Rig",
-                    On = priority2(Energy,EnergyPcnt,Use)
-                    generatorControl(WL,On)
+                    On = priority5(Energy,EnergyPcnt,Use) & (Energy > Use*2)
+                    Mult = Energy/(Use*2)
+                    generatorControl(WL,On,Mult)
+                    break
                 default,
                     break
             }
@@ -575,11 +618,12 @@ if(first() | dupefinished())
             local PumpEnt = entity(PumpID:toNumber())
             if(PumpEnt:lsDeviceName()=="Water Pump")
             {
+                rangerFilter(PumpEnt:getConstraints())
                 rangerFlags("WI")
                 local R = rangerOffset(WaterPumpDist,PumpEnt:pos(),vec(0,0,-100))
                 if(R:hit() | PumpEnt:isUnderWater())
                 {
-                    PumpStatus[PumpID,number]=R:hit()
+                    PumpStatus[PumpID,number]=1
                     Docked=1
                 }
             }
@@ -590,18 +634,21 @@ if(first() | dupefinished())
         }
         return Docked
     }
-    function void getOpStats()
+    function void getOpStats(Bool:number)
     {
-        local OpsThisCycle = opcounter()
-        local MaxOps = OpStats["Maximum Ops Used",number]
-        OpStats["Uptime(seconds)",number] = OpStats["Uptime(seconds)",number] + 1
-        OpStats["Ops Used This Cycle",number] = OpsThisCycle
-        OpStats["Average Ops",number] = ops()
-        OpStats["CPU Usage", number] = cpuUsage()*1000000
-        OpStats["Total Ops Used",number] = OpStats["Total Ops Used",number] + OpStats["Ops Used This Cycle",number]
-        if(OpsThisCycle > MaxOps)
+        if(Bool)
         {
-            OpStats["Maximum Ops Used",number] = OpsThisCycle
+            local OpsThisCycle = opcounter()
+            local MaxOps = OpStats["Maximum Ops Used",number]
+            OpStats["Uptime(seconds)",number] = OpStats["Uptime(seconds)",number] + 1
+            OpStats["Ops Used This Cycle",number] = OpsThisCycle
+            OpStats["Average Ops",number] = ops()
+            OpStats["CPU Usage", number] = cpuUsage()*1000000
+            OpStats["Total Ops Used",number] = OpStats["Total Ops Used",number] + OpStats["Ops Used This Cycle",number]
+            if(OpsThisCycle > MaxOps)
+            {
+                OpStats["Maximum Ops Used",number] = OpsThisCycle
+            }
         }
     }
 #####End Functions######
@@ -621,7 +668,8 @@ if(first() | dupefinished())
                         "PN Reactor",
                         "Water Purifier", "Water Distillator",
                         "Mining Drill Rig",
-                        "Suit Dispenser" ))
+                        "Suit Dispenser" ,
+                        "Canister Recycler"))
                             
     #Get ship core and network entities
     ShipCore = entity():isConstrainedTo():getCoreEnt()
@@ -669,10 +717,10 @@ if(changed(MaxEntities)!=0 & MaxEntities > 0) #If new entities are found
     }
     setName(Name:left(Name:length()-1))
     setUsage()
-    getOpStats()
+    getOpStats(OutputOpStats)
     exit()
 }
 FoundEntities = ShipCore:lsNetEntities()
 MaxEntities = FoundEntities:count()
 wirelinkManage(isDocked())
-getOpStats()
+getOpStats(OutputOpStats)

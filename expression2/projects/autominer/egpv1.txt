@@ -1,0 +1,94 @@
+@name Auto Miner EGP v1
+@inputs Core:entity
+
+@persist E:wirelink Sorted ResourceList:array Done
+
+if(first())
+{
+    runOnTick(1)
+    Ent = holoCreate(1)
+    holoPos(1,entity():isWeldedTo():pos()+vec(0,0,71))
+    holoAng(1,entity():isWeldedTo():angles())
+    holoScaleUnits(1,-vec(130,1,130))
+    holoColor(1,vec(0))
+    holoParent(1,entity():isWeldedTo())
+    E = entity():isWeldedTo():wirelink()
+    E:egpClear()
+    E:egpDrawTopLeft(1)
+    
+    E:egpBox(1,vec2(0),vec2(512,32))
+    E:egpColor(1,vec(150,150,150))
+    
+    E:egpBox(2,vec2(2),vec2(508,28))
+
+    E:egpTextLayout(3,"Hob-Co Auto-Miner V1",vec2(2),vec2(508,28))
+    E:egpAlign(3,1,1)
+    E:egpColor(3,vec(100,100,255))
+    
+    E:egpLine(4,vec2(256,32),vec2(256,512))
+    E:egpLine(5,vec2(0,256),vec2(512,256))
+    
+    holoCreate(2)
+    holoModel(2,"hqcylinder")
+    holoAng(2,Ent:angles()+ang(90,-90,0))
+    holoPos(2,Ent:toWorld(vec(0,0,1.2)))
+    holoParent(2,1)
+    holoScaleUnits(2,vec(70,70,1))
+    holoMaterial(2,"models/rendertarget")
+    lightCreate(1,Ent:toWorld(vec(0,-50,0)))
+    lightParent(1,Ent)
+    lightColor(1,vec(255))
+    E:egpCircle(6,vec2(256),vec2(128))
+    ResourceList = Core:lsResourceList()
+    function done()
+    {
+        printTable(ResourceList)
+        for( I=1,ResourceList:count() )
+        {
+            E:egpText(6+I,ResourceList[I,string]+": "+round((Core:lsAmount(ResourceList[I,string])/Core:lsCapacity(ResourceList[I,string]))*100)+"%",vec2(2,250+I*11))
+            E:egpFont(6+I,"Lucida Console",10)
+        }
+        Done = 1
+    }
+    
+    function number string:compareTo(That:string) {
+        local L1 = This:length()
+        local L2 = That:length()
+        local Lim = min(L1,L2)
+
+        local I = 0
+        while(I <= Lim) {
+            local C1 = toByte(This[I])
+            local C2 = toByte(That[I])
+            if (C1 != C2) {
+                return sign(C2 - C1)
+            }
+            I++
+        }
+        return sign(L1-L2)
+    }
+    
+    
+}
+while(!Sorted & perf(0.8)){
+    Sorted = 1
+    for(I=1,ResourceList:count()){
+        if( I>1 ){
+            if( ResourceList[I,string]:length() < ResourceList[I-1,string]:length() )
+            {
+                local Str = ResourceList[I,string]
+                ResourceList:removeString(I)
+                ResourceList:insertString(I-1,Str)
+                Sorted = 0
+            } 
+            elseif( ResourceList[I,string]:compareTo( ResourceList[I-1,string] ) & (ResourceList[I,string]:length() == ResourceList[I-1,string]:length()) )
+            {
+                local Str = ResourceList[I,string]
+                ResourceList:removeString(I)
+                ResourceList:insertString(I-1,Str)
+                Sorted = 0
+            }
+        }
+    }
+}
+if(Sorted & !Done){done()}

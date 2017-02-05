@@ -1,13 +1,14 @@
 @name Fusion Animation Drive
-@inputs Override FusionL:wirelink
+@inputs Override 
 @outputs  Speed  Angle 
-@persist Fusion:entity  On Speed 
+@persist Fusion:entity  On Speed FusionL:wirelink
 @trigger 
 
 
 if(dupefinished() | duped()) {reset()}
 if(first()) {
-    Fusion = FusionL:entity()
+    Fusion = entity():isWeldedTo()
+    FusionL = Fusion:wirelink()
     Fusion:setAlpha(0)
     
     ##HOLO CREATION##

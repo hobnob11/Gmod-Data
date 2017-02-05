@@ -4,4 +4,4 @@
 @persist 
 @trigger 
 
-entity():isWeldedTo():setCapAmount(entity():isWeldedTo():getCapMax())
+entity():isWeldedTo():setShieldAmount(entity():isWeldedTo():getShieldMax())

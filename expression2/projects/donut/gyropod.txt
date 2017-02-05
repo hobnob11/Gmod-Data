@@ -31,6 +31,8 @@ if ( dupefinished() | (first() & !duped()) )
     {
         Ary[I,entity]:sbSetGravityOverride( 1 )
         Ary[I,entity]:propGravity( 0 )
+        Ary[I,entity]:sbSetDragOverride( 1 )
+        Ary[I,entity]:propDrag( 0 )
         Mass = Mass + Ary[I,entity]:mass()
     }
     runOnTick( 1 )
@@ -64,7 +66,7 @@ switch( State )
                                      Keys[ "StrafeLeft", number ] - Keys[ "StrafeRight", number ],
                                      Keys[ "Up", number ] -         Keys[ "Down", number ] ):normalized():rotate( Parent:angles() )
 
-        local Force = InputDirection * Mass * 8
+        local Force = InputDirection * Mass * 4
         
         local InertialDampingForce = Parent:velL()
 
@@ -84,23 +86,15 @@ switch( State )
         InertialDampingForce *= Mass * 0.05
         
         Parent:applyForce( Force - InertialDampingForce )
+        local Vel = Parent:velL()
+
+        if( Vel:x() > 250 ) { Vel = Vel:setX( 250 ) } elseif (Vel:x() <= -250) { Vel = Vel:setX(-250) } 
+        if( Vel:y() > 250 ) { Vel = Vel:setY( 250 ) } elseif (Vel:y() <= -250) { Vel = Vel:setY(-250) } 
+        if( Vel:z() > 250 ) { Vel = Vel:setZ( 250 ) } elseif (Vel:z() <= -250) { Vel = Vel:setZ(-250) } 
+        Parent:setVel(Parent:pos() - Parent:toWorld(Vel))
         
-        local Pitch = -Parent:vel():z() / 100        
-        
-        if( Keys[ "TurnLeft", number] )
-        {
-            YawVelL = clamp( YawVelL + 1, 0, 1 )
-        } else {
-            YawVelL = clamp( YawVelL - 1, 0, 1 )
-        }
-        if( Keys[ "TurnRight", number] )
-        {
-            YawVelR = clamp( YawVelR + 1, 0, 1 )
-        } else {
-            YawVelR = clamp( YawVelR - 1, 0, 1 )
-        }
-        
-        local Yaw = Parent:angles():yaw() + YawVelL*10 - YawVelR*10
+        local Pitch = -Parent:vel():z() / 100
+        local Yaw = Parent:angles():yaw() + Keys["TurnLeft",number]*(33/1000)*5 - Keys["TurnRight",number]*(33/1000)*5
         local YawVelT = YawVelL - YawVelR
         local WantedAng = ang( Pitch, Yaw , -YawVelT*1.5 )
         DebugAng = WantedAng

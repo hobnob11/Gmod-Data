@@ -16,7 +16,7 @@
 	{
 		"id"		"loopback"
 		"rank"		"0"
-		"name"		"Hob"
+		"name"		"H08.us"
 	}
 	"4"
 	{
@@ -26,14 +26,14 @@
 	}
 	"5"
 	{
-		"id"		"STEAM_0:0:20115714"
-		"rank"		"1"
-		"name"		"Err"
+		"id"		"STEAM_0:0:0"
+		"rank"		"0"
+		"name"		"H08.us"
 	}
 	"6"
 	{
-		"id"		"STEAM_0:0:0"
-		"rank"		"0"
-		"name"		"H08"
+		"id"		"STEAM_0:0:20115714"
+		"rank"		"1"
+		"name"		"Err"
 	}
 }

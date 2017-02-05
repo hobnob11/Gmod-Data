@@ -1,0 +1,23 @@
+@name Auto Miner V1
+
+@persist Core:entity
+
+if(first())
+{
+    Core = entity():isWeldedTo():getCoreEnt()
+    printTable(Core:lsResourceList())
+    
+    function string getFullestResource()
+    {
+        local BL = table("Oxygen"=1,"Hydrogen"=1,"Water"=1,"Antimatter"=1)
+        local Ary = Core:lsResourceList()
+        local X = 0
+        local Ret = ""
+        for( I = 1, Ary:count() )
+        {
+            local Y = Core:lsResPercent(Ary[I,string])
+            if( Y > X & !BL:exists(Ary[I,string]) ){ Ret = Ary[I,string] X = Y } #kanz said probably, so its good.
+        }
+        return Ret
+    }
+}
