@@ -1,23 +1,67 @@
 @name Auto Miner V1
 
-@persist Core:entity
+@persist Core:entity E:entity Home:vector TargetRoid:entity Offset:vector Lasers:array
 
+@outputs State:string
 if(first())
 {
-    Core = entity():isWeldedTo():getCoreEnt()
-    printTable(Core:lsResourceList())
+    E = entity():isWeldedTo()
+    Core = E:getCoreEnt()
+    Home = E:pos()
+    Offset = E:toLocal(entity():pos()) + vec(0, 0, 100)
+    dsJoinGroup("HobMiner")
+    dsSetScope(0)
+    runOnSignal("HobMiner",0,1)
     
-    function string getFullestResource()
+    foreach(K,V:entity=E:getConstraints())
     {
-        local BL = table("Oxygen"=1,"Hydrogen"=1,"Water"=1,"Antimatter"=1)
-        local Ary = Core:lsResourceList()
-        local X = 0
-        local Ret = ""
-        for( I = 1, Ary:count() )
+        if(V:type()=="sc_weapon_base")
         {
-            local Y = Core:lsResPercent(Ary[I,string])
-            if( Y > X & !BL:exists(Ary[I,string]) ){ Ret = Ary[I,string] X = Y } #kanz said probably, so its good.
+            Lasers[Lasers:count()+1,entity] = V
         }
-        return Ret
     }
+}
+
+if(dsClk())
+{
+    print(dsGetString())
+    State = dsGetString()
+}
+
+interval(1000)
+
+switch(State)
+{
+    case "Idle",
+
+        break
+    case "GoHome",
+        E:setPosition( Home )
+        for(I =1, Lasers:count())
+        {
+            local WL = Lasers[I,entity]:wirelink()
+            WL["Fire",number] = 0
+        }
+        State = "Idle"
+        break
+        
+    case "Mining",
+        if( !TargetRoid:isValid() )
+        {
+            State = "NextRoid"
+        } 
+        break
+        
+    case "NextRoid",
+        findByClass("mining_asteroid")
+        findSortByDistance(entity():pos())
+        TargetRoid = find()
+        E:setPosition( TargetRoid:pos() - Offset )
+        for(I =1, Lasers:count())
+        {
+            local WL = Lasers[I,entity]:wirelink()
+            WL["Fire",number] = 1
+        }
+        break
+        
 }

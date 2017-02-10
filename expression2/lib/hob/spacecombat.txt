@@ -1,5 +1,5 @@
 @name Space Combat Library
-@persist WEAPON_LOOKUP_TABLE:table WEAPON_SPEED_LOOKUP_TABLE:table
+@persist WEAPON_LOOKUP_TABLE:table WEAPON_SPEED_LOOKUP_TABLE:table SHIP_MOVEMENT_SPEED_LOOKUP_TABLE:table SHIP_TURNING_SPEED_LOOKUP_TABLE:table
 @autoupdate
 print(_HUD_PRINTCONSOLE,"Hob-OS: [SC] Loaded")
 local FighterTable = table()
@@ -80,6 +80,8 @@ WEAPON_LOOKUP_TABLE["Capital",table] = CapitalTable
 
 WEAPON_SPEED_LOOKUP_TABLE = table("Fighter" = 70, "Frigate" = 50, "Cruiser" = 20, "Battleship" = 12.5, "Capital" = 7.5)
 
+SHIP_MOVEMENT_SPEED_LOOKUP_TABLE = table("Drone" = 10000, "Fighter" = 8000, "Frigate" = 3500, "Cruiser" = 2000,"Battlecruiser" = 1250, "Battleship" = 1000, "Dreadnaught" = 500, "Titan" = 250)
+SHIP_TURNING_SPEED_LOOKUP_TABLE = table("Drone" = 90, "Fighter" = 70, "Frigate" = 50, "Cruiser" = 20,"Battlecruiser" = 20, "Battleship" = 12.5, "Dreadnaught" = 7.5, "Titan" = 7.5)
 function string entity:getWeaponType()
 {
     return WEAPON_LOOKUP_TABLE[This:getWeaponClass(),table][This:getWeaponName(),table]["Type",string]
@@ -92,3 +94,15 @@ function number entity:getWeaponSpeed()
 {
     return WEAPON_SPEED_LOOKUP_TABLE[This:getWeaponClass(),number]
 }
+function number entity:getMovementSpeed()
+{
+    return SHIP_MOVEMENT_SPEED_LOOKUP_TABLE[This:getCoreEnt():getCoreClass(),number]
+}
+function number entity:getTurningSpeed()
+{
+    return SHIP_TURNING_SPEED_LOOKUP_TABLE[This:getCoreEnt():getCoreClass(),number]
+}
+
+
+
+

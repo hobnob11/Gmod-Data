@@ -11,10 +11,10 @@ if ( dupefinished() | (first() & !duped()) )
         Driver = Chair:driver()
         if( !Driver:isValid() ){ return }
         
-        Keys[ "Forward",     number ] = Driver:keyPressed( "W" )
-        Keys[ "Backward",    number ] = Driver:keyPressed( "S" )
-        Keys[ "StrafeLeft",  number ] = Driver:keyPressed( "Q" )
-        Keys[ "StrafeRight", number ] = Driver:keyPressed( "E" )
+        Keys[ "Forward",     number ] = Driver:keyPressed( "Q" )
+        Keys[ "Backward",    number ] = Driver:keyPressed( "E" )
+        Keys[ "StrafeLeft",  number ] = Driver:keyPressed( "W" )
+        Keys[ "StrafeRight", number ] = Driver:keyPressed( "S" )
         Keys[ "TurnLeft",    number ] = Driver:keyPressed( "A" )
         Keys[ "TurnRight",   number ] = Driver:keyPressed( "D" )
         Keys[ "Up",          number ] = Driver:keyPressed( "SPACE" )
@@ -30,10 +30,6 @@ if ( dupefinished() | (first() & !duped()) )
     Ary:pushEntity( Parent )
     for( I=1, Ary:count() )
     {
-        Ary[I,entity]:sbSetGravityOverride( 1 )
-        Ary[I,entity]:propGravity( 0 )
-        Ary[I,entity]:sbSetDragOverride( 1 )
-        Ary[I,entity]:propDrag( 0 )
         Mass = Mass + Ary[I,entity]:mass()
     }
     runOnTick( 1 )
@@ -67,7 +63,7 @@ switch( State )
                                      Keys[ "StrafeLeft", number ] - Keys[ "StrafeRight", number ],
                                      Keys[ "Up", number ] -         Keys[ "Down", number ] ):normalized():rotate( Parent:angles() )
 
-        local Force = InputDirection * Mass * 4 * 4
+        local Force = InputDirection * Mass * 4
         
         local InertialDampingForce = Parent:velL()
 
@@ -88,7 +84,7 @@ switch( State )
         
         Parent:applyForce( Force - InertialDampingForce )
         local Vel = Parent:velL()
-        local Limit = 8000
+        local Limit = 1250
         if( Vel:x() > Limit ) { Vel = Vel:setX( Limit ) } elseif (Vel:x() <= -Limit) { Vel = Vel:setX(-Limit) } 
         if( Vel:y() > Limit ) { Vel = Vel:setY( Limit ) } elseif (Vel:y() <= -Limit) { Vel = Vel:setY(-Limit) } 
         if( Vel:z() > Limit ) { Vel = Vel:setZ( Limit ) } elseif (Vel:z() <= -Limit) { Vel = Vel:setZ(-Limit) } 
@@ -97,7 +93,7 @@ switch( State )
         CurTime = curtime()
         
         local Pitch = -Parent:vel():z() / 100
-        Yaw = Yaw + (Keys["TurnLeft",number] - Keys["TurnRight",number])*$CurTime*70
+        Yaw = Yaw + (Keys["TurnLeft",number] - Keys["TurnRight",number])*$CurTime*20
         local WantedAng = ang( Pitch, Yaw ,0 )
         DebugAng = WantedAng
         Parent:applyQTorque( WantedAng, 8, 8 )

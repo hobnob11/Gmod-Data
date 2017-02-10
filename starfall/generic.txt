@@ -1,50 +1,45 @@
 --@name 
 --@author 
+--@shared
 
-local self = {}
+if SERVER then
+    
+    --print("hi")
+    hook.Add("Think","asdf",function()
+        if( net.CanSend() ) then
+            net.Start("hob")
+            local E = 422
+            net.WriteInt(#wire.getOutputs(entities.entity(E)),16)
+            for k,v in pairs(wire.getOutputs(entities.entity(E))) do
+                if(type(entities.entity(E):wirelink()[v])=="number")then 
+                    net.WriteString(v)
+                    net.WriteDouble(entities.entity(E):wirelink()[v])
+                end
+            end
+            net.Send(entities.owner())
+        end
+    end)
+elseif CLIENT then
+    
+    WL = {}
+    Go = false
+    hook.Add("net","heh",function(name,len)
+        WL = {}
+        for I = 1, net.ReadInt(16) do
+            local key = net.ReadString()
+            local value = net.ReadDouble(16)
+            WL[key] = value
+            print(key,value)
+        end
+        Go = true
+    end)
 
-function self.CreateHologram(self, model, pos, ang, col, alpha, par, scale, mat)
-    local p = self:LocalToWorld( pos )
-    local a = self:LocalToWorld( ang )
-    h = holograms.create( p, a, model, scale )
-    h:SetColor(Color(col.r,col.g,col.b,alpha))
-    h:SetParent(par)
-    h:SetRenderMode(h:GetColor().a == 255 and RENDERMODE_NORMAL or RENDERMODE_TRANSALPHA)
-    h:SetMaterial(mat)
-    if scale then h:setScale( scale ) end
-    table.insert(self.Holograms, h)
-    return h
+    hook.Add("HUDPaint","screenhook",function()
+            if Go then
+                surface.SetTextPos(500,500)
+                surface.SetTextColor(Color(255,255,255))
+                surface.DrawText("Charge Level: "..WL["Charge Level"])
+            end
+    end)
+    
 end
-
-A = function(self)
-    self.Holograms = {}
-    self.AttachmentPositions = {Vector(125,8,48.5), Vector(125,-8,48.5)}
-    --self:SetModel("models/slyfo_2/miscequipmentmount.mdl")
-    self.HoloMaterial = ""
-    self.HoloColor = Color(255,255,255)
-    --self:SetupPhysics()
-
-    self.AimSpeed = 7
-    self.MinElevation = -25
-    self.MaxElevation = 45
-
-    self.SoundStart = "plats/crane/vertical_start.wav"
-    self.SoundStop = "plats/crane/vertical_stop.wav"
-    self.SoundPitch = 125
-    self.SoundVolume = 0.25
-
-    self.OffsetAng = Angle(0,0,0)
-    self.BearingHolo = self:CreateHologram("models/props_c17/pulleywheels_small01.mdl", Vector(0,0,40), self.OffsetAng, self.HoloColor, 0, self)
-    self.ElevationHolo = self:CreateHologram("models/props_c17/pulleywheels_small01.mdl", Vector(-2,0,47), self.OffsetAng, self.HoloColor, 0, self.BearingHolo)
-    self.PivotHolo = self:CreateHologram("models/props_c17/pulleywheels_small01.mdl", Vector(-2,0,47), self.OffsetAng, self.HoloColor, 0, self.BearingHolo)
-
-    self:CreateHologram('models/slyfo_2/mini_turret_swivel.mdl', Vector(0, 0, 40), Angle(0, 0, 0), self.HoloColor, 255, self.BearingHolo)
-    self:CreateHologram('models/slyfo_2/mini_turret_mount1.mdl', Vector(-2, 0, 47), Angle(0, 0, 0), self.HoloColor, 255, self.PivotHolo)
-    self:CreateHologram('models/slyfo/flakvierling_blasterleft.mdl', Vector(54, 8, 49), Angle(0, 0, -90), self.HoloColor, 255, self.PivotHolo)
-    self:CreateHologram('models/slyfo/flakvierling_blasterright.mdl', Vector(54, -8, 49), Angle(0, 0, 90), self.HoloColor, 255, self.PivotHolo)
-
-    self:SetupWeapons()
-    flush_scale_queue()
-end
-
-A(entities.self())    

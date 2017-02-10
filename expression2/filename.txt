@@ -4,4 +4,12 @@
 @persist 
 @trigger 
 
-entity():isWeldedTo():setShieldAmount(entity():isWeldedTo():getShieldMax())
+E = entity():isWeldedTo()
+
+holoCreate(1)
+holoModel(1,"hqcylinder")
+holoScaleUnits(1,vec(80,80,1))
+holoAng(1,E:toWorld(ang(90,90,0)))
+holoPos(1,E:pos())
+holoParent(1,E)
+holoMaterial(1,"models/rendertarget")

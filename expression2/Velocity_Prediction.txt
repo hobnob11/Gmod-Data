@@ -31,7 +31,7 @@ if(chatClk(owner()))
 }
 
 
-V = 3333.333 #2000 #<friget ones  |   fighter ones>#2666.666 #speed of torpedo
+V = 20000 #2000 #<friget ones  |   fighter ones>#2666.666 #speed of torpedo
 
 if( TPos != Ent:pos() | FailedCount>10 )
 {

@@ -100,7 +100,8 @@ if(first())
     SurfaceCenter = rangerOffset(PlanetPos+vec(0,0,R),PlanetPos):position()
     
     #sphere! :D
-    array():sphere(R,7,"sphereFinish",0)
+    array():sphere(R,4,"sphereFinish",0)
+    
 }
 if(Built==0 & Sphere:count())
 {

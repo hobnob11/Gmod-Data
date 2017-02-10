@@ -30,10 +30,6 @@ if ( dupefinished() | (first() & !duped()) )
     Ary:pushEntity( Parent )
     for( I=1, Ary:count() )
     {
-        Ary[I,entity]:sbSetGravityOverride( 1 )
-        Ary[I,entity]:propGravity( 0 )
-        Ary[I,entity]:sbSetDragOverride( 1 )
-        Ary[I,entity]:propDrag( 0 )
         Mass = Mass + Ary[I,entity]:mass()
     }
     runOnTick( 1 )
@@ -100,7 +96,7 @@ switch( State )
         Yaw = Yaw + (Keys["TurnLeft",number] - Keys["TurnRight",number])*$CurTime*5
         local WantedAng = ang( Pitch, Yaw ,0 )
         DebugAng = WantedAng
-        Parent:applyQTorque( WantedAng, 80, 80 )
+        Parent:applyQTorque( WantedAng, 8, 8 )
         
         break
         
