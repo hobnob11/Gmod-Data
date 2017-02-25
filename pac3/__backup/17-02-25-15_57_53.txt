@@ -323,417 +323,298 @@
 			["children"] = {
 			},
 			["self"] = {
-				["Position"] = Vector(1.1611328125, -2.71875, 6.39013671875),
+				["Position"] = Vector(3.3876953125, 4.1318359375, 7.0618896484375),
 				["CellShade"] = 0.1,
-				["Name"] = "foothbsl",
-				["Scale"] = Vector(2.2000000476837, 1, 1),
+				["Name"] = "handhbsl",
+				["Scale"] = Vector(1.7000000476837, 1, 1),
 				["Material"] = "models/ihvtest/eyeball_l",
 				["ClassName"] = "model",
-				["Size"] = 1.225,
-				["Angles"] = Angle(7.75, -34.71875, 0),
-				["Color"] = Vector(255, 0, 97),
-				["Bone"] = "left foot",
+				["Size"] = 1.2,
+				["Angles"] = Angle(35.78125, -45.25, -21.5625),
+				["Color"] = Vector(255, 101, 101),
+				["Bone"] = "left upperarm",
 				["Model"] = "models/dav0r/hoverball.mdl",
-				["UniqueID"] = "899816123",
+				["UniqueID"] = "2069799318",
 			},
 		},
 		[2] = {
 			["children"] = {
-				[1] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-								[1] = {
-									["children"] = {
-										[1] = {
-											["children"] = {
-											},
-											["self"] = {
-												["ClassName"] = "proxy",
-												["UniqueID"] = "3897702547",
-												["InputMultiplier"] = 10,
-												["Axis"] = "y",
-												["Min"] = 0.1,
-												["Input"] = "voice_volume",
-												["VariableName"] = "Scale",
-											},
-										},
-									},
-									["self"] = {
-										["UniqueID"] = "2286132612",
-										["Scale"] = Vector(0.33599999547005, 0.55000001192093, 0.84799998998642),
-										["EditorExpand"] = true,
-										["Size"] = 0.35,
-										["Angles"] = Angle(0.25, -60.03125, 0),
-										["Color"] = Vector(0, 0, 0),
-										["Position"] = Vector(-8.251953125, 16.504272460938, -2.7279663085938),
-										["Material"] = "models/debug/debugwhite",
-										["ClassName"] = "model",
-									},
-								},
-							},
-							["self"] = {
-								["ClassName"] = "group",
-								["UniqueID"] = "3109250881",
-								["EditorExpand"] = true,
-							},
-						},
-						[2] = {
-							["children"] = {
-							},
-							["self"] = {
-								["Event"] = "is_voice_chatting",
-								["ClassName"] = "event",
-								["Invert"] = true,
-								["UniqueID"] = "227518805",
-							},
-						},
-					},
-					["self"] = {
-						["ClassName"] = "group",
-						["UniqueID"] = "1441044651",
-						["Name"] = "mouth talk",
-					},
-				},
-				[2] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-							},
-							["self"] = {
-								["UniqueID"] = "3880622441",
-								["Name"] = "hoverballhbsl",
-								["Scale"] = Vector(2.2000000476837, 1.2000000476837, 1.6000000238419),
-								["Alpha"] = 0.525,
-								["ClassName"] = "model",
-								["Size"] = 0.225,
-								["Material"] = "models/effects/pyro/pilotlight_motion",
-								["Color"] = Vector(29, 0, 255),
-								["Angles"] = Angle(0, -10.84375, 0),
-								["Model"] = "models/dav0r/hoverball.mdl",
-								["Position"] = Vector(-2.9794921875, -1.2845458984375, -0.00390625),
-							},
-						},
-						[2] = {
-							["children"] = {
-							},
-							["self"] = {
-								["UniqueID"] = "1509372694",
-								["Name"] = "hoverballhbsl",
-								["Scale"] = Vector(1.6000000238419, 1, 1),
-								["Material"] = "models/ihvtest/eyeball_l",
-								["Size"] = 0.25,
-								["Position"] = Vector(3.2880859375, -1.4652099609375, -0.0166015625),
-								["Angles"] = Angle(0, 12.71875, 0),
-								["Model"] = "models/dav0r/hoverball.mdl",
-								["ClassName"] = "model",
-							},
-						},
-					},
-					["self"] = {
-						["UniqueID"] = "1335973923",
-						["Name"] = "eyehbsl",
-						["Scale"] = Vector(2.2000000476837, 1, 1),
-						["Position"] = Vector(-0.5146484375, 17.084999084473, -7.2789998054504),
-						["Angles"] = Angle(0, -0.5, 164.25),
-						["Size"] = 0.475,
-						["EditorExpand"] = true,
-						["Color"] = Vector(0, 0, 0),
-						["Material"] = "models/ihvtest/eyeball_l",
-						["Model"] = "models/dav0r/hoverball.mdl",
-						["ClassName"] = "model",
-					},
-				},
-				[3] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-							},
-							["self"] = {
-								["ClassName"] = "event",
-								["UniqueID"] = "2898585388",
-								["Event"] = "weapon_class",
-								["Arguments"] = "crowbar",
-								["Invert"] = true,
-							},
-						},
-						[2] = {
-							["children"] = {
-							},
-							["self"] = {
-								["ClassName"] = "model",
-								["UniqueID"] = "2139087956",
-								["Size"] = 2.4,
-								["Color"] = Vector(225, 255, 0),
-								["Material"] = "models/ihvtest/eyeball_l",
-								["Position"] = Vector(6.42724609375, 1.11474609375, 11.8466796875),
-								["Scale"] = Vector(1, 1, 0.5),
-							},
-						},
-					},
-					["self"] = {
-						["Angles"] = Angle(-24.21875, -81.3125, -90.90625),
-						["ClassName"] = "model",
-						["UniqueID"] = "2541547987",
-						["Size"] = 2.55,
-						["Color"] = Vector(33, 255, 0),
-						["Position"] = Vector(3.03125, 6.9324951171875, -2.4368591308594),
-						["Model"] = "models/player/items/all_class/xms_santa_hat_heavy.mdl",
-						["Material"] = "models/ihvtest/eyeball_l",
-					},
-				},
-				[4] = {
-					["children"] = {
-					},
-					["self"] = {
-						["UniqueID"] = "3925385984",
-						["Name"] = "cheekhbsl",
-						["Scale"] = Vector(1, 1, 2.2999999523163),
-						["Position"] = Vector(-7.1142578125, 13.38134765625, -12.0859375),
-						["Angles"] = Angle(0, 6.8125, -31.625),
-						["Size"] = 0.275,
-						["EditorExpand"] = true,
-						["Color"] = Vector(255, 50, 50),
-						["Material"] = "models/ihvtest/eyeball_l",
-						["Model"] = "models/dav0r/hoverball.mdl",
-						["ClassName"] = "model",
-					},
-				},
-				[5] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-							},
-							["self"] = {
-								["UniqueID"] = "1555994620",
-								["Name"] = "hoverballhbsl",
-								["Scale"] = Vector(1.6000000238419, 1, 1),
-								["Material"] = "models/ihvtest/eyeball_l",
-								["Size"] = 0.25,
-								["Position"] = Vector(3.2880859375, -1.4652099609375, -0.0166015625),
-								["Angles"] = Angle(0, 12.71875, 0),
-								["Model"] = "models/dav0r/hoverball.mdl",
-								["ClassName"] = "model",
-							},
-						},
-						[2] = {
-							["children"] = {
-							},
-							["self"] = {
-								["UniqueID"] = "3154118768",
-								["Name"] = "hoverballhbsl",
-								["Scale"] = Vector(2.2000000476837, 1.2000000476837, 1.6000000238419),
-								["Alpha"] = 0.525,
-								["ClassName"] = "model",
-								["Size"] = 0.225,
-								["Material"] = "models/effects/pyro/pilotlight_motion",
-								["Color"] = Vector(29, 0, 255),
-								["Angles"] = Angle(0, -10.84375, 0),
-								["Model"] = "models/dav0r/hoverball.mdl",
-								["Position"] = Vector(-2.9794921875, -1.2845458984375, -0.00390625),
-							},
-						},
-					},
-					["self"] = {
-						["UniqueID"] = "138018702",
-						["Name"] = "hoverballhbsl",
-						["Scale"] = Vector(2.2000000476837, 1, 1),
-						["Position"] = Vector(-0.51171875, 18.37890625, 1.115966796875),
-						["Angles"] = Angle(0, -0.5, -176.53125),
-						["Size"] = 0.475,
-						["EditorExpand"] = true,
-						["Color"] = Vector(0, 0, 0),
-						["Material"] = "models/ihvtest/eyeball_l",
-						["Model"] = "models/dav0r/hoverball.mdl",
-						["ClassName"] = "model",
-					},
-				},
-				[6] = {
-					["children"] = {
-					},
-					["self"] = {
-						["UniqueID"] = "120540488",
-						["Name"] = "cheekhbsl",
-						["Scale"] = Vector(1, 1, 2.2999999523163),
-						["Angles"] = Angle(0, 6.8125, 31.4375),
-						["Size"] = 0.275,
-						["Position"] = Vector(-7.330078125, 15.27197265625, 7.2099609375),
-						["Color"] = Vector(255, 50, 50),
-						["Material"] = "models/ihvtest/eyeball_l",
-						["Model"] = "models/dav0r/hoverball.mdl",
-						["ClassName"] = "model",
-					},
-				},
-				[7] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-							},
-							["self"] = {
-								["ClassName"] = "event",
-								["UniqueID"] = "3985423708",
-								["Event"] = "is_voice_chatting",
-							},
-						},
-						[2] = {
-							["children"] = {
-								[1] = {
-									["children"] = {
-										[1] = {
-											["children"] = {
-											},
-											["self"] = {
-												["Event"] = "timer",
-												["Arguments"] = "10",
-												["UniqueID"] = "1741715853",
-												["ClassName"] = "event",
-											},
-										},
-									},
-									["self"] = {
-										["UniqueID"] = "1771046259",
-										["Name"] = "mouthhbsl",
-										["ClassName"] = "model",
-										["Size"] = 0.175,
-										["Position"] = Vector(-9.1484375, 16.3056640625, -2.42578125),
-										["Color"] = Vector(0, 0, 0),
-										["Material"] = "models/ihvtest/eyeball_l",
-										["Model"] = "models/dav0r/hoverball.mdl",
-										["EditorExpand"] = true,
-									},
-								},
-								[2] = {
-									["children"] = {
-										[1] = {
-											["children"] = {
-											},
-											["self"] = {
-												["Event"] = "timer",
-												["Arguments"] = "10@@5",
-												["UniqueID"] = "1592611687",
-												["ClassName"] = "event",
-											},
-										},
-										[2] = {
-											["children"] = {
-											},
-											["self"] = {
-												["UniqueID"] = "148632611",
-												["Name"] = "mouth21hbsl",
-												["Scale"] = Vector(2, 1, 1.3999999761581),
-												["Angles"] = Angle(-54.46875, 3.21875, -2.625),
-												["Size"] = 0.225,
-												["Position"] = Vector(-0.9130859375, 0.443359375, 1.57421875),
-												["Color"] = Vector(0, 0, 0),
-												["Material"] = "models/ihvtest/eyeball_l",
-												["Model"] = "models/dav0r/hoverball.mdl",
-												["ClassName"] = "model",
-											},
-										},
-										[3] = {
-											["children"] = {
-											},
-											["self"] = {
-												["UniqueID"] = "2967863145",
-												["Name"] = "mouth22hbsl",
-												["Scale"] = Vector(1, 1, 1.6000000238419),
-												["Angles"] = Angle(-26.53125, 0, 0),
-												["Size"] = 0.275,
-												["Position"] = Vector(0.4794921875, 0.1328125, 1.373046875),
-												["Color"] = Vector(0, 0, 0),
-												["Material"] = "models/ihvtest/eyeball_l",
-												["Model"] = "models/dav0r/hoverball.mdl",
-												["ClassName"] = "model",
-											},
-										},
-									},
-									["self"] = {
-										["UniqueID"] = "3078105006",
-										["Name"] = "mouth2hbsl",
-										["Scale"] = Vector(2.0999999046326, 1.1000000238419, 1.2999999523163),
-										["Position"] = Vector(-9.279296875, 16.306640625, -3.138671875),
-										["Angles"] = Angle(26.15625, 21.9375, 10.0625),
-										["Size"] = 0.225,
-										["EditorExpand"] = true,
-										["Color"] = Vector(0, 0, 0),
-										["Material"] = "models/ihvtest/eyeball_l",
-										["Model"] = "models/dav0r/hoverball.mdl",
-										["ClassName"] = "model",
-									},
-								},
-							},
-							["self"] = {
-								["Name"] = "mouthprops",
-								["ClassName"] = "group",
-								["UniqueID"] = "2028074523",
-								["EditorExpand"] = true,
-							},
-						},
-					},
-					["self"] = {
-						["Name"] = "mouth",
-						["ClassName"] = "group",
-						["UniqueID"] = "3803068636",
-						["EditorExpand"] = true,
-					},
-				},
 			},
 			["self"] = {
-				["UniqueID"] = "1965760123",
-				["CellShade"] = 0.04,
-				["Model"] = "models/dav0r/hoverball.mdl",
-				["Name"] = "headhbsl",
-				["Position"] = Vector(0.9970703125, 6.103515625e-005, 1.1524658203125),
-				["EditorExpand"] = true,
-				["Angles"] = Angle(-119.46875, 0, -90),
-				["Size"] = 3.25,
-				["Material"] = "models/ihvtest/eyeball_l",
-				["Color"] = Vector(255, 101, 101),
-				["Bone"] = "spine",
-				["EyeAngles"] = true,
-				["ClassName"] = "model",
+				["ClassName"] = "event",
+				["UniqueID"] = "1169911245",
+				["Event"] = "sequence_name",
+				["Arguments"] = "run",
+				["Invert"] = true,
 			},
 		},
 		[3] = {
 			["children"] = {
 			},
 			["self"] = {
-				["Position"] = Vector(2.0078125, -4.18359375, -6.55712890625),
+				["Position"] = Vector(1.505859375, 5.263671875, -5.453369140625),
 				["CellShade"] = 0.1,
-				["Name"] = "foothbsl",
-				["Scale"] = Vector(2.2000000476837, 1, 1),
 				["Material"] = "models/ihvtest/eyeball_l",
+				["Name"] = "handhbsl",
+				["Scale"] = Vector(1.7000000476837, 1, 1),
+				["EditorExpand"] = true,
 				["ClassName"] = "model",
-				["Size"] = 1.225,
-				["Angles"] = Angle(7.75, -34.71875, 0),
-				["Color"] = Vector(255, 0, 97),
-				["Bone"] = "right foot",
+				["Size"] = 1.2,
+				["Angles"] = Angle(-32.0625, -43.5625, 35.84375),
+				["Color"] = Vector(255, 101, 101),
+				["Bone"] = "right upperarm",
 				["Model"] = "models/dav0r/hoverball.mdl",
-				["UniqueID"] = "2099014067",
+				["UniqueID"] = "378300389",
+			},
+		},
+	},
+	["self"] = {
+		["Name"] = "hands 2",
+		["ClassName"] = "group",
+		["UniqueID"] = "1420126222",
+		["EditorExpand"] = true,
+	},
+},
+[4] = {
+	["children"] = {
+		[1] = {
+			["children"] = {
+			},
+			["self"] = {
+				["UniqueID"] = "2021661682",
+				["Scale"] = Vector(1.2000000476837, 1, 1),
+				["ClassName"] = "model",
+				["Size"] = 1.95,
+				["PositionOffset"] = Vector(0, 0, -164.60000610352),
+				["Position"] = Vector(24.267578125, 6.0986328125, -0.689453125),
+				["Bone"] = "spine",
+				["Model"] = "models/player/items/engineer/engy_earphones.mdl",
+				["Angles"] = Angle(-7.4375, -83.625, -90.8125),
+			},
+		},
+		[2] = {
+			["children"] = {
+			},
+			["self"] = {
+				["ClassName"] = "ogg",
+				["UniqueID"] = "2170727667",
+				["URL"] = "https://dl.dropboxusercontent.com/u/183209082/oggs%20models%20%2B%20textures/Kirby/WUBS/%E3%80%90Trap%E3%80%91Kirby%20Dreamland%20Theme%20%28Singularity%20%26amp%3B%20Mutrix%20Remix%29%20%5BFree%20Download%5D.ogg",
+				["Name"] = "%e3%80%90trap%e3%80%91kirby%20dreamland%20theme%20%28singularity%20%26amp%3b%20mutrix%20remix%29%20%5bfree%20download%5d",
+				["Volume"] = 4,
+			},
+		},
+		[3] = {
+			["children"] = {
+			},
+			["self"] = {
+				["WeaponHoldType"] = "normal",
+				["ClassName"] = "animation",
+				["UniqueID"] = "1956611925",
 			},
 		},
 		[4] = {
 			["children"] = {
 			},
 			["self"] = {
-				["EditorExpand"] = true,
-				["HideEntity"] = true,
-				["Size"] = 0.6,
-				["UniqueID"] = "1762176691",
-				["DrawWeapon"] = false,
-				["ClassName"] = "entity",
+				["ClassName"] = "event",
+				["UniqueID"] = "1908314263",
+				["Event"] = "weapon_class",
+				["Arguments"] = "camera",
+				["Invert"] = true,
 			},
 		},
 	},
 	["self"] = {
-		["EditorExpand"] = true,
-		["UniqueID"] = "3493571281",
 		["ClassName"] = "group",
-		["Name"] = "my outfit",
-		["Description"] = "add parts to me!",
+		["UniqueID"] = "2497589764",
+		["Name"] = "camera",
 	},
 },
-[4] = {
+[5] = {
+	["children"] = {
+		[1] = {
+			["children"] = {
+				[1] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["UniqueID"] = "4186478572",
+								["CellShade"] = 0.27,
+								["ClassName"] = "model",
+								["Size"] = 0.09,
+								["Model"] = "models/hunter/misc/squarecap1x1x1.mdl",
+								["Color"] = Vector(222, 222, 222),
+								["Material"] = "models/ihvtest/eyeball_l",
+								["Brightness"] = 2.4,
+								["Position"] = Vector(0.003662109375, 0.00390625, 16.065999984741),
+							},
+						},
+						[2] = {
+							["children"] = {
+							},
+							["self"] = {
+								["Material"] = "models/effects/invulnfx_red",
+								["UniqueID"] = "1838488682",
+								["Size"] = 0.375,
+								["Angles"] = Angle(0, 46.0625, 0),
+								["Position"] = Vector(-0.001708984375, 0.002685546875, -15.6748046875),
+								["ClassName"] = "model",
+								["Scale"] = Vector(1, 1.6000000238419, 1),
+							},
+						},
+					},
+					["self"] = {
+						["UniqueID"] = "4199651049",
+						["CellShade"] = 0.1,
+						["Position"] = Vector(-0.00146484375, 0.00341796875, 20.99609375),
+						["Scale"] = Vector(1, 1, 6.6999998092651),
+						["EditorExpand"] = true,
+						["Angles"] = Angle(0, -48.375, 0),
+						["Size"] = 0.35,
+						["PositionOffset"] = Vector(0, 0, 0.20000000298023),
+						["Color"] = Vector(222, 222, 222),
+						["Material"] = "models/ihvtest/eyeball_l",
+						["Model"] = "models/hunter/blocks/cube025x025x025.mdl",
+						["ClassName"] = "model",
+					},
+				},
+				[2] = {
+					["children"] = {
+					},
+					["self"] = {
+						["ClassName"] = "event",
+						["UniqueID"] = "2336960744",
+						["Event"] = "weapon_class",
+						["Arguments"] = "crowbar",
+						["Invert"] = true,
+					},
+				},
+				[3] = {
+					["children"] = {
+					},
+					["self"] = {
+						["UniqueID"] = "1120371580",
+						["Scale"] = Vector(1, 1, 3.9000000953674),
+						["Material"] = "models/ihvtest/eyeball_l",
+						["EditorExpand"] = true,
+						["Size"] = 0.15,
+						["Angles"] = Angle(-65.4375, 166.0625, -76.40625),
+						["Color"] = Vector(0, 255, 255),
+						["Position"] = Vector(1.49267578125, 0.063000001013279, 8.271484375),
+						["Model"] = "models/mechanics/robotics/claw2.mdl",
+						["ClassName"] = "model",
+					},
+				},
+				[4] = {
+					["children"] = {
+					},
+					["self"] = {
+						["UniqueID"] = "3216504053",
+						["Scale"] = Vector(1, 1, 3.9000000953674),
+						["ClassName"] = "model",
+						["Size"] = 0.15,
+						["Position"] = Vector(-1.92822265625, 0.054000001400709, 8.6450004577637),
+						["Color"] = Vector(0, 255, 255),
+						["Angles"] = Angle(-64.84375, 4.75, -95.25),
+						["Model"] = "models/mechanics/robotics/claw2.mdl",
+						["Material"] = "models/ihvtest/eyeball_l",
+					},
+				},
+				[5] = {
+					["children"] = {
+					},
+					["self"] = {
+						["Position"] = Vector(0.37890625, 2.72607421875, -8.0224609375),
+						["CellShade"] = 0.1,
+						["Name"] = "hand 1",
+						["Scale"] = Vector(1.7000000476837, 1, 1),
+						["EditorExpand"] = true,
+						["ClassName"] = "model",
+						["Size"] = 1.2,
+						["Angles"] = Angle(-78.15625, -92.125, 71.34375),
+						["Color"] = Vector(255, 101, 101),
+						["Bone"] = "right upperarm",
+						["Material"] = "models/ihvtest/eyeball_l",
+						["UniqueID"] = "3488966995",
+					},
+				},
+			},
+			["self"] = {
+				["UniqueID"] = "2405835221",
+				["CellShade"] = 0.1,
+				["Position"] = Vector(6.962890625, 11.86279296875, 6.08984375),
+				["Material"] = "models/ihvtest/eyeball_l",
+				["EditorExpand"] = true,
+				["Size"] = 0.15,
+				["Angles"] = Angle(77.03125, -123.21875, -143.78125),
+				["Color"] = Vector(0, 255, 255),
+				["Bone"] = "right hand",
+				["Model"] = "models/props_c17/oildrum001.mdl",
+				["ClassName"] = "model",
+			},
+		},
+		[2] = {
+			["children"] = {
+				[1] = {
+					["children"] = {
+					},
+					["self"] = {
+						["ClassName"] = "event",
+						["UniqueID"] = "517634212",
+						["Event"] = "weapon_class",
+						["Arguments"] = "crowbar",
+						["Invert"] = true,
+					},
+				},
+				[2] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+								[1] = {
+									["children"] = {
+									},
+									["self"] = {
+										["ClassName"] = "event",
+										["UniqueID"] = "3493985085",
+										["Event"] = "animation_event",
+										["Arguments"] = "attack@@0.5",
+										["Invert"] = true,
+									},
+								},
+							},
+							["self"] = {
+								["ClassName"] = "ogg",
+								["UniqueID"] = "4116012956",
+								["URL"] = "https://dl.dropboxusercontent.com/s/3yboh8d35m2stv3/attack.ogg?dl=0",
+								["EditorExpand"] = true,
+								["Name"] = "attack",
+								["Volume"] = 4,
+							},
+						},
+					},
+					["self"] = {
+						["ClassName"] = "group",
+						["UniqueID"] = "3738715971",
+						["EditorExpand"] = true,
+					},
+				},
+			},
+			["self"] = {
+				["ClassName"] = "group",
+				["UniqueID"] = "759238882",
+				["EditorExpand"] = true,
+			},
+		},
+	},
+	["self"] = {
+		["ClassName"] = "group",
+		["UniqueID"] = "2144821720",
+		["Name"] = "weapons",
+	},
+},
+[6] = {
 	["children"] = {
 		[1] = {
 			["children"] = {
@@ -882,191 +763,423 @@
 		["Name"] = "toolgun",
 	},
 },
-[5] = {
+[7] = {
 	["children"] = {
 		[1] = {
+			["children"] = {
+			},
+			["self"] = {
+				["Position"] = Vector(1.1611328125, -2.71875, 6.39013671875),
+				["CellShade"] = 0.1,
+				["Name"] = "foothbsl",
+				["Scale"] = Vector(2.2000000476837, 1, 1),
+				["Material"] = "models/ihvtest/eyeball_l",
+				["ClassName"] = "model",
+				["Size"] = 1.225,
+				["Angles"] = Angle(7.75, -34.71875, 0),
+				["Color"] = Vector(255, 0, 97),
+				["Bone"] = "left foot",
+				["Model"] = "models/dav0r/hoverball.mdl",
+				["UniqueID"] = "899816123",
+			},
+		},
+		[2] = {
+			["children"] = {
+			},
+			["self"] = {
+				["Position"] = Vector(2.0078125, -4.18359375, -6.55712890625),
+				["CellShade"] = 0.1,
+				["Name"] = "foothbsl",
+				["Scale"] = Vector(2.2000000476837, 1, 1),
+				["Material"] = "models/ihvtest/eyeball_l",
+				["ClassName"] = "model",
+				["Size"] = 1.225,
+				["Angles"] = Angle(7.75, -34.71875, 0),
+				["Color"] = Vector(255, 0, 97),
+				["Bone"] = "right foot",
+				["Model"] = "models/dav0r/hoverball.mdl",
+				["UniqueID"] = "2099014067",
+			},
+		},
+		[3] = {
 			["children"] = {
 				[1] = {
 					["children"] = {
 						[1] = {
 							["children"] = {
+								[1] = {
+									["children"] = {
+										[1] = {
+											["children"] = {
+											},
+											["self"] = {
+												["ClassName"] = "proxy",
+												["UniqueID"] = "3897702547",
+												["InputMultiplier"] = 10,
+												["Axis"] = "y",
+												["Min"] = 0.1,
+												["Input"] = "voice_volume",
+												["VariableName"] = "Scale",
+											},
+										},
+									},
+									["self"] = {
+										["UniqueID"] = "2286132612",
+										["Scale"] = Vector(0.33599999547005, 0.55000001192093, 0.84799998998642),
+										["EditorExpand"] = true,
+										["Size"] = 0.35,
+										["Angles"] = Angle(0.25, -60.03125, 0),
+										["Color"] = Vector(0, 0, 0),
+										["Position"] = Vector(-8.251953125, 16.504272460938, -2.7279663085938),
+										["Material"] = "models/debug/debugwhite",
+										["ClassName"] = "model",
+									},
+								},
 							},
 							["self"] = {
-								["UniqueID"] = "4186478572",
-								["CellShade"] = 0.27,
-								["ClassName"] = "model",
-								["Size"] = 0.09,
-								["Model"] = "models/hunter/misc/squarecap1x1x1.mdl",
-								["Color"] = Vector(222, 222, 222),
-								["Material"] = "models/ihvtest/eyeball_l",
-								["Brightness"] = 2.4,
-								["Position"] = Vector(0.003662109375, 0.00390625, 16.065999984741),
+								["ClassName"] = "group",
+								["UniqueID"] = "3109250881",
+								["EditorExpand"] = true,
 							},
 						},
 						[2] = {
 							["children"] = {
 							},
 							["self"] = {
-								["Material"] = "models/effects/invulnfx_red",
-								["UniqueID"] = "1838488682",
-								["Size"] = 0.375,
-								["Angles"] = Angle(0, 46.0625, 0),
-								["Position"] = Vector(-0.001708984375, 0.002685546875, -15.6748046875),
-								["ClassName"] = "model",
-								["Scale"] = Vector(1, 1.6000000238419, 1),
-							},
-						},
-					},
-					["self"] = {
-						["UniqueID"] = "4199651049",
-						["CellShade"] = 0.1,
-						["Position"] = Vector(-0.00146484375, 0.00341796875, 20.99609375),
-						["Scale"] = Vector(1, 1, 6.6999998092651),
-						["EditorExpand"] = true,
-						["Angles"] = Angle(0, -48.375, 0),
-						["Size"] = 0.35,
-						["PositionOffset"] = Vector(0, 0, 0.20000000298023),
-						["Color"] = Vector(222, 222, 222),
-						["Material"] = "models/ihvtest/eyeball_l",
-						["Model"] = "models/hunter/blocks/cube025x025x025.mdl",
-						["ClassName"] = "model",
-					},
-				},
-				[2] = {
-					["children"] = {
-					},
-					["self"] = {
-						["UniqueID"] = "1120371580",
-						["Scale"] = Vector(1, 1, 3.9000000953674),
-						["Material"] = "models/ihvtest/eyeball_l",
-						["EditorExpand"] = true,
-						["Size"] = 0.15,
-						["Angles"] = Angle(-65.4375, 166.0625, -76.40625),
-						["Color"] = Vector(0, 255, 255),
-						["Position"] = Vector(1.49267578125, 0.063000001013279, 8.271484375),
-						["Model"] = "models/mechanics/robotics/claw2.mdl",
-						["ClassName"] = "model",
-					},
-				},
-				[3] = {
-					["children"] = {
-					},
-					["self"] = {
-						["ClassName"] = "event",
-						["UniqueID"] = "2336960744",
-						["Event"] = "weapon_class",
-						["Arguments"] = "crowbar",
-						["Invert"] = true,
-					},
-				},
-				[4] = {
-					["children"] = {
-					},
-					["self"] = {
-						["UniqueID"] = "3216504053",
-						["Scale"] = Vector(1, 1, 3.9000000953674),
-						["ClassName"] = "model",
-						["Size"] = 0.15,
-						["Position"] = Vector(-1.92822265625, 0.054000001400709, 8.6450004577637),
-						["Color"] = Vector(0, 255, 255),
-						["Angles"] = Angle(-64.84375, 4.75, -95.25),
-						["Model"] = "models/mechanics/robotics/claw2.mdl",
-						["Material"] = "models/ihvtest/eyeball_l",
-					},
-				},
-				[5] = {
-					["children"] = {
-					},
-					["self"] = {
-						["Position"] = Vector(0.37890625, 2.72607421875, -8.0224609375),
-						["CellShade"] = 0.1,
-						["Name"] = "hand 1",
-						["Scale"] = Vector(1.7000000476837, 1, 1),
-						["EditorExpand"] = true,
-						["ClassName"] = "model",
-						["Size"] = 1.2,
-						["Angles"] = Angle(-78.15625, -92.125, 71.34375),
-						["Color"] = Vector(255, 101, 101),
-						["Bone"] = "right upperarm",
-						["Material"] = "models/ihvtest/eyeball_l",
-						["UniqueID"] = "3488966995",
-					},
-				},
-			},
-			["self"] = {
-				["UniqueID"] = "2405835221",
-				["CellShade"] = 0.1,
-				["Position"] = Vector(6.962890625, 11.86279296875, 6.08984375),
-				["Material"] = "models/ihvtest/eyeball_l",
-				["EditorExpand"] = true,
-				["Size"] = 0.15,
-				["Angles"] = Angle(77.03125, -123.21875, -143.78125),
-				["Color"] = Vector(0, 255, 255),
-				["Bone"] = "right hand",
-				["Model"] = "models/props_c17/oildrum001.mdl",
-				["ClassName"] = "model",
-			},
-		},
-		[2] = {
-			["children"] = {
-				[1] = {
-					["children"] = {
-					},
-					["self"] = {
-						["ClassName"] = "event",
-						["UniqueID"] = "517634212",
-						["Event"] = "weapon_class",
-						["Arguments"] = "crowbar",
-						["Invert"] = true,
-					},
-				},
-				[2] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-								[1] = {
-									["children"] = {
-									},
-									["self"] = {
-										["ClassName"] = "event",
-										["UniqueID"] = "3493985085",
-										["Event"] = "animation_event",
-										["Arguments"] = "attack@@0.5",
-										["Invert"] = true,
-									},
-								},
-							},
-							["self"] = {
-								["ClassName"] = "ogg",
-								["UniqueID"] = "4116012956",
-								["URL"] = "https://dl.dropboxusercontent.com/s/3yboh8d35m2stv3/attack.ogg?dl=0",
-								["EditorExpand"] = true,
-								["Name"] = "attack",
-								["Volume"] = 4,
+								["Event"] = "is_voice_chatting",
+								["ClassName"] = "event",
+								["Invert"] = true,
+								["UniqueID"] = "227518805",
 							},
 						},
 					},
 					["self"] = {
 						["ClassName"] = "group",
-						["UniqueID"] = "3738715971",
+						["UniqueID"] = "1441044651",
+						["Name"] = "mouth talk",
+					},
+				},
+				[2] = {
+					["children"] = {
+					},
+					["self"] = {
+						["UniqueID"] = "3925385984",
+						["Name"] = "cheekhbsl",
+						["Scale"] = Vector(1, 1, 2.2999999523163),
+						["Position"] = Vector(-7.1142578125, 13.38134765625, -12.0859375),
+						["Angles"] = Angle(0, 6.8125, -31.625),
+						["Size"] = 0.275,
+						["EditorExpand"] = true,
+						["Color"] = Vector(255, 50, 50),
+						["Material"] = "models/ihvtest/eyeball_l",
+						["Model"] = "models/dav0r/hoverball.mdl",
+						["ClassName"] = "model",
+					},
+				},
+				[3] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["UniqueID"] = "3880622441",
+								["Name"] = "hoverballhbsl",
+								["Scale"] = Vector(2.2000000476837, 1.2000000476837, 1.6000000238419),
+								["Alpha"] = 0.525,
+								["ClassName"] = "model",
+								["Size"] = 0.225,
+								["Material"] = "models/effects/pyro/pilotlight_motion",
+								["Color"] = Vector(29, 0, 255),
+								["Angles"] = Angle(0, -10.84375, 0),
+								["Model"] = "models/dav0r/hoverball.mdl",
+								["Position"] = Vector(-2.9794921875, -1.2845458984375, -0.00390625),
+							},
+						},
+						[2] = {
+							["children"] = {
+							},
+							["self"] = {
+								["UniqueID"] = "1509372694",
+								["Name"] = "hoverballhbsl",
+								["Scale"] = Vector(1.6000000238419, 1, 1),
+								["Material"] = "models/ihvtest/eyeball_l",
+								["Size"] = 0.25,
+								["Position"] = Vector(3.2880859375, -1.4652099609375, -0.0166015625),
+								["Angles"] = Angle(0, 12.71875, 0),
+								["Model"] = "models/dav0r/hoverball.mdl",
+								["ClassName"] = "model",
+							},
+						},
+					},
+					["self"] = {
+						["UniqueID"] = "1335973923",
+						["Name"] = "eyehbsl",
+						["Scale"] = Vector(2.2000000476837, 1, 1),
+						["Position"] = Vector(-0.5146484375, 17.084999084473, -7.2789998054504),
+						["Angles"] = Angle(0, -0.5, 164.25),
+						["Size"] = 0.475,
+						["EditorExpand"] = true,
+						["Color"] = Vector(0, 0, 0),
+						["Material"] = "models/ihvtest/eyeball_l",
+						["Model"] = "models/dav0r/hoverball.mdl",
+						["ClassName"] = "model",
+					},
+				},
+				[4] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["UniqueID"] = "1555994620",
+								["Name"] = "hoverballhbsl",
+								["Scale"] = Vector(1.6000000238419, 1, 1),
+								["Material"] = "models/ihvtest/eyeball_l",
+								["Size"] = 0.25,
+								["Position"] = Vector(3.2880859375, -1.4652099609375, -0.0166015625),
+								["Angles"] = Angle(0, 12.71875, 0),
+								["Model"] = "models/dav0r/hoverball.mdl",
+								["ClassName"] = "model",
+							},
+						},
+						[2] = {
+							["children"] = {
+							},
+							["self"] = {
+								["UniqueID"] = "3154118768",
+								["Name"] = "hoverballhbsl",
+								["Scale"] = Vector(2.2000000476837, 1.2000000476837, 1.6000000238419),
+								["Alpha"] = 0.525,
+								["ClassName"] = "model",
+								["Size"] = 0.225,
+								["Material"] = "models/effects/pyro/pilotlight_motion",
+								["Color"] = Vector(29, 0, 255),
+								["Angles"] = Angle(0, -10.84375, 0),
+								["Model"] = "models/dav0r/hoverball.mdl",
+								["Position"] = Vector(-2.9794921875, -1.2845458984375, -0.00390625),
+							},
+						},
+					},
+					["self"] = {
+						["UniqueID"] = "138018702",
+						["Name"] = "hoverballhbsl",
+						["Scale"] = Vector(2.2000000476837, 1, 1),
+						["Position"] = Vector(-0.51171875, 18.37890625, 1.115966796875),
+						["Angles"] = Angle(0, -0.5, -176.53125),
+						["Size"] = 0.475,
+						["EditorExpand"] = true,
+						["Color"] = Vector(0, 0, 0),
+						["Material"] = "models/ihvtest/eyeball_l",
+						["Model"] = "models/dav0r/hoverball.mdl",
+						["ClassName"] = "model",
+					},
+				},
+				[5] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["ClassName"] = "event",
+								["UniqueID"] = "2898585388",
+								["Event"] = "weapon_class",
+								["Arguments"] = "crowbar",
+								["Invert"] = true,
+							},
+						},
+						[2] = {
+							["children"] = {
+							},
+							["self"] = {
+								["ClassName"] = "model",
+								["UniqueID"] = "2139087956",
+								["Size"] = 2.4,
+								["Color"] = Vector(225, 255, 0),
+								["Material"] = "models/ihvtest/eyeball_l",
+								["Position"] = Vector(6.42724609375, 1.11474609375, 11.8466796875),
+								["Scale"] = Vector(1, 1, 0.5),
+							},
+						},
+					},
+					["self"] = {
+						["Angles"] = Angle(-24.21875, -81.3125, -90.90625),
+						["ClassName"] = "model",
+						["UniqueID"] = "2541547987",
+						["Size"] = 2.55,
+						["Color"] = Vector(33, 255, 0),
+						["Position"] = Vector(3.03125, 6.9324951171875, -2.4368591308594),
+						["Model"] = "models/player/items/all_class/xms_santa_hat_heavy.mdl",
+						["Material"] = "models/ihvtest/eyeball_l",
+					},
+				},
+				[6] = {
+					["children"] = {
+					},
+					["self"] = {
+						["UniqueID"] = "120540488",
+						["Name"] = "cheekhbsl",
+						["Scale"] = Vector(1, 1, 2.2999999523163),
+						["Angles"] = Angle(0, 6.8125, 31.4375),
+						["Size"] = 0.275,
+						["Position"] = Vector(-7.330078125, 15.27197265625, 7.2099609375),
+						["Color"] = Vector(255, 50, 50),
+						["Material"] = "models/ihvtest/eyeball_l",
+						["Model"] = "models/dav0r/hoverball.mdl",
+						["ClassName"] = "model",
+					},
+				},
+				[7] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["ClassName"] = "event",
+								["UniqueID"] = "3985423708",
+								["Event"] = "is_voice_chatting",
+							},
+						},
+						[2] = {
+							["children"] = {
+								[1] = {
+									["children"] = {
+										[1] = {
+											["children"] = {
+											},
+											["self"] = {
+												["Event"] = "timer",
+												["Arguments"] = "10",
+												["UniqueID"] = "1741715853",
+												["ClassName"] = "event",
+											},
+										},
+									},
+									["self"] = {
+										["UniqueID"] = "1771046259",
+										["Name"] = "mouthhbsl",
+										["ClassName"] = "model",
+										["Size"] = 0.175,
+										["Position"] = Vector(-9.1484375, 16.3056640625, -2.42578125),
+										["Color"] = Vector(0, 0, 0),
+										["Material"] = "models/ihvtest/eyeball_l",
+										["Model"] = "models/dav0r/hoverball.mdl",
+										["EditorExpand"] = true,
+									},
+								},
+								[2] = {
+									["children"] = {
+										[1] = {
+											["children"] = {
+											},
+											["self"] = {
+												["Event"] = "timer",
+												["Arguments"] = "10@@5",
+												["UniqueID"] = "1592611687",
+												["ClassName"] = "event",
+											},
+										},
+										[2] = {
+											["children"] = {
+											},
+											["self"] = {
+												["UniqueID"] = "148632611",
+												["Name"] = "mouth21hbsl",
+												["Scale"] = Vector(2, 1, 1.3999999761581),
+												["Angles"] = Angle(-54.46875, 3.21875, -2.625),
+												["Size"] = 0.225,
+												["Position"] = Vector(-0.9130859375, 0.443359375, 1.57421875),
+												["Color"] = Vector(0, 0, 0),
+												["Material"] = "models/ihvtest/eyeball_l",
+												["Model"] = "models/dav0r/hoverball.mdl",
+												["ClassName"] = "model",
+											},
+										},
+										[3] = {
+											["children"] = {
+											},
+											["self"] = {
+												["UniqueID"] = "2967863145",
+												["Name"] = "mouth22hbsl",
+												["Scale"] = Vector(1, 1, 1.6000000238419),
+												["Angles"] = Angle(-26.53125, 0, 0),
+												["Size"] = 0.275,
+												["Position"] = Vector(0.4794921875, 0.1328125, 1.373046875),
+												["Color"] = Vector(0, 0, 0),
+												["Material"] = "models/ihvtest/eyeball_l",
+												["Model"] = "models/dav0r/hoverball.mdl",
+												["ClassName"] = "model",
+											},
+										},
+									},
+									["self"] = {
+										["UniqueID"] = "3078105006",
+										["Name"] = "mouth2hbsl",
+										["Scale"] = Vector(2.0999999046326, 1.1000000238419, 1.2999999523163),
+										["Position"] = Vector(-9.279296875, 16.306640625, -3.138671875),
+										["Angles"] = Angle(26.15625, 21.9375, 10.0625),
+										["Size"] = 0.225,
+										["EditorExpand"] = true,
+										["Color"] = Vector(0, 0, 0),
+										["Material"] = "models/ihvtest/eyeball_l",
+										["Model"] = "models/dav0r/hoverball.mdl",
+										["ClassName"] = "model",
+									},
+								},
+							},
+							["self"] = {
+								["Name"] = "mouthprops",
+								["ClassName"] = "group",
+								["UniqueID"] = "2028074523",
+								["EditorExpand"] = true,
+							},
+						},
+					},
+					["self"] = {
+						["Name"] = "mouth",
+						["ClassName"] = "group",
+						["UniqueID"] = "3803068636",
 						["EditorExpand"] = true,
 					},
 				},
 			},
 			["self"] = {
-				["ClassName"] = "group",
-				["UniqueID"] = "759238882",
+				["UniqueID"] = "1965760123",
+				["CellShade"] = 0.04,
+				["Model"] = "models/dav0r/hoverball.mdl",
+				["Name"] = "headhbsl",
+				["Position"] = Vector(0.9970703125, 6.103515625e-005, 1.1524658203125),
 				["EditorExpand"] = true,
+				["Angles"] = Angle(-119.46875, 0, -90),
+				["Size"] = 3.25,
+				["Material"] = "models/ihvtest/eyeball_l",
+				["Color"] = Vector(255, 101, 101),
+				["Bone"] = "spine",
+				["EyeAngles"] = true,
+				["ClassName"] = "model",
+			},
+		},
+		[4] = {
+			["children"] = {
+			},
+			["self"] = {
+				["EditorExpand"] = true,
+				["HideEntity"] = true,
+				["Size"] = 0.6,
+				["UniqueID"] = "1762176691",
+				["DrawWeapon"] = false,
+				["ClassName"] = "entity",
 			},
 		},
 	},
 	["self"] = {
+		["EditorExpand"] = true,
+		["UniqueID"] = "3493571281",
 		["ClassName"] = "group",
-		["UniqueID"] = "2144821720",
-		["Name"] = "weapons",
+		["Name"] = "my outfit",
+		["Description"] = "add parts to me!",
 	},
 },
-[6] = {
+[8] = {
 	["children"] = {
 		[1] = {
 			["children"] = {
@@ -1079,17 +1192,6 @@
 			},
 		},
 		[2] = {
-			["children"] = {
-			},
-			["self"] = {
-				["ClassName"] = "event",
-				["UniqueID"] = "3537600671",
-				["Event"] = "weapon_class",
-				["Arguments"] = "phys",
-				["Invert"] = true,
-			},
-		},
-		[3] = {
 			["children"] = {
 				[1] = {
 					["children"] = {
@@ -1151,6 +1253,17 @@
 				["Bone"] = "right hand",
 				["Model"] = "models/props_trainstation/trainstation_post001.mdl",
 				["UniqueID"] = "3723244942",
+			},
+		},
+		[3] = {
+			["children"] = {
+			},
+			["self"] = {
+				["ClassName"] = "event",
+				["UniqueID"] = "3537600671",
+				["Event"] = "weapon_class",
+				["Arguments"] = "phys",
+				["Invert"] = true,
 			},
 		},
 		[4] = {
@@ -1225,62 +1338,7 @@
 		["Name"] = "animations",
 	},
 },
-[7] = {
-	["children"] = {
-		[1] = {
-			["children"] = {
-			},
-			["self"] = {
-				["UniqueID"] = "2021661682",
-				["Scale"] = Vector(1.2000000476837, 1, 1),
-				["ClassName"] = "model",
-				["Size"] = 1.95,
-				["PositionOffset"] = Vector(0, 0, -164.60000610352),
-				["Position"] = Vector(24.267578125, 6.0986328125, -0.689453125),
-				["Bone"] = "spine",
-				["Model"] = "models/player/items/engineer/engy_earphones.mdl",
-				["Angles"] = Angle(-7.4375, -83.625, -90.8125),
-			},
-		},
-		[2] = {
-			["children"] = {
-			},
-			["self"] = {
-				["WeaponHoldType"] = "normal",
-				["ClassName"] = "animation",
-				["UniqueID"] = "1956611925",
-			},
-		},
-		[3] = {
-			["children"] = {
-			},
-			["self"] = {
-				["ClassName"] = "ogg",
-				["UniqueID"] = "2170727667",
-				["URL"] = "https://dl.dropboxusercontent.com/u/183209082/oggs%20models%20%2B%20textures/Kirby/WUBS/%E3%80%90Trap%E3%80%91Kirby%20Dreamland%20Theme%20%28Singularity%20%26amp%3B%20Mutrix%20Remix%29%20%5BFree%20Download%5D.ogg",
-				["Name"] = "%e3%80%90trap%e3%80%91kirby%20dreamland%20theme%20%28singularity%20%26amp%3b%20mutrix%20remix%29%20%5bfree%20download%5d",
-				["Volume"] = 4,
-			},
-		},
-		[4] = {
-			["children"] = {
-			},
-			["self"] = {
-				["ClassName"] = "event",
-				["UniqueID"] = "1908314263",
-				["Event"] = "weapon_class",
-				["Arguments"] = "camera",
-				["Invert"] = true,
-			},
-		},
-	},
-	["self"] = {
-		["ClassName"] = "group",
-		["UniqueID"] = "2497589764",
-		["Name"] = "camera",
-	},
-},
-[8] = {
+[9] = {
 	["children"] = {
 		[1] = {
 			["children"] = {
@@ -1332,64 +1390,6 @@
 		["Name"] = "hands",
 		["ClassName"] = "group",
 		["UniqueID"] = "3694777137",
-		["EditorExpand"] = true,
-	},
-},
-[9] = {
-	["children"] = {
-		[1] = {
-			["children"] = {
-			},
-			["self"] = {
-				["Position"] = Vector(3.3876953125, 4.1318359375, 7.0618896484375),
-				["CellShade"] = 0.1,
-				["Name"] = "handhbsl",
-				["Scale"] = Vector(1.7000000476837, 1, 1),
-				["Material"] = "models/ihvtest/eyeball_l",
-				["ClassName"] = "model",
-				["Size"] = 1.2,
-				["Angles"] = Angle(35.78125, -45.25, -21.5625),
-				["Color"] = Vector(255, 101, 101),
-				["Bone"] = "left upperarm",
-				["Model"] = "models/dav0r/hoverball.mdl",
-				["UniqueID"] = "2069799318",
-			},
-		},
-		[2] = {
-			["children"] = {
-			},
-			["self"] = {
-				["ClassName"] = "event",
-				["UniqueID"] = "1169911245",
-				["Event"] = "sequence_name",
-				["Arguments"] = "run",
-				["Invert"] = true,
-			},
-		},
-		[3] = {
-			["children"] = {
-			},
-			["self"] = {
-				["Position"] = Vector(1.505859375, 5.263671875, -5.453369140625),
-				["CellShade"] = 0.1,
-				["Material"] = "models/ihvtest/eyeball_l",
-				["Name"] = "handhbsl",
-				["Scale"] = Vector(1.7000000476837, 1, 1),
-				["EditorExpand"] = true,
-				["ClassName"] = "model",
-				["Size"] = 1.2,
-				["Angles"] = Angle(-32.0625, -43.5625, 35.84375),
-				["Color"] = Vector(255, 101, 101),
-				["Bone"] = "right upperarm",
-				["Model"] = "models/dav0r/hoverball.mdl",
-				["UniqueID"] = "378300389",
-			},
-		},
-	},
-	["self"] = {
-		["Name"] = "hands 2",
-		["ClassName"] = "group",
-		["UniqueID"] = "1420126222",
 		["EditorExpand"] = true,
 	},
 },

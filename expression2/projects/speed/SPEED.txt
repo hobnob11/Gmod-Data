@@ -14,6 +14,8 @@ if(first())
     print("Class: " + E:getCoreEnt():getCoreClass() + " MSL: " + Speed + " TSL: " + TurnSpeed)
     foreach(K,V:entity=E:getConstraints()){if(V:type()=="prop_vehicle_prisoner_pod"){Chair = V}elseif(V:type()=="gmod_wire_cameracontroller"){Cam = V:wirelink()}}
     holoCreate(1)
+    holoPos(1,E:boxCenterW())
+    holoParent(1,E)
     holoAng(1,ang(0))
     Cam["Parent",entity] = holoEntity(1)
     Cam:entity():linkCamController(Chair)
@@ -36,28 +38,28 @@ if(first())
     }
 }
 
+holoAng(1,ang(0))
+CurTime = curtime()
+
 if(Chair:driver():isValid())
 {
     ### cam stuff
-    holoPos(1,E:pos())
     Cam["Activated",number] = 1
     
     ### angles
-    local CurVec = E:forward()
-    local TargetVec = Cam["CamDir",vector]
-    CurTime = curtime()
-    E:setAng(smoothness2(CurVec,TargetVec,$CurTime*TurnSpeed))
+    local CurAng = E:angles()
+    local TargetAng = Cam["CamAng",angle] + ang(-20,0,0) 
+    E:setAng(smoothness(CurAng,TargetAng,$CurTime*TurnSpeed))
     
     ## movement
     updateKeys()
     local InputDirection = vec(  Keys[ "Forward", number ] -    Keys[ "Backward", number ], 
                                  Keys[ "StrafeLeft", number ] - Keys[ "StrafeRight", number ],
-                                 Keys[ "Up", number ] -         Keys[ "Down", number ] ):normalized():rotate( Cam["CamAng",angle] )
+                                 Keys[ "Up", number ] -         Keys[ "Down", number ] ):normalized():rotate( E:angles())#Cam["CamAng",angle] )
     local Spd = ( Keys["Boost",number]==0 ? Speed/2 : Speed )
     E:setPosition(E:pos()+(InputDirection)*$CurTime*Spd)
 }
 else
 {
-    holoPos(1,E:pos())
     Cam["Activated",number] = 0
 }

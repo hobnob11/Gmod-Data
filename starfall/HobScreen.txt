@@ -103,7 +103,7 @@ else
         	local c = math.cos(ang)
         	local s = math.sin(ang)
         	for ii=0,fidelity do
-        		local i = ii*(360-size)/fidelity
+        		local i = ii*(size)/fidelity
         		local radd = math.rad(i)
         		local x = math.cos(radd)
         		local u = (x+1)/2
@@ -123,7 +123,6 @@ else
         		surface.DrawPoly( vertices )
         	end
         end
-        
         hook.Add("HUDPaint","UtilHud",function()
             --players
             if LPly:IsValid() and LPly:Alive() and LPly:GetActiveWeapon()~="weapon_stunstick" and active then
@@ -155,20 +154,16 @@ else
                         local vec = c:LocalToWorld(c:OBBCenter())
                         local toScrn = vec:ToScreen()
                         local pos = {x=math.Clamp(toScrn.x,100,surface.ScreenW()-100),y=math.Clamp(toScrn.y,100,surface.ScreenH()-100)}
-                        local HPR = t.shield + t.armor + t.hull
-                        local HPMR = t.shieldmax + t.armormax + t.hullmax
-                        local HP = HPR/HPMR
-                        local ang = math.Clamp(360*(1-HP),0.001,360)
-                        local ShAng = 90 + (t.shieldmax/(HPMR+1))*360
-                        local ArAng = ShAng + (t.armormax/(HPMR+1))*360
-                        local HuAng = ArAng + (t.hullmax/(HPMR+1))*360
-                        --print(ShAng..","..ArAng..","..HuAng)
-                        DrawWedge(pos.x,pos.y,40,40,90-ang,ang,Color(255,155,0,255))
+
+                        local HPMax = t.shieldmax + t.armormax + t.hullmax
+                        local HuAng = (t.hull / HPMax)*360
+                        local ArAng = (t.armor / HPMax)*360
+                        local ShAng = (t.shield / HPMax)*360
+                        DrawWedge(pos.x,pos.y,40,40,90,-HuAng,Color(255,0,0,255))
+                        DrawWedge(pos.x,pos.y,40,40,90+HuAng,-ArAng,Color(155,155,155,255))
+                        DrawWedge(pos.x,pos.y,40,40,90+HuAng+ArAng,-ShAng,Color(0,0,255,255))
                         surface.DrawCircle(pos.x,pos.y,40,Color(55,55,55,255))
                         surface.SetDrawColor(Color(55,55,55,255))
-                        surface.DrawLine(pos.x,pos.y,pos.x-math.cos(math.rad(ShAng))*40,pos.y-math.sin(math.rad(ShAng))*40)
-                        surface.DrawLine(pos.x,pos.y,pos.x-math.cos(math.rad(ArAng))*40,pos.y-math.sin(math.rad(ArAng))*40)
-                        surface.DrawLine(pos.x,pos.y,pos.x-math.cos(math.rad(HuAng))*40,pos.y-math.sin(math.rad(HuAng))*40)
                         surface.SetTextColor(Color(255,255,255,255))
                         surface.SetTextPos(pos.x+34,pos.y-40)
                         surface.DrawText(t.class)

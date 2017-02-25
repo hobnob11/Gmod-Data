@@ -620,6 +620,369 @@
 			["children"] = {
 			},
 			["self"] = {
+				["WeaponHoldType"] = "pistol",
+				["ClassName"] = "animation",
+				["UniqueID"] = "3184615964",
+				["EditorExpand"] = true,
+			},
+		},
+		[2] = {
+			["children"] = {
+				[1] = {
+					["children"] = {
+					},
+					["self"] = {
+						["Event"] = "sequence_name",
+						["Arguments"] = "run",
+						["UniqueID"] = "2998490735",
+						["ClassName"] = "event",
+					},
+				},
+				[2] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["Velocity"] = 10,
+								["UniqueID"] = "2369215503",
+								["DieTime"] = 1.4,
+								["PositionSpread"] = 4.8,
+								["FireDelay"] = 0,
+								["Angles"] = Angle(-83.8125, -179.96875, -179.96875),
+								["EndSize"] = 5,
+								["ClassName"] = "particles",
+								["Position"] = Vector(0.44873046875, -0.001953125, -4.142578125),
+								["Spread"] = 0.4,
+								["Color1"] = Vector(225, 255, 0),
+								["Material"] = "sprites/animglow02",
+								["Color2"] = Vector(225, 255, 0),
+								["Gravity"] = Vector(0, 0, 0),
+							},
+						},
+					},
+					["self"] = {
+						["UniqueID"] = "2982497730",
+						["CellShade"] = 0.08,
+						["Position"] = Vector(0.001953125, 0.0068359375, 32.54443359375),
+						["ClassName"] = "model",
+						["Size"] = 0.55,
+						["Material"] = "models/weapons/c_items/c_saxxy",
+						["Color"] = Vector(225, 255, 0),
+						["Angles"] = Angle(0, 75.8125, 0),
+						["Model"] = "models/balloons/balloon_star.mdl",
+						["EditorExpand"] = true,
+					},
+				},
+			},
+			["self"] = {
+				["Position"] = Vector(1.7822265625, 8.541015625, 17.046875),
+				["CellShade"] = 0.19,
+				["Name"] = "trainstation post 1",
+				["Scale"] = Vector(1, 1, 0.69999998807907),
+				["Fullbright"] = true,
+				["ClassName"] = "model",
+				["Size"] = 0.775,
+				["Angles"] = Angle(-32.96875, -0.03125, -179.90625),
+				["Color"] = Vector(212, 0, 255),
+				["Bone"] = "right hand",
+				["Model"] = "models/props_trainstation/trainstation_post001.mdl",
+				["UniqueID"] = "3723244942",
+			},
+		},
+		[3] = {
+			["children"] = {
+			},
+			["self"] = {
+				["ClassName"] = "event",
+				["UniqueID"] = "3537600671",
+				["Event"] = "weapon_class",
+				["Arguments"] = "phys",
+				["Invert"] = true,
+			},
+		},
+		[4] = {
+			["children"] = {
+				[1] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["Velocity"] = 10,
+								["UniqueID"] = "3478288277",
+								["DieTime"] = 1.4,
+								["PositionSpread"] = 4.8,
+								["FireDelay"] = 0,
+								["Angles"] = Angle(-83.8125, -179.96875, -179.96875),
+								["EndSize"] = 5,
+								["ClassName"] = "particles",
+								["Position"] = Vector(0.44873046875, -0.001953125, -4.142578125),
+								["Spread"] = 0.4,
+								["Color1"] = Vector(225, 255, 0),
+								["Material"] = "sprites/animglow02",
+								["Color2"] = Vector(225, 255, 0),
+								["Gravity"] = Vector(0, 0, 0),
+							},
+						},
+					},
+					["self"] = {
+						["UniqueID"] = "4163337820",
+						["CellShade"] = 0.08,
+						["Position"] = Vector(0.001953125, 0.0068359375, 32.54443359375),
+						["ClassName"] = "model",
+						["Size"] = 0.55,
+						["Material"] = "models/weapons/c_items/c_saxxy",
+						["Color"] = Vector(225, 255, 0),
+						["Angles"] = Angle(0, 75.8125, 0),
+						["Model"] = "models/balloons/balloon_star.mdl",
+						["EditorExpand"] = true,
+					},
+				},
+				[2] = {
+					["children"] = {
+					},
+					["self"] = {
+						["ClassName"] = "event",
+						["UniqueID"] = "832071476",
+						["Event"] = "sequence_name",
+						["Arguments"] = "run",
+						["Invert"] = true,
+					},
+				},
+			},
+			["self"] = {
+				["Position"] = Vector(-1.01416015625, 17.20068359375, 8.369140625),
+				["CellShade"] = 0.19,
+				["Name"] = "trainstation post 2",
+				["Scale"] = Vector(1, 1, 0.69999998807907),
+				["Fullbright"] = true,
+				["ClassName"] = "model",
+				["Size"] = 0.775,
+				["Angles"] = Angle(39.0625, 0.03125, -179.90625),
+				["Color"] = Vector(212, 0, 255),
+				["Bone"] = "right hand",
+				["Model"] = "models/props_trainstation/trainstation_post001.mdl",
+				["UniqueID"] = "1859084643",
+			},
+		},
+	},
+	["self"] = {
+		["ClassName"] = "group",
+		["UniqueID"] = "2419001470",
+		["Name"] = "animations",
+	},
+},
+[7] = {
+	["children"] = {
+		[1] = {
+			["children"] = {
+				[1] = {
+					["children"] = {
+					},
+					["self"] = {
+						["Event"] = "sequence_name",
+						["Arguments"] = "run",
+						["UniqueID"] = "1537048455",
+						["ClassName"] = "event",
+					},
+				},
+				[2] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["Velocity"] = 10,
+								["UniqueID"] = "3983321997",
+								["DieTime"] = 1.4,
+								["PositionSpread"] = 4.8,
+								["FireDelay"] = 0,
+								["Angles"] = Angle(-83.8125, -179.96875, -179.96875),
+								["EndSize"] = 5,
+								["ClassName"] = "particles",
+								["Position"] = Vector(0.44873046875, -0.001953125, -4.142578125),
+								["Spread"] = 0.4,
+								["Color1"] = Vector(225, 255, 0),
+								["Material"] = "sprites/animglow02",
+								["Color2"] = Vector(225, 255, 0),
+								["Gravity"] = Vector(0, 0, 0),
+							},
+						},
+					},
+					["self"] = {
+						["UniqueID"] = "216323488",
+						["CellShade"] = 0.08,
+						["Position"] = Vector(0.001953125, 0.0068359375, 32.54443359375),
+						["ClassName"] = "model",
+						["Size"] = 0.55,
+						["Material"] = "models/weapons/c_items/c_saxxy",
+						["Color"] = Vector(225, 255, 0),
+						["Angles"] = Angle(0, 75.8125, 0),
+						["Model"] = "models/balloons/balloon_star.mdl",
+						["EditorExpand"] = true,
+					},
+				},
+			},
+			["self"] = {
+				["Position"] = Vector(1.7822265625, 8.541015625, 17.046875),
+				["CellShade"] = 0.19,
+				["Name"] = "trainstation post 1",
+				["Scale"] = Vector(1, 1, 0.69999998807907),
+				["Fullbright"] = true,
+				["ClassName"] = "model",
+				["Size"] = 0.775,
+				["Angles"] = Angle(-32.96875, -0.03125, -179.90625),
+				["Color"] = Vector(212, 0, 255),
+				["Bone"] = "right hand",
+				["Model"] = "models/props_trainstation/trainstation_post001.mdl",
+				["UniqueID"] = "2226087975",
+			},
+		},
+		[2] = {
+			["children"] = {
+				[1] = {
+					["children"] = {
+						[1] = {
+							["children"] = {
+							},
+							["self"] = {
+								["Velocity"] = 10,
+								["UniqueID"] = "1524663615",
+								["DieTime"] = 1.4,
+								["PositionSpread"] = 4.8,
+								["FireDelay"] = 0,
+								["Angles"] = Angle(-83.8125, -179.96875, -179.96875),
+								["EndSize"] = 5,
+								["ClassName"] = "particles",
+								["Position"] = Vector(0.44873046875, -0.001953125, -4.142578125),
+								["Spread"] = 0.4,
+								["Color1"] = Vector(225, 255, 0),
+								["Material"] = "sprites/animglow02",
+								["Color2"] = Vector(225, 255, 0),
+								["Gravity"] = Vector(0, 0, 0),
+							},
+						},
+					},
+					["self"] = {
+						["UniqueID"] = "2712517696",
+						["CellShade"] = 0.08,
+						["Position"] = Vector(0.001953125, 0.0068359375, 32.54443359375),
+						["ClassName"] = "model",
+						["Size"] = 0.55,
+						["Material"] = "models/weapons/c_items/c_saxxy",
+						["Color"] = Vector(225, 255, 0),
+						["Angles"] = Angle(0, 75.8125, 0),
+						["Model"] = "models/balloons/balloon_star.mdl",
+						["EditorExpand"] = true,
+					},
+				},
+				[2] = {
+					["children"] = {
+					},
+					["self"] = {
+						["ClassName"] = "event",
+						["UniqueID"] = "920373583",
+						["Event"] = "sequence_name",
+						["Arguments"] = "run",
+						["Invert"] = true,
+					},
+				},
+			},
+			["self"] = {
+				["Position"] = Vector(-1.01416015625, 17.20068359375, 8.369140625),
+				["CellShade"] = 0.19,
+				["Name"] = "trainstation post 2",
+				["Scale"] = Vector(1, 1, 0.69999998807907),
+				["Fullbright"] = true,
+				["ClassName"] = "model",
+				["Size"] = 0.775,
+				["Angles"] = Angle(39.0625, 0.03125, -179.90625),
+				["Color"] = Vector(212, 0, 255),
+				["Bone"] = "right hand",
+				["Model"] = "models/props_trainstation/trainstation_post001.mdl",
+				["UniqueID"] = "4194766161",
+			},
+		},
+		[3] = {
+			["children"] = {
+			},
+			["self"] = {
+				["ClassName"] = "event",
+				["UniqueID"] = "3653918163",
+				["Event"] = "weapon_class",
+				["Arguments"] = "tool",
+				["Invert"] = true,
+			},
+		},
+	},
+	["self"] = {
+		["ClassName"] = "group",
+		["UniqueID"] = "2956391452",
+		["Name"] = "toolgun",
+	},
+},
+[8] = {
+	["children"] = {
+		[1] = {
+			["children"] = {
+			},
+			["self"] = {
+				["Position"] = Vector(-0.302734375, 11.595947265625, -2.4752807617188),
+				["CellShade"] = 0.1,
+				["Name"] = "handhbsl",
+				["Scale"] = Vector(1.7000000476837, 1, 1),
+				["ClassName"] = "model",
+				["Material"] = "models/ihvtest/eyeball_l",
+				["Angles"] = Angle(-4.8125, 7.03125, -22.15625),
+				["Color"] = Vector(255, 101, 101),
+				["Bone"] = "left hand",
+				["Model"] = "models/dav0r/hoverball.mdl",
+				["UniqueID"] = "1980633521",
+			},
+		},
+		[2] = {
+			["children"] = {
+			},
+			["self"] = {
+				["Position"] = Vector(-0.1171875, 10.869140625, 5.7049560546875),
+				["CellShade"] = 0.1,
+				["Name"] = "handhbsl",
+				["Scale"] = Vector(1.7000000476837, 1, 1),
+				["Material"] = "models/ihvtest/eyeball_l",
+				["ClassName"] = "model",
+				["EditorExpand"] = true,
+				["Angles"] = Angle(-6.375, 3.1875, -0.03125),
+				["Color"] = Vector(255, 101, 101),
+				["Bone"] = "right hand",
+				["Model"] = "models/dav0r/hoverball.mdl",
+				["UniqueID"] = "1857187812",
+			},
+		},
+		[3] = {
+			["children"] = {
+			},
+			["self"] = {
+				["Event"] = "sequence_name",
+				["Arguments"] = "run",
+				["UniqueID"] = "3965132418",
+				["ClassName"] = "event",
+			},
+		},
+	},
+	["self"] = {
+		["Name"] = "hands",
+		["ClassName"] = "group",
+		["UniqueID"] = "3694777137",
+		["EditorExpand"] = true,
+	},
+},
+[9] = {
+	["children"] = {
+		[1] = {
+			["children"] = {
+			},
+			["self"] = {
 				["Position"] = Vector(1.1611328125, -2.71875, 6.39013671875),
 				["CellShade"] = 0.1,
 				["Name"] = "foothbsl",
@@ -1028,368 +1391,5 @@
 		["ClassName"] = "group",
 		["Name"] = "my outfit",
 		["Description"] = "add parts to me!",
-	},
-},
-[7] = {
-	["children"] = {
-		[1] = {
-			["children"] = {
-				[1] = {
-					["children"] = {
-					},
-					["self"] = {
-						["Event"] = "sequence_name",
-						["Arguments"] = "run",
-						["UniqueID"] = "1537048455",
-						["ClassName"] = "event",
-					},
-				},
-				[2] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-							},
-							["self"] = {
-								["Velocity"] = 10,
-								["UniqueID"] = "3983321997",
-								["DieTime"] = 1.4,
-								["PositionSpread"] = 4.8,
-								["FireDelay"] = 0,
-								["Angles"] = Angle(-83.8125, -179.96875, -179.96875),
-								["EndSize"] = 5,
-								["ClassName"] = "particles",
-								["Position"] = Vector(0.44873046875, -0.001953125, -4.142578125),
-								["Spread"] = 0.4,
-								["Color1"] = Vector(225, 255, 0),
-								["Material"] = "sprites/animglow02",
-								["Color2"] = Vector(225, 255, 0),
-								["Gravity"] = Vector(0, 0, 0),
-							},
-						},
-					},
-					["self"] = {
-						["UniqueID"] = "216323488",
-						["CellShade"] = 0.08,
-						["Position"] = Vector(0.001953125, 0.0068359375, 32.54443359375),
-						["ClassName"] = "model",
-						["Size"] = 0.55,
-						["Material"] = "models/weapons/c_items/c_saxxy",
-						["Color"] = Vector(225, 255, 0),
-						["Angles"] = Angle(0, 75.8125, 0),
-						["Model"] = "models/balloons/balloon_star.mdl",
-						["EditorExpand"] = true,
-					},
-				},
-			},
-			["self"] = {
-				["Position"] = Vector(1.7822265625, 8.541015625, 17.046875),
-				["CellShade"] = 0.19,
-				["Name"] = "trainstation post 1",
-				["Scale"] = Vector(1, 1, 0.69999998807907),
-				["Fullbright"] = true,
-				["ClassName"] = "model",
-				["Size"] = 0.775,
-				["Angles"] = Angle(-32.96875, -0.03125, -179.90625),
-				["Color"] = Vector(212, 0, 255),
-				["Bone"] = "right hand",
-				["Model"] = "models/props_trainstation/trainstation_post001.mdl",
-				["UniqueID"] = "2226087975",
-			},
-		},
-		[2] = {
-			["children"] = {
-				[1] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-							},
-							["self"] = {
-								["Velocity"] = 10,
-								["UniqueID"] = "1524663615",
-								["DieTime"] = 1.4,
-								["PositionSpread"] = 4.8,
-								["FireDelay"] = 0,
-								["Angles"] = Angle(-83.8125, -179.96875, -179.96875),
-								["EndSize"] = 5,
-								["ClassName"] = "particles",
-								["Position"] = Vector(0.44873046875, -0.001953125, -4.142578125),
-								["Spread"] = 0.4,
-								["Color1"] = Vector(225, 255, 0),
-								["Material"] = "sprites/animglow02",
-								["Color2"] = Vector(225, 255, 0),
-								["Gravity"] = Vector(0, 0, 0),
-							},
-						},
-					},
-					["self"] = {
-						["UniqueID"] = "2712517696",
-						["CellShade"] = 0.08,
-						["Position"] = Vector(0.001953125, 0.0068359375, 32.54443359375),
-						["ClassName"] = "model",
-						["Size"] = 0.55,
-						["Material"] = "models/weapons/c_items/c_saxxy",
-						["Color"] = Vector(225, 255, 0),
-						["Angles"] = Angle(0, 75.8125, 0),
-						["Model"] = "models/balloons/balloon_star.mdl",
-						["EditorExpand"] = true,
-					},
-				},
-				[2] = {
-					["children"] = {
-					},
-					["self"] = {
-						["ClassName"] = "event",
-						["UniqueID"] = "920373583",
-						["Event"] = "sequence_name",
-						["Arguments"] = "run",
-						["Invert"] = true,
-					},
-				},
-			},
-			["self"] = {
-				["Position"] = Vector(-1.01416015625, 17.20068359375, 8.369140625),
-				["CellShade"] = 0.19,
-				["Name"] = "trainstation post 2",
-				["Scale"] = Vector(1, 1, 0.69999998807907),
-				["Fullbright"] = true,
-				["ClassName"] = "model",
-				["Size"] = 0.775,
-				["Angles"] = Angle(39.0625, 0.03125, -179.90625),
-				["Color"] = Vector(212, 0, 255),
-				["Bone"] = "right hand",
-				["Model"] = "models/props_trainstation/trainstation_post001.mdl",
-				["UniqueID"] = "4194766161",
-			},
-		},
-		[3] = {
-			["children"] = {
-			},
-			["self"] = {
-				["ClassName"] = "event",
-				["UniqueID"] = "3653918163",
-				["Event"] = "weapon_class",
-				["Arguments"] = "tool",
-				["Invert"] = true,
-			},
-		},
-	},
-	["self"] = {
-		["ClassName"] = "group",
-		["UniqueID"] = "2956391452",
-		["Name"] = "toolgun",
-	},
-},
-[8] = {
-	["children"] = {
-		[1] = {
-			["children"] = {
-			},
-			["self"] = {
-				["WeaponHoldType"] = "pistol",
-				["ClassName"] = "animation",
-				["UniqueID"] = "3184615964",
-				["EditorExpand"] = true,
-			},
-		},
-		[2] = {
-			["children"] = {
-				[1] = {
-					["children"] = {
-					},
-					["self"] = {
-						["Event"] = "sequence_name",
-						["Arguments"] = "run",
-						["UniqueID"] = "2998490735",
-						["ClassName"] = "event",
-					},
-				},
-				[2] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-							},
-							["self"] = {
-								["Velocity"] = 10,
-								["UniqueID"] = "2369215503",
-								["DieTime"] = 1.4,
-								["PositionSpread"] = 4.8,
-								["FireDelay"] = 0,
-								["Angles"] = Angle(-83.8125, -179.96875, -179.96875),
-								["EndSize"] = 5,
-								["ClassName"] = "particles",
-								["Position"] = Vector(0.44873046875, -0.001953125, -4.142578125),
-								["Spread"] = 0.4,
-								["Color1"] = Vector(225, 255, 0),
-								["Material"] = "sprites/animglow02",
-								["Color2"] = Vector(225, 255, 0),
-								["Gravity"] = Vector(0, 0, 0),
-							},
-						},
-					},
-					["self"] = {
-						["UniqueID"] = "2982497730",
-						["CellShade"] = 0.08,
-						["Position"] = Vector(0.001953125, 0.0068359375, 32.54443359375),
-						["ClassName"] = "model",
-						["Size"] = 0.55,
-						["Material"] = "models/weapons/c_items/c_saxxy",
-						["Color"] = Vector(225, 255, 0),
-						["Angles"] = Angle(0, 75.8125, 0),
-						["Model"] = "models/balloons/balloon_star.mdl",
-						["EditorExpand"] = true,
-					},
-				},
-			},
-			["self"] = {
-				["Position"] = Vector(1.7822265625, 8.541015625, 17.046875),
-				["CellShade"] = 0.19,
-				["Name"] = "trainstation post 1",
-				["Scale"] = Vector(1, 1, 0.69999998807907),
-				["Fullbright"] = true,
-				["ClassName"] = "model",
-				["Size"] = 0.775,
-				["Angles"] = Angle(-32.96875, -0.03125, -179.90625),
-				["Color"] = Vector(212, 0, 255),
-				["Bone"] = "right hand",
-				["Model"] = "models/props_trainstation/trainstation_post001.mdl",
-				["UniqueID"] = "3723244942",
-			},
-		},
-		[3] = {
-			["children"] = {
-			},
-			["self"] = {
-				["ClassName"] = "event",
-				["UniqueID"] = "3537600671",
-				["Event"] = "weapon_class",
-				["Arguments"] = "phys",
-				["Invert"] = true,
-			},
-		},
-		[4] = {
-			["children"] = {
-				[1] = {
-					["children"] = {
-						[1] = {
-							["children"] = {
-							},
-							["self"] = {
-								["Velocity"] = 10,
-								["UniqueID"] = "3478288277",
-								["DieTime"] = 1.4,
-								["PositionSpread"] = 4.8,
-								["FireDelay"] = 0,
-								["Angles"] = Angle(-83.8125, -179.96875, -179.96875),
-								["EndSize"] = 5,
-								["ClassName"] = "particles",
-								["Position"] = Vector(0.44873046875, -0.001953125, -4.142578125),
-								["Spread"] = 0.4,
-								["Color1"] = Vector(225, 255, 0),
-								["Material"] = "sprites/animglow02",
-								["Color2"] = Vector(225, 255, 0),
-								["Gravity"] = Vector(0, 0, 0),
-							},
-						},
-					},
-					["self"] = {
-						["UniqueID"] = "4163337820",
-						["CellShade"] = 0.08,
-						["Position"] = Vector(0.001953125, 0.0068359375, 32.54443359375),
-						["ClassName"] = "model",
-						["Size"] = 0.55,
-						["Material"] = "models/weapons/c_items/c_saxxy",
-						["Color"] = Vector(225, 255, 0),
-						["Angles"] = Angle(0, 75.8125, 0),
-						["Model"] = "models/balloons/balloon_star.mdl",
-						["EditorExpand"] = true,
-					},
-				},
-				[2] = {
-					["children"] = {
-					},
-					["self"] = {
-						["ClassName"] = "event",
-						["UniqueID"] = "832071476",
-						["Event"] = "sequence_name",
-						["Arguments"] = "run",
-						["Invert"] = true,
-					},
-				},
-			},
-			["self"] = {
-				["Position"] = Vector(-1.01416015625, 17.20068359375, 8.369140625),
-				["CellShade"] = 0.19,
-				["Name"] = "trainstation post 2",
-				["Scale"] = Vector(1, 1, 0.69999998807907),
-				["Fullbright"] = true,
-				["ClassName"] = "model",
-				["Size"] = 0.775,
-				["Angles"] = Angle(39.0625, 0.03125, -179.90625),
-				["Color"] = Vector(212, 0, 255),
-				["Bone"] = "right hand",
-				["Model"] = "models/props_trainstation/trainstation_post001.mdl",
-				["UniqueID"] = "1859084643",
-			},
-		},
-	},
-	["self"] = {
-		["ClassName"] = "group",
-		["UniqueID"] = "2419001470",
-		["Name"] = "animations",
-	},
-},
-[9] = {
-	["children"] = {
-		[1] = {
-			["children"] = {
-			},
-			["self"] = {
-				["Position"] = Vector(-0.302734375, 11.595947265625, -2.4752807617188),
-				["CellShade"] = 0.1,
-				["Name"] = "handhbsl",
-				["Scale"] = Vector(1.7000000476837, 1, 1),
-				["ClassName"] = "model",
-				["Material"] = "models/ihvtest/eyeball_l",
-				["Angles"] = Angle(-4.8125, 7.03125, -22.15625),
-				["Color"] = Vector(255, 101, 101),
-				["Bone"] = "left hand",
-				["Model"] = "models/dav0r/hoverball.mdl",
-				["UniqueID"] = "1980633521",
-			},
-		},
-		[2] = {
-			["children"] = {
-			},
-			["self"] = {
-				["Position"] = Vector(-0.1171875, 10.869140625, 5.7049560546875),
-				["CellShade"] = 0.1,
-				["Name"] = "handhbsl",
-				["Scale"] = Vector(1.7000000476837, 1, 1),
-				["Material"] = "models/ihvtest/eyeball_l",
-				["ClassName"] = "model",
-				["EditorExpand"] = true,
-				["Angles"] = Angle(-6.375, 3.1875, -0.03125),
-				["Color"] = Vector(255, 101, 101),
-				["Bone"] = "right hand",
-				["Model"] = "models/dav0r/hoverball.mdl",
-				["UniqueID"] = "1857187812",
-			},
-		},
-		[3] = {
-			["children"] = {
-			},
-			["self"] = {
-				["Event"] = "sequence_name",
-				["Arguments"] = "run",
-				["UniqueID"] = "3965132418",
-				["ClassName"] = "event",
-			},
-		},
-	},
-	["self"] = {
-		["Name"] = "hands",
-		["ClassName"] = "group",
-		["UniqueID"] = "3694777137",
-		["EditorExpand"] = true,
 	},
 },
