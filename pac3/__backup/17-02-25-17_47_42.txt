@@ -996,20 +996,20 @@
 			["children"] = {
 			},
 			["self"] = {
-				["ClassName"] = "ogg",
-				["UniqueID"] = "2170727667",
-				["URL"] = "https://dl.dropboxusercontent.com/u/183209082/oggs%20models%20%2B%20textures/Kirby/WUBS/%E3%80%90Trap%E3%80%91Kirby%20Dreamland%20Theme%20%28Singularity%20%26amp%3B%20Mutrix%20Remix%29%20%5BFree%20Download%5D.ogg",
-				["Name"] = "%e3%80%90trap%e3%80%91kirby%20dreamland%20theme%20%28singularity%20%26amp%3b%20mutrix%20remix%29%20%5bfree%20download%5d",
-				["Volume"] = 4,
+				["WeaponHoldType"] = "normal",
+				["ClassName"] = "animation",
+				["UniqueID"] = "1956611925",
 			},
 		},
 		[3] = {
 			["children"] = {
 			},
 			["self"] = {
-				["WeaponHoldType"] = "normal",
-				["ClassName"] = "animation",
-				["UniqueID"] = "1956611925",
+				["ClassName"] = "ogg",
+				["UniqueID"] = "2170727667",
+				["URL"] = "https://dl.dropboxusercontent.com/u/183209082/oggs%20models%20%2B%20textures/Kirby/WUBS/%E3%80%90Trap%E3%80%91Kirby%20Dreamland%20Theme%20%28Singularity%20%26amp%3B%20Mutrix%20Remix%29%20%5BFree%20Download%5D.ogg",
+				["Name"] = "%e3%80%90trap%e3%80%91kirby%20dreamland%20theme%20%28singularity%20%26amp%3b%20mutrix%20remix%29%20%5bfree%20download%5d",
+				["Volume"] = 4,
 			},
 		},
 		[4] = {

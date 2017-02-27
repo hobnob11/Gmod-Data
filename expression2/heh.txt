@@ -28,7 +28,7 @@ foreach(K,V:entity=Tbl){
     local WL = V:wirelink()
     WL["Target",entity] = E
     WL["Active",number] = 1
-    WL["Fire",number] = 0
+    WL["Fire",number] = 1
     WL["Detonate Distance",number] = 500
 }
 if(last())

@@ -1,7 +1,117 @@
 @name 
 @inputs 
 @outputs 
-@persist 
+@persist I
 @trigger 
 
-entity():isWeldedTo():combatImmune(1)
+local Data = array(143380000,
+                    5190000000,
+                    30630000000,
+                    41250000000,
+                    58790000000,
+                    55410000000,
+                    77680000000,
+                    76810000000,
+                    80850000000,
+                    80240000000,
+                    85530000000,
+                    84770000000,
+                    88140000000)
+local Data2 = array(359210000,
+                1940000000,
+                21670000000,
+                48980000000,
+                86490000000,
+                115390000000,
+                135230000000,
+                128540000000,
+                142000000000,
+                144000000000,
+                156000000000,
+                160000000000,
+                163000000000,
+                163000000000,
+                161000000000,
+                162000000000)
+local Data3 = array(370000000,
+                1210000000,
+                12080000000,
+                15580000000,
+                46640000000,
+                58000000000,
+                84460000000,
+                97600000000,
+                107140000000,
+                111540000000,
+                119560000000,
+                120000000000,
+                130000000000)
+
+                
+
+for( X = 1, Data:count() )
+{
+    I++
+    holoCreate(I)
+    holoPos(I,entity():pos()+vec(X*20,0,Data[X,number]/1e9))
+    holoModel(I,"sphere")
+    holoColor(I,vec(255,0,0))
+    holoScaleUnits(I,vec(5))
+    if(X>1){
+        I++
+        holoCreate(I)
+        holoModel(I,"hqcylinder")
+        local Pos1 = entity():pos()+vec((X-1)*20,0,Data[X-1,number]/1e9)
+        local Pos2 = entity():pos()+vec(X*20,0,Data[X,number]/1e9)
+        local Dist = Pos2-Pos1
+        holoPos(I,Pos1 + Dist/2)
+        holoAng(I,(Pos2-Pos1):toAngle()+ang(90,0,0))
+        holoScaleUnits(I,vec(3,3,Dist:length()))
+    }
+    I++
+    #holoTextCreate(I)
+    #holoText(I,"R: 2048, PlateCount: " + X + " EHP: " + Data[X,number])
+    #holoTextPos(I,entity():pos()+vec(X*20,0,Data[X,number]/1e9))
+    #holoTextAng(I,ang(0,0,90))
+    #holoTextScale(I,0.1)
+}
+for( X = 1, Data2:count() )
+{
+    I++
+    holoCreate(I)
+    holoPos(I,entity():pos()+vec(X*20,20,Data2[X,number]/1e9))
+    holoModel(I,"sphere")
+    holoColor(I,vec(255,0,0))
+    holoScaleUnits(I,vec(5))
+    if(X>1){
+        I++
+        holoCreate(I)
+        holoModel(I,"hqcylinder")
+        local Pos1 = entity():pos()+vec((X-1)*20,20,Data2[X-1,number]/1e9)
+        local Pos2 = entity():pos()+vec(X*20,20,Data2[X,number]/1e9)
+        local Dist = Pos2-Pos1
+        holoPos(I,Pos1 + Dist/2)
+        holoAng(I,(Pos2-Pos1):toAngle()+ang(90,0,0))
+        holoScaleUnits(I,vec(3,3,Dist:length()))
+    }
+}
+for( X = 1, Data3:count() )
+{
+    I++
+    holoCreate(I)
+    holoPos(I,entity():pos()+vec(X*20,40,Data3[X,number]/1e9))
+    holoModel(I,"sphere")
+    holoColor(I,vec(255,0,0))
+    holoScaleUnits(I,vec(5))
+    if(X>1){
+        I++
+        holoCreate(I)
+        holoModel(I,"hqcylinder")
+        local Pos1 = entity():pos()+vec((X-1)*20,40,Data3[X-1,number]/1e9)
+        local Pos2 = entity():pos()+vec(X*20,40,Data3[X,number]/1e9)
+        local Dist = Pos2-Pos1
+        holoPos(I,Pos1 + Dist/2)
+        holoAng(I,(Pos2-Pos1):toAngle()+ang(90,0,0))
+        holoScaleUnits(I,vec(3,3,Dist:length()))
+    }
+}

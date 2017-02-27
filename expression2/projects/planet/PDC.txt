@@ -1,20 +1,41 @@
 @name Planet Defense Cannon
 
-@inputs Core:entity Fire
+@inputs Fire
 
-@persist Weapons:array [WeaponBase TurretFixed TurretMoving]:entity Go Curtime Ang Acc Target:entity
+@persist Weapons:array [WeaponBase TurretFixed TurretMoving]:entity Go Curtime Ang Acc Target:entity R Pos:vector ShieldE2:entity
 
 if(first())
 {
     #include "lib/hob"
     runOnTick(1)
     runOnLast(1)
+    
+    foreach(K,V:entity=entity():getConstraints())
+    {
+        if(V:type()=="gmod_wire_expression2")
+        {
+            if(V:getName():find("ShieldV"))
+            {
+                ShieldE2 = V
+            }
+        }
+    }
+    if(ShieldE2:isValid())
+    {
+        local WL = ShieldE2:wirelink()
+        Pos = WL["PlanetPos",vector]
+        R = WL["R",number] * 1.05
+    }else{
+        Pos = entity():pos()+400
+        R = 100
+    }
+    Core = entity():isWeldedTo()
     findIncludePlayerProps(owner())
     findByClass("sc_weapon_base")
     Weapons = findToArray()
     
     TurretFixed = holoCreate(1)
-        holoPos(1,entity():pos()+vec(0,0,400))
+        holoPos(1,Pos)
         holoAng(1,ang(0))
         holoModel(1,"hqsphere")
         holoColor(1,vec(255,0,0))
@@ -24,7 +45,7 @@ if(first())
         holoAng(2,ang(0))
         holoParent(2,1)
     WeaponBase = holoCreate(3)
-        holoPos(3,TurretMoving:toWorld(vec(100,0,0)))
+        holoPos(3,TurretMoving:toWorld(vec(R,0,0)))
         holoAng(3,TurretMoving:toWorld(ang(90,0,0)))
         holoModel(3,"models/boba_fett/catwalk_build/gate_platform.mdl")
         holoParent(3,2)
@@ -36,7 +57,6 @@ if(first())
         E:setPos(WeaponBase:toWorld(vec(cos(A)*230,sin(A)*230,8)))
         E:setAng(WeaponBase:toWorld(ang(0,-A,0)))
         E:lsLink(Core)
-        E:weld(Core)
     }
     
     function parent(){for(I=1,Weapons:count()){Weapons[I,entity]:parentTo(WeaponBase)}}
@@ -47,27 +67,29 @@ if(first())
 Core:setCapAmount(100000000)
 if(Go)
 {
-    Curtime = curtime()
-    local CurAng = TurretMoving:angles()
-    local Offset = TurretMoving:toWorld(vec(0,0,-230)) - TurretMoving:pos()
-    
     if(!Target:isValid())
     {
         findClearWhiteList()
         findIncludePlayerProps(findPlayerByName("nj"))
-        findByClass("sc_generator")
+        findByClass("ship_core")
         Target=find()
+        if( Target:parent():isValid() ) { Target = Target:parent() }
     }
+    Curtime = curtime()
+    
+    local GunPos = WeaponBase:pos()
+    local Offset = TurretMoving:toWorld(vec(0,0,-230)) - TurretMoving:pos()
     local TargetPos = Target:pos()
     local Vel = Target:vel()
-    
-    local TarPos = direct_solution(Target:pos(), Vel, Weapons[1,entity]:getProjectileVel()) + Offset
-    
+    local ProjVel = Weapons[1,entity]:getProjectileVel()
+    local TarPos = direct_solution(Target:pos(), GunPos, Vel, ProjVel ) + Offset
+
+    local CurAng = TurretMoving:angles()
     local TarAng = (TarPos - TurretFixed:pos()):toAngle()
     local Speed = Weapons[1,entity]:getWeaponSpeed()
     holoAng(2,smoothness(CurAng,TarAng,Speed*$Curtime))
     local B = (Fire? 0.1 : -0.1)
-    Acc = clamp(Acc+B,0,10)
+    Acc = clamp(Acc+B,0,8)
     Ang = Ang + Acc
     Ang = Ang%360
     holoAng(3,TurretMoving:toWorld(ang(Ang,90,90)))
@@ -81,7 +103,7 @@ if(Go)
     local E = Weapons[CurWep,entity]
     local WL = E:wirelink()
     E:setColor(vec(255,0,0))
-    WL["Fire",number] = (Acc==10 ? 1 : 0)
+    WL["Fire",number] = (Acc==8 ? 1 : 0)
     
     local E = Weapons[LastWep,entity]
     local WL = E:wirelink()

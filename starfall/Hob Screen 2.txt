@@ -61,7 +61,6 @@ else
     	    end
         end
         
-        I = {}
         
         hook.Add("HUDPaint","HobHud",function()
             for c,t in pairs( ShipCores ) do
@@ -74,30 +73,16 @@ else
                 local ArAng = (t.armour / HPMax)*360
                 local ShAng = (t.shield / HPMax)*360
                 
-                if not I[c] then I[c] = 10 end
-                
-                if pos.x < surface.ScreenW()/2+100 and pos.x > surface.ScreenW()/2-100 and pos.y < surface.ScreenH()/2+100 and pos.y > surface.ScreenH()/2-100 then
-                    I[c] = math.Clamp(I[c]+1,10,100)
-                else
-                    I[c] = math.Clamp(I[c]-1,10,100)
-                end
-                
-                DrawWedge(pos.x,pos.y,I[c],I[c],90,-HuAng,Color(255,0,0,255))
-                DrawWedge(pos.x,pos.y,I[c],I[c],90+HuAng,-ArAng,Color(155,155,155,255))
-                DrawWedge(pos.x,pos.y,I[c],I[c],90+HuAng+ArAng,-ShAng,Color(0,0,255,255))
-                surface.DrawCircle(pos.x,pos.y,I[c],Color(55,55,55,255))
+                DrawWedge(pos.x,pos.y,40,40,90,-HuAng,Color(255,0,0,255))
+                DrawWedge(pos.x,pos.y,40,40,90+HuAng,-ArAng,Color(155,155,155,255))
+                DrawWedge(pos.x,pos.y,40,40,90+HuAng+ArAng,-ShAng,Color(0,0,255,255))
+                surface.DrawCircle(pos.x,pos.y,40,Color(55,55,55,255))
                 surface.SetDrawColor(Color(55,55,55,255))
                 surface.SetTextColor(Color(255,255,255,255))
-                surface.SetTextPos(pos.x, pos.y + I[c] + 20 )
+                surface.SetTextPos(pos.x, pos.y + 120 )
                 surface.DrawText(t.class)
-                surface.SetTextPos(pos.x, pos.y + I[c] + 20 )
+                surface.SetTextPos(pos.x, pos.y + 120 )
                 surface.DrawText(t.class)
-                local A = -90 + ShAng/2
-                surface.SetTextPos(pos.x + math.cos(math.rad(A))*(I[c]+10),pos.y + math.sin(math.rad(A))*(I[c]+10))
-                surface.DrawText("Shield")
-                local A = -90 + ShAng + ArAng/2
-                surface.SetTextPos(pos.x + math.cos(math.rad(A))*(I[c]+10),pos.y + math.sin(math.rad(A))*(I[c]+10))
-                surface.DrawText("Armour")
             end
         end)
     end

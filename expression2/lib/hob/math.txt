@@ -92,11 +92,11 @@ function number first_positive_solution_of_quadratic_equation(A, B, C)
     return -1 #we failed
 }
 
-function vector direct_solution( TargetPos:vector, TargetVel:vector, ProjectileSpeed )
+function vector direct_solution( TargetPos:vector, GunPos:vector, TargetVel:vector, ProjectileSpeed )
 {
     local A = TargetVel:dot(TargetVel) - ProjectileSpeed * ProjectileSpeed
-    local B = 2 * TargetPos:dot(TargetVel)
-    local C = TargetPos:dot(TargetPos)
+    local B = 2 * (TargetPos-GunPos):dot(TargetVel)
+    local C = (TargetPos-GunPos):dot(TargetPos-GunPos)
     
     local T = first_positive_solution_of_quadratic_equation(A, B, C)
     if( T <= 0 )

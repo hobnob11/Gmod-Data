@@ -1,0 +1,149 @@
+--@name Hob Screen 3
+--@author 
+--@shared
+
+if SERVER then
+    hook.Add("Think","Think",function()
+        if not net.CanSend() then return end
+        
+        local Tbl = {}
+        for k,v in pairs(find.ByClass("ship_core")) do
+            Tbl[v] = {
+                shield = v:GetShieldAmount(),
+                shieldmax = v:GetShieldMax(),
+                armour = v:GetArmorAmount(),
+                armourmax = v:GetArmorMax(),
+                hull = v:GetHullAmount(),
+                hullmax = v:GetHullMax(),
+                name = v:GetShipName(),
+                class = v:GetShipClass()
+            }
+        end
+        net.Start("Update Core Table")
+        net.WriteTable(Tbl)
+        net.Send()
+    end)
+else
+    if entities.player() == entities.owner() then
+        ShipCores = {}
+        hook.Add("net","HobNetMessage",function(name,len)
+            if not name == "Update Core Table" then return end
+            ShipCores = {}
+            ShipCores = net.ReadTable()
+        end)
+        
+        function DrawWedge(px,py,w,h,angle,size,col,uvenum) --1= right to left, 2 = from center outwards
+        	local vertices = {}
+        	local fidelity = 180
+        
+        	vertices[1] = { x = px, y = py, u = px, v = py }
+        	local ang = -math.rad(angle)
+        	local c = math.cos(ang)
+        	local s = math.sin(ang)
+        	for ii=0,fidelity do
+        		local i = ii*(size)/fidelity
+        		local radd = math.rad(i)
+        		local x = math.cos(radd)
+        		local y = math.sin(radd)
+            	local u = 0
+            	local v = 0
+        		if not uvenum or uvenum == 1 then 
+            		u = (x+1)/2
+            		v = (y+1)/2
+            	elseif uvenum == 2 then
+            	    u = 0
+            	    v = 1
+            	end
+        
+        		--radd = -rad(angle)
+        		local tempx = x * w * c - y * h * s + x
+        		y = x * w * s + y * h * c + y
+        		x = tempx
+        
+        		vertices[ii+2] = { x = x+px, y = y+py, u = u + px, v = v + py }
+        	end
+            surface.SetDrawColor( col )
+    	    if (vertices and #vertices>0) then
+    		    surface.DrawPoly( vertices )
+    	    end
+        end
+        function DrawWedge2(px,py,w,h,w2,h2,angle,size,col,uvenum) --1= right to left, 2 = from center outwards
+        	local vertices = {}
+        	local fidelity = 180
+        	
+            -- dont want a vertex in the middle of the circle to make a C shape
+        	--vertices[1] = { x = px, y = py, u = px, v = py }
+        	local ang = -math.rad(angle)
+        	local c = math.cos(ang)
+        	local s = math.sin(ang)
+        	for ii=0,fidelity do
+        		local i = ii*(size)/fidelity
+        		local radd = math.rad(i)
+        		local x = math.cos(radd)
+        		local y = math.sin(radd)
+            	local u = 0
+            	local v = 0
+        		if not uvenum or uvenum == 1 then 
+            		u = (x+1)/2
+            		v = (y+1)/2
+            	elseif uvenum == 2 then
+            	    u = 0
+            	    v = 1
+            	end
+        
+        		--radd = -rad(angle)
+        		local tempx = x * w * c - y * h * s + x
+        		y = x * w * s + y * h * c + y
+        		x = tempx
+        
+        		vertices[ii] = { x = x+px, y = y+py, u = u + px, v = v + py }
+        	end
+        	local vertices2 = {}
+        	
+        	local ang = math.rad(angle)
+        	local c = math.cos(ang)
+        	local s = math.sin(ang)
+        	for ii=0,fidelity do
+        		local i = ii*(size)/fidelity
+        		local radd = math.rad(i)
+        		local x = math.cos(radd)
+        		local y = math.sin(radd)
+            	local u = 0
+            	local v = 0
+        		if not uvenum or uvenum == 1 then 
+            		u = (x+1)/2
+            		v = (y+1)/2
+            	elseif uvenum == 2 then
+            	    u = 0
+            	    v = 1
+            	end
+        
+        		--radd = -rad(angle)
+        		local tempx = x * w2 * c - y * h2 * s + x
+        		y = x * w2 * s + y * h2 * c + y
+        		x = tempx
+        
+        		vertices2[ii] = { x = x+px, y = y+py, u = u + px, v = v + py }
+        	end
+        	
+        	table.Add(vertices,vertices2)
+            surface.SetDrawColor( col )
+    	    if (vertices and #vertices>0) then
+    		    surface.DrawPoly( vertices )
+    	    end
+        end
+    
+        Gradient = Material("gui/gradient","noclamp")
+        hook.Add("HUDPaint","HobHud",function()
+            local Pos = {x=surface.ScreenW()/2, y=surface.ScreenH()-250}
+            --[[
+            surface.SetMaterial(Gradient)
+            DrawWedge(Pos.x,Pos.y,132,132,0,180,Color(0,0,0),2)
+            DrawWedge(Pos.x,Pos.y,130,130,0,180,Color(255,255,255),1)
+            surface.SetTexture(0)
+            DrawWedge(Pos.x,Pos.y,129,129,0,180,Color(0,0,0))
+            --]]
+            DrawWedge2(Pos.x,Pos.y,130,130,100,100,180,180,Color(255,255,255))
+        end)
+    end
+end

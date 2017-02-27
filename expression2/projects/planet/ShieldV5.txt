@@ -91,7 +91,7 @@ if(first())
         PlanetPos = vec(-10000,-10000,-6000)
     }else{
         #Planet Radius
-        R = ( max(Planet:boxSize():x(),Planet:boxSize():y(),Planet:boxSize():z())/2 ) *0.95
+        R = 3700#( max(Planet:boxSize():x(),Planet:boxSize():y(),Planet:boxSize():z())/2 ) *0.95
         
         #Planet pos
         PlanetPos = (PlanetName=="Kobol" ? Planet:pos()+vec(0,0,250) : Planet:pos())
@@ -101,7 +101,7 @@ if(first())
     SurfaceCenter = rangerOffset(PlanetPos+vec(0,0,R),PlanetPos):position()
     
     #sphere! :D
-    array():sphere(R,10,"sphereFinish",0)
+    array():sphere(R,11,"sphereFinish",0)
     
 }
 if(Built==0 & Sphere:count())
