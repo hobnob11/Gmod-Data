@@ -11,6 +11,8 @@ if(first())
 {
     #include "lib/hob"
     
+    entity():isWeldedTo():setShipName("Kappa Project: Dark Star")
+    
     function build() {
         if(I<Sphere:count())
         {
@@ -23,7 +25,9 @@ if(first())
                 local E = propSpawn("models/hunter/plates/plate32x32.mdl",V,A,1)
                 if(E:isValid()){
                     E:weld(entity():isWeldedTo())
-                    E:setMaterial("models/props_combine/combine_fenceglow")
+                    E:setRenderMode(10)
+                    E:propShadow(0)
+                    
                     Props[I,entity] = E
                 }else{
                     interval(10) 
@@ -87,7 +91,7 @@ if(first())
     
     if(map()=="gm_interplaneteryfunk")
     {
-        R = 4096
+        R = 3700
         PlanetPos = vec(-10000,-10000,-6000)
     }else{
         #Planet Radius

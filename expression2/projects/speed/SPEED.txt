@@ -12,7 +12,9 @@ if(first())
     Speed = E:getMovementSpeed()
     TurnSpeed = E:getTurningSpeed()
     print("Class: " + E:getCoreEnt():getCoreClass() + " MSL: " + Speed + " TSL: " + TurnSpeed)
-    foreach(K,V:entity=E:getConstraints()){if(V:type()=="prop_vehicle_prisoner_pod"){Chair = V}elseif(V:type()=="gmod_wire_cameracontroller"){Cam = V:wirelink()}}
+    local Ary = E:getConstraints()
+    Ary:pushEntity(E)
+    foreach(K,V:entity=Ary){if(V:type()=="prop_vehicle_prisoner_pod"){Chair = V}elseif(V:type()=="gmod_wire_cameracontroller"){Cam = V:wirelink()}}
     holoCreate(1)
     holoPos(1,E:boxCenterW())
     holoParent(1,E)

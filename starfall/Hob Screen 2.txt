@@ -79,9 +79,9 @@ else
                 surface.DrawCircle(pos.x,pos.y,40,Color(55,55,55,255))
                 surface.SetDrawColor(Color(55,55,55,255))
                 surface.SetTextColor(Color(255,255,255,255))
-                surface.SetTextPos(pos.x, pos.y + 120 )
-                surface.DrawText(t.class)
-                surface.SetTextPos(pos.x, pos.y + 120 )
+                surface.SetTextPos(pos.x, pos.y + 60 )
+                surface.DrawText(t.name)
+                surface.SetTextPos(pos.x, pos.y + 80 )
                 surface.DrawText(t.class)
             end
         end)

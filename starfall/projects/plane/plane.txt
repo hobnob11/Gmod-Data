@@ -11,10 +11,11 @@ if SERVER then
     D = 0
     Shift = 0
     Space = 0
+    Seat = 0
     Mass = 0
     for K,V in pairs(entities.self():GetAllConstrainedEnts()) do
         Mass = Mass + V:GetMass()
-        if V:GetClass() == "prop_vehicle_prisoner_pod" then
+        if(V:GetClass() == "prop_vehicle_prisoner_pod") then 
             Seat = V:EntIndex()
         end
     end
@@ -74,10 +75,10 @@ if SERVER then
     Holo:SetColor(Color(255,0,0))
     hook.Add("Think","HobThink",function() 
         
-        local ThrstMul = 40 * Mass
+        local ThrstMul = 50 * Mass
         local PitchMul = 5 * Mass
         local YawMul = 5 * Mass
-        local RollMul = 700 * Mass
+        local RollMul = 500 * Mass
         
         --internal vars
         local Ent = entities.self():IsWeldedTo()

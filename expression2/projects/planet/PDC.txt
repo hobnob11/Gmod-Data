@@ -2,7 +2,7 @@
 
 @inputs Fire
 
-@persist Weapons:array [WeaponBase TurretFixed TurretMoving]:entity Go Curtime Ang Acc Target:entity R Pos:vector ShieldE2:entity
+@persist Weapons:array [WeaponBase TurretFixed TurretMoving]:entity Go Curtime Ang Acc Target:entity R Pos:vector ShieldE2:entity RTCam:entity
 
 if(first())
 {
@@ -24,7 +24,7 @@ if(first())
     {
         local WL = ShieldE2:wirelink()
         Pos = WL["PlanetPos",vector]
-        R = WL["R",number] * 1.05
+        R = WL["R",number] * 1.1
     }else{
         Pos = entity():pos()+400
         R = 100
@@ -33,6 +33,8 @@ if(first())
     findIncludePlayerProps(owner())
     findByClass("sc_weapon_base")
     Weapons = findToArray()
+    findByClass("gmod_wire_rtcam")
+    RTCam = find()
     
     TurretFixed = holoCreate(1)
         holoPos(1,Pos)
@@ -49,7 +51,15 @@ if(first())
         holoAng(3,TurretMoving:toWorld(ang(90,0,0)))
         holoModel(3,"models/boba_fett/catwalk_build/gate_platform.mdl")
         holoParent(3,2)
-
+    
+    if(RTCam:isValid()){
+        local WL = RTCam:wirelink()
+        WL["Activate",number] = 1
+        RTCam:combatImmune(1)
+        RTCam:setPos(TurretMoving:toWorld(vec(R,0,0)))
+        RTCam:setAng(TurretMoving:toWorld(ang(0,0,0)))
+    }
+    
     for(I=1,Weapons:count())
     {
         local A = (360/Weapons:count()) * I + 90
@@ -59,7 +69,7 @@ if(first())
         E:lsLink(Core)
     }
     
-    function parent(){for(I=1,Weapons:count()){Weapons[I,entity]:parentTo(WeaponBase)}}
+    function parent(){for(I=1,Weapons:count()){Weapons[I,entity]:parentTo(WeaponBase)} if(RTCam:isValid()){RTCam:parentTo(TurretMoving)}}
     function go(){Go=1}
     timer(100,1,"parent","parent()")
     timer(200,1,"go","go()")
@@ -70,10 +80,10 @@ if(Go)
     if(!Target:isValid())
     {
         findClearWhiteList()
-        findIncludePlayerProps(findPlayerByName("nj"))
+        findIncludePlayerProps(findPlayerByName("kan"))
         findByClass("ship_core")
         Target=find()
-        if( Target:parent():isValid() ) { Target = Target:parent() }
+        #if( Target:parent():isValid() ) { Target = Target:parent() }
     }
     Curtime = curtime()
     
@@ -117,5 +127,9 @@ if(last())
     {
         local E = Weapons[I,entity]
         E:deparent()
+    }
+    if(RTCam:isValid())
+    {
+        RTCam:deparent()
     }
 }
