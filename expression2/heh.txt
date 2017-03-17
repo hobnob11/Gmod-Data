@@ -9,10 +9,10 @@ interval(100)
 if(first())
 {
     findClearWhiteList()
-    findIncludePlayerProps(findPlayerByName("nj"))
+    findIncludePlayerProps(findPlayerByName("Kan"))
     findByClass("ship_core")
     E = find()
-    
+    E = entity(546)
     runOnLast(1)
 }
 
@@ -28,7 +28,7 @@ foreach(K,V:entity=Tbl){
     local WL = V:wirelink()
     WL["Target",entity] = E
     WL["Active",number] = 1
-    WL["Fire",number] = 1
+    WL["Fire",number] = 0
     WL["Detonate Distance",number] = 500
 }
 if(last())

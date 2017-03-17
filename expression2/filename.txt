@@ -3,5 +3,5 @@
 @outputs 
 @persist 
 @trigger 
-interval(100)
-entity():isWeldedTo():setCapAmount(100000000)
+
+concmd("lua_run_cl print(\"hi\")")

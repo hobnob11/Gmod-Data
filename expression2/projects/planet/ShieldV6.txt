@@ -9,7 +9,7 @@ interval(80)
 if(first())
 {
     OverrideR = 1
-    OverriddenR = 3700
+    OverriddenR = 5192
     
     OverridePos = 0
     OverriddenPos = vec(0,0,0)

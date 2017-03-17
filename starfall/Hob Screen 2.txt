@@ -24,7 +24,7 @@ if SERVER then
         net.Send()
     end)
 else
-    if entities.player() == entities.owner() then
+    if entities.player() == entities.owner() or true then
         ShipCores = {}
         hook.Add("net","HobNetMessage",function(name,len)
             if not name == "Update Core Table" then return end
